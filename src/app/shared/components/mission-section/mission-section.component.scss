@@ -1,0 +1,53 @@
+.mission-section {
+    text-align: center;
+    padding: 2rem;
+    max-width: 85%;
+    margin: auto;
+  
+    h2 {
+      color: rgba(17, 110, 182, 1);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1.3rem;
+      color: rgba(7, 46, 76, 1);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      padding:1% 5%;
+      box-sizing: border-box;
+
+    }
+  
+    .missions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+  
+    .mission {
+      width: 240px;
+      text-align: center;
+  
+      .icon {
+        width: 120px;
+        height: 120px;
+        margin: auto;
+        background-color: rgb(245, 158, 129);
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+  
+      .desc {
+        font-size: 0.9rem;
+        color: rgba(7, 46, 76, 1);
+        line-height: 1.4;
+        font-weight: 500;
+      }
+    }
+  }
+  

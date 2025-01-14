@@ -1,0 +1,164 @@
+.quote-banner {
+    background-color: #F85B1A;
+    padding: 15px;
+    position: relative;
+    width: 60%;
+    margin: auto;
+    border-radius: 30px;
+  }
+
+  .banner-content {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .banner-text {
+    color: white;
+    font-size: 1.3em;
+    max-width: 60%;
+  }
+
+  .quote-button {
+    background-color: #1976D2;
+    color: white;
+    border: none;
+    padding: 12px 60px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .footer {
+    background-color: #002B4B;
+    color: white;
+    padding: 60px 20px 20px;
+  }
+
+  .footer-content {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+  .logo {
+    width: 75px;
+    height: 55px;
+    margin-bottom: 40px;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .footer-column h3 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    line-height: 3;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 12px;
+  }
+
+  .footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .social h3 {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+
+  .lets-talk {
+    font-size: 3.5em;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 20px;
+  }
+
+  .social-icon {
+    color: white;
+    font-size: 2rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    align-items: center;
+    margin-bottom: 5%;
+  }
+
+  .legal-links {
+    display: flex;
+    gap: 10px;
+  }
+
+  .legal-links a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .separator {
+    color: white;
+  }
+
+  .copyright {
+    color: white;
+    text-align: center;
+    background-color: rgba(17, 110, 182, 1);
+    padding: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .banner-content {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .banner-text {
+      max-width: 100%;
+    }
+
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .social {
+      grid-column: span 2;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+  }
+
+.sectionfooter {
+    position: relative;
+    margin-top: 5%;
+}
+.quote-banner{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}

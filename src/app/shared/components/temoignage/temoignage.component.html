@@ -1,0 +1,51 @@
+<section class="testimonials">
+    <div class="testimonials-container">
+      <h2>Témoignages</h2>
+      <p class="subtitle">
+        Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. Laoreet nisl sit pellent
+      </p>
+  
+      <div class="testimonials-cards">
+        <div
+          *ngFor="let testimonial of testimonials; let i = index"
+          class="testimonial-card"
+          [class.active]="i === currentIndex"
+          [class.previous]="i === currentIndex - 1"
+          [class.next]="i === currentIndex + 1"
+        >
+          <div class="profile-image">
+            <img [src]="testimonial.image" [alt]="testimonial.name" />
+          </div>
+          <div class="card-content">
+            <p class="testimonial-text">{{ testimonial.temoignage }}</p>
+            <div class="profile-info">
+              <h3>{{ testimonial.name }}</h3>
+              <p>{{ testimonial.poste }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navigation-buttons">
+        <button
+          class="nav-button prev"
+          (click)="prevTestimonial()"
+          [disabled]="currentIndex === 0"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+        <button
+          class="nav-button next"
+          (click)="nextTestimonial()"
+          [disabled]="currentIndex === testimonials.length - 1"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+  

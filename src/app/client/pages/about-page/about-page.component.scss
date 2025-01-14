@@ -1,0 +1,138 @@
+.about-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: rgba(17, 110, 182, 1);
+    color: white;
+    position: relative;
+    height: auto;
+    // min-height: 80vh;
+    margin-bottom: 12%;
+
+  }
+  @media(max-width : 2000px){
+    .about-section{
+      margin-bottom: 15%;
+    }
+  }
+  
+  .about-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    margin-top: 5%;
+  }
+  
+  .about-section p {
+    font-size: 1.2em;
+    margin-bottom: 40%;
+    line-height: 1.6;
+    width: 80%;
+    margin: auto;
+    padding: 8% 2% ;
+    padding-top: 1%;
+
+  }
+  
+  .about-images {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: absolute;
+    transform: translate(-50%, -40%);
+    left: 50%;
+    top:100% ;
+
+  }
+  
+ 
+  .img1{
+    width: 301px;
+    height: 268px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-top: 3%;
+  }
+  .img2{
+    width: 375px;
+    height: 334px;
+    object-fit: cover;
+    border-radius: 20px;
+
+  }
+
+  .slogan{
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+    color: rgba(17, 110, 182, 1);
+    span{
+      color: rgba(240, 97, 50, 1);
+    }
+  }
+
+  /* Section Vision */
+.vision {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap; /* Permet de passer en colonne sur petits écrans */
+  gap: 1rem; /* Espacement entre les blocs */
+  align-items: center; /* Aligne verticalement le texte et l'image */
+  justify-content: center; /* Centrage global sur grands écrans */
+  padding: 3%;
+  box-sizing: border-box;
+}
+@media(max-width: 2000px){
+  .vision{
+    width: 80%;
+  }
+}
+/* Bloc image */
+.imageVision {
+  flex: 1 1 300px; /* Le bloc occupe au moins 300px et peut grandir */
+  max-width: 40%; /* Limite la largeur de l'image sur grands écrans */
+  padding: 2%; /* Marges intérieures */
+  box-sizing: border-box;
+}
+
+.imageVision img {
+  width: 100%; /* L'image s'adapte à la taille de son conteneur */
+  height: auto; /* Garde les proportions de l'image */
+  object-fit: cover;
+  border-radius: 30px;
+  max-width: 400px;
+}
+
+/* Bloc description */
+.descVision {
+  flex: 1 1 400px; /* Le texte occupe au moins 400px et peut grandir */
+  max-width: 60%; /* Limite la largeur du texte sur grands écrans */
+  line-height: 1.8;
+  color: rgba(7, 46, 76, 1);
+  font-size: 20px;
+}
+
+.descVision span {
+  font-weight: 800;
+}
+
+/* Media Queries */
+@media (min-width: 1200px) {
+  .vision {
+    gap: 1rem; /* Augmente légèrement l'espace entre les blocs */
+  }
+
+  .descVision {
+    font-size: 25px; /* Taille de police adaptée aux grands écrans */
+  }
+}
+
+@media (max-width: 768px) {
+  .vision {
+    flex-direction: column; /* Passe les blocs en colonne */
+    text-align: center; /* Centre le texte sur petits écrans */
+  }
+
+  .descVision {
+    padding: 2%; /* Réduit les marges pour petits écrans */
+  }
+}

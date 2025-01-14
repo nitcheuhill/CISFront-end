@@ -1,0 +1,75 @@
+/* Section principale avec forme animée */
+.clients-carousel {
+    position: relative;
+    width: 100%; /* Largeur pleine */
+    height: 500px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 2%;
+      
+  }
+  
+  
+  
+ 
+  
+  /* Titre et sous-titre */
+  .headline {
+    color: rgba(242, 117, 52, 1);
+    font-size: 3rem;
+    z-index: 1;
+    margin-bottom: 1.5%;
+  }
+  
+  .subheadline {
+    font-size: 1.5rem;
+    color: rgb(7, 46, 76);
+    z-index: 1;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  
+  /* Carrousel des logos */
+  .carousel {
+    position: relative;
+    width: 80%;
+    height: 90px; /* Hauteur adaptée aux logos */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .carousel-track {
+    display: flex;
+    animation: scroll 15s linear infinite;
+  }
+  
+  .logo {
+    width: auto;
+    margin: 0 20px;
+    // filter: grayscale(100%);
+    transition: filter 0.3s ease-in-out;
+  }
+  
+  .logo:hover {
+    filter: grayscale(0%);
+  }
+  
+  /* Animation continue */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(100% / var(--logo-count)));
+    }
+  
+  
+ 
+  }
+  

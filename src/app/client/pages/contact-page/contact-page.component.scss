@@ -1,0 +1,173 @@
+.contacts-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 9% 12%;
+    background: rgba(7, 46, 76, 1);
+    color: white;
+    position: relative;
+    overflow: visible;
+
+}
+strong{
+   color : rgba(242, 117, 52, 1)
+}
+
+.contacts-section::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: white;
+    z-index: 1;
+    clip-path: polygon(100% 100%, 0% 100% , 0.00% 50.08%, 2.00% 48.49%, 4.00% 47.15%, 6.00% 46.06%, 8.00% 45.25%, 10.00% 44.73%, 12.00% 44.50%, 14.00% 44.58%, 16.00% 44.95%, 18.00% 45.62%, 20.00% 46.57%, 22.00% 47.79%, 24.00% 49.26%, 26.00% 50.95%, 28.00% 52.84%, 30.00% 54.90%, 32.00% 57.10%, 34.00% 59.40%, 36.00% 61.76%, 38.00% 64.16%, 40.00% 66.54%, 42.00% 68.88%, 44.00% 71.13%, 46.00% 73.27%, 48.00% 75.25%, 50.00% 77.04%, 52.00% 78.63%, 54.00% 79.97%, 56.00% 81.06%, 58.00% 81.87%, 60.00% 82.39%, 62.00% 82.62%, 64.00% 82.54%, 66.00% 82.17%, 68.00% 81.50%, 70.00% 80.55%, 72.00% 79.33%, 74.00% 77.86%, 76.00% 76.17%, 78.00% 74.28%, 80.00% 72.22%, 82.00% 70.02%, 84.00% 67.72%, 86.00% 65.35%, 88.00% 62.96%, 90.00% 60.58%, 92.00% 58.24%, 94.00% 55.99%, 96.00% 53.85%, 98.00% 51.87%, 100.00% 50.08%);
+}
+
+.contacts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+}
+
+.contacts-info, .addresses {
+    margin-bottom: 20px;
+}
+.addresses{
+    width: auto;
+    max-width: 500px;
+    margin-left: 12%;   
+}
+.addresses h3{
+    color: rgba(242, 117, 52, 1);
+}
+.blockinfo{
+    display: flex;
+    gap: 5px;
+    border-bottom: rgba(169, 169, 169, 1) 1px solid;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 5%;
+}
+.blockinfo-icon{
+    display: flex;
+    align-items: center;
+}
+h2, h3 {
+    margin-bottom: 10px;
+    font-size: 3.2rem;
+}
+.blockinfo-text span{
+    font-weight: 900;
+    color: rgba(25, 113, 181, 1);
+    font-size: 16px;
+}
+.blockinfo-text p{
+    color: rgba(7, 46, 76, 1);
+    font-weight: 600;
+    line-height: 1.8;
+}
+label{
+    color: rgba(25, 113, 181, 1);
+    font-weight: 600;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+
+.contact-form {
+    background: white;
+    padding: 30px 50px;
+    padding-bottom: 50px;
+    width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    height: auto;
+    position: absolute;
+    transform: translate(15%);
+    left: 50%;
+    border-bottom: 4px solid rgba(17, 110, 182, 1);
+}
+@media (max-width: 2000px) {
+    .contact-form {
+        width: 500px;
+    }
+}
+
+.contact-form h3 {
+    color: rgba(17, 110, 182, 1);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.contact-form p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: rgba(17, 110, 182, 1);
+    font-size: 1.2rem;
+    line-height: 1.2;
+    font-weight: 600;
+
+}
+
+.contact-form .form-desc {
+    font-size: 14px;
+    color: rgba(7, 46, 76, 1);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    padding: 2% ;
+    border-left: 3px solid rgba(240, 97, 50, 1);
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border:none;
+    transition: border-color 0.3s ease;
+    border-bottom:1px solid #999999 ;
+}
+.contact-form input::placeholder, 
+.contact-form textarea::placeholder {
+    font-style: italic;
+    color: #999; /* Optionnel : couleur grise plus claire */
+}
+.contact-form input:focus,.contact-form textarea:focus {
+    border-bottom:1px solid rgba(17, 110, 182, 1);
+    outline: none
+}
+
+.contact-form button {
+    align-items: flex-end;
+    width: 50%;
+    padding: 10px;
+    background: rgba(17, 110, 182, 1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 2%;
+}
+
+.contact-form button:hover {
+    background: #004080;
+}
+
+.contacts p{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 60%;
+}
+@media (max-width: 2000px) {
+    .contacts p {
+        width: 55% ;
+        height: 50px;
+    }
+}

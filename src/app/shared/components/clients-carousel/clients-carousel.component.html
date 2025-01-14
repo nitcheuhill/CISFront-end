@@ -1,0 +1,17 @@
+<div class="clients-carousel">
+    <!-- Titre de la section -->
+    <h2 class="headline">Ils nous ont fait confiance</h2>
+    <p class="subheadline">
+      CISCAMEROUN, votre partenaire de confiance pour des projets de BTP innovants et
+      durables.
+    </p>
+  
+    <!-- Carrousel des logos -->
+    <div class="carousel">
+      <div class="carousel-track" style="--logo-count: 7">
+        <img class="logo" *ngFor="let logo of logos" [src]="logo.src" [alt]="logo.alt" />
+      </div>
+    </div>
+  </div>
+  
+  

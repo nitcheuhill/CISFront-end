@@ -1,0 +1,109 @@
+<section class="firstsection">
+  <div class="firstblock">
+      <div class="content">
+          <p class="niet"><span style="color: rgba(240, 97, 50, 1);">Think Smart</span>, Build Well</p>
+          <p class="desc">Optimisez vos opérations industrielles avec nos produits, installations et services de qualités</p>
+          <div class="search-bar">
+              <div class="search-container">
+                  <input type="text" placeholder="Recherche" />
+                  <button>
+                      <img src="/icons/Frame 7.png" alt="Recherche">
+                  </button>
+              </div>
+          </div>
+          <div class="info">
+              <div class="team">
+                  <img src="/icons/people.png" alt="Équipe">
+                  <p>Toute une équipe pour vous servir</p>
+              </div>
+              <div class="clients">
+                  <img src="/icons/profile-2user.png" alt="Clients">
+                  <p><span style="color: rgba(240, 97, 50, 1); font-size: 20px;">+ de 300</span> Clients satisfaits.</p>
+              </div>
+          </div>
+      </div>
+      <div class="image-container">
+          <img src="/images/IMG001 1.png" alt="Travailleur">
+      </div>
+  </div>
+</section>
+
+<section class="localisationinfo">
+  <div class="contact-section">
+    <div class="map-container">
+        <img src="/images/carte.png" alt="Carte de localisation">
+        <div class="map-overlay">
+          <img src="/icons/location.png" alt="LogoMap">
+        </div>
+    </div>
+    <div class="contact-info">
+      <div class="contact-address">
+        <p><span class="contact-label">Dir Com :</span> Boulevard Leclerc Akwa</p>
+        <p><span class="contact-label">Dir Gen :</span> Rue Castelnau 846 Akwa BP 2108</p>
+        <p>Douala - Cameroun</p>
+      </div>
+      <div class="contact-phone">
+        <div><img src="/icons/Frame 8.png" alt="LogoMap"><a href="tel:+237655955428">+237 655 955 428</a></div>
+        <div><img src="/icons/Frame 9.png" alt="LogoMap"><a href="mailto:accueil&#64;ciscameroun.com">accueil&#64;ciscameroun.com</a></div>
+      </div>
+    </div>
+</div>
+</section>
+
+<!-- services -->
+<section class="services-section">
+  <div class="services-content">
+    <h2>Nos Services</h2>
+    <p class="services-description">
+      Lorem ipsum dolor sit amet consectetur. Gravida nec penatibus ut pellentesque enim. Elit diam eget porttitor netus aliquet id viverra elementum nulla. Libero massa mi non libero.
+    </p>
+    
+    <div class="services-grid" >
+      <div class="service-item" *ngFor="let service of services" routerLink="/nos-services">
+        <div class="icon-container">
+          <img [src]="service.icon" [alt]="service.desc">
+        </div>
+        <p>{{service.desc}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- realisations -->
+<section class="realisations">
+  <div class="realisations-container">
+    <div class="title-section">
+      <h2>Nos réalisations</h2>
+      <div class="title-line"></div>
+    </div>
+
+    <div class="realisationscontent">
+      <div class="images-grid">
+        <div class="grid-item worker1">
+          <img src="/images/Frame 7 (1).png" alt="Travailleur avec casque jaune">
+        </div>
+        <div class="grid-item card1"></div>
+        <div class="grid-item card2"></div>
+        <div class="grid-item worker2">
+          <img src="/images/Frame 8 (1).png" alt="Travailleur souriant">
+        </div>
+      </div>
+
+      <div class="text-content">
+        <h3>Chez CIS Cameroun, nous croyons que chaque projet industriel mérite une attention particulière</h3>
+        
+        <p>C'est pourquoi nous ne nous limitons pas à vous fournir des équipements de qualité : nous vous accompagnons à chaque étape, depuis le choix des produits adaptés jusqu'à leur installation et leur maintenance. Notre objectif ? Vous offrir des solutions sur mesure pour maximiser vos performances.</p>
+
+        <div class="button-container">
+          <div class="line"></div>
+          <button class="action-button">
+            Voir nos réalisations
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-temoignage></app-temoignage>
+<app-contact-form></app-contact-form>
+<app-articles></app-articles>

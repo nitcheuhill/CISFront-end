@@ -1,0 +1,37 @@
+/* Page blanche en plein écran */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Couleur de fond */
+    z-index: 1001; /* Toujours au-dessus */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Logo avec animation beat fade */
+  .loader-logo {
+    width: 150px; /* Taille du logo */
+    height: 150px;
+    background-image: url('/icons/logocis.jpg'); /* Chemin vers ton logo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: beatFade 1.5s infinite;
+  }
+  
+  /* Animation beat fade */
+  @keyframes beatFade {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2); /* Zoom léger */
+      opacity: 0.5; /* Moins visible */
+    }
+  }
+  

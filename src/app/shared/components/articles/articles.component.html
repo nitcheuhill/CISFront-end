@@ -1,0 +1,26 @@
+<section class="articles-section">
+    <div class="articles-header">
+      <h2 class="articles-title">Articles</h2>
+      <div class="title-underline"></div>
+    </div>
+
+    <div class="articles-container">
+      <div class="articles-scroll">
+        @for(article of articles; track article.id) {
+          <!-- <a [routerLink]="['/article', article.id]" class="article-card"> -->
+          <a  class="article-card">
+            <div class="card-image-container">
+              <img [src]="article.imageUrl" [alt]="article.alt" class="card-image">
+              <div class="image-overlay"></div>
+              <h3 class="card-title">{{ article.title }}</h3>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="articles-footer">
+      <div class="footer-line"></div>
+      <a routerLink="/articles" class="voir-plus">Voir Plus</a>
+    </div>
+  </section>

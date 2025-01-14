@@ -1,0 +1,16 @@
+<nav class="navbar"  [class.hidden]="!isVisible">
+  <div class="navbar-logo" routerLink="/">
+    <img src="/icons/Logo.png" alt="Logo CIS Cameroun" />
+  </div>
+  <ul class="navbar-links">
+    <li><a routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">Accueil</a></li>
+    <li><a routerLink="/nos-services" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">Nos Services</a></li>
+    <li><a routerLink="/contacts" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">Contacts</a></li>
+    <li><a routerLink="/a-propos" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">À Propos</a></li>
+  </ul>
+  <div class="navbar-menu">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</nav>

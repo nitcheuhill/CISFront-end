@@ -1,0 +1,141 @@
+.contact-section {
+  background-color: rgba(231, 241, 248, 1);
+  padding: 4rem 4rem 0 4rem; // Supprime le padding bottom
+  width: 100%;
+  margin-top: 2%;
+  position: relative; // Ajout pour le positionnement de l'image
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start; // Changé pour aligner en haut
+  justify-content: space-between;
+}
+
+.image-container {
+  flex: 1;
+  position: relative; // Pour le positionnement
+  align-self: flex-end; // Aligne au bas du conteneur
+
+  .blockimg {
+      position: relative;
+      margin-bottom: 0rem; // Pour compenser le padding de la section
+  }
+  
+  .worker-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      object-fit: cover;
+      display: block; // Évite l'espace sous l'image
+  }
+}
+
+.form-container {
+  flex: 1;
+  padding-bottom: 4rem; // Ajoute l'espace en bas pour le formulaire
+  
+  h2 {
+      color: rgb(7, 46, 76);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+  }
+
+  .description {
+      color: rgba(7, 46, 76, 0.8);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .form-field {
+      width: 100%;
+  }
+
+  input, textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(7, 46, 76, 0.1);
+      border-radius: 20px;
+      font-size: 1rem;
+      color: rgba(7, 46, 76, 0.8);
+      background: white;
+      
+      &::placeholder {
+          color: rgba(7, 46, 76, 0.4);
+      }
+
+      &:focus {
+          outline: none;
+          border-color: rgba(17, 110, 182, 0.5);
+          box-shadow: 0 0 0 2px rgba(17, 110, 182, 0.1);
+      }
+
+      &.invalid {
+          border-color: #ff4444;
+      }
+  }
+
+  textarea {
+      resize: vertical;
+      min-height: 120px;
+  }
+}
+
+.submit-button {
+  background-color: rgb(17, 110, 182);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  align-self: flex-end;
+
+  &:hover {
+      background-color: rgba(17, 110, 182, 0.9);
+  }
+}
+
+@media (max-width: 968px) {
+  .contact-section {
+      padding: 2rem 2rem 0 2rem;
+  }
+
+  .contact-container {
+      flex-direction: column;
+      gap: 2rem;
+  }
+
+  .image-container {
+      .blockimg {
+          margin-bottom: -2rem; // Ajusté pour mobile
+      }
+  }
+
+  .form-container {
+      padding-bottom: 2rem;
+      
+      h2 {
+          font-size: 2rem;
+      }
+  }
+
+  .submit-button {
+      width: 100%;
+  }
+}

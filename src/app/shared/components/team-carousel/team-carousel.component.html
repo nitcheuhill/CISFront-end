@@ -1,0 +1,23 @@
+<section class="team-section">
+    <h2>Notre Équipe</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis
+      nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in nullam lacus.
+      Neque dolor maecenas adipiscing sed natoque aliquam. Laoreet nisl sit pellentesque.
+    </p>
+    <div class="carousel">
+      <div class="carousel-track">
+        <div *ngFor="let member of teamMembers" class="carousel-item">
+          <img [src]="member.image" [alt]="member.name" />
+          <h3>{{ member.name }}</h3>
+          <p>{{ member.position }}</p>
+        </div>
+        <div *ngFor="let member of teamMembers" class="carousel-item">
+          <img [src]="member.image" [alt]="member.name" />
+          <h3>{{ member.name }}</h3>
+          <p>{{ member.position }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  

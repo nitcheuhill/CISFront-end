@@ -1,0 +1,17 @@
+<section class="mission-section">
+    <h2>Lorem Ipsum</h2>
+    <p>
+      Nous disposons d’une équipe technique expérimentée qui exécute avec rigueur leurs
+      tâches suivant une méthodologie éprouvée et une éthique de travail sans faille dans
+      le but d’offrir des services de qualité supérieur à tous nos clients. Nous vous
+      assurons des résultats à la hauteur de vos attentes, nos principales missions sont :
+    </p>
+  
+    <div class="missions">
+      <div class="mission" *ngFor="let mission of missions">
+        <div class="icon" [style.backgroundImage]="'url(' + mission.icon + ')'"></div>
+        <p class="desc">{{ mission.desc }}</p>
+      </div>
+    </div>
+  </section>
+  
