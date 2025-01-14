@@ -9,7 +9,9 @@
   
     <div class="missions">
       <div class="mission" *ngFor="let mission of missions">
-        <div class="icon" [style.backgroundImage]="'url(' + mission.icon + ')'"></div>
+        <div class="icon">
+          <img [src]="mission.icon" [alt]="mission">
+        </div>
         <p class="desc">{{ mission.desc }}</p>
       </div>
     </div>

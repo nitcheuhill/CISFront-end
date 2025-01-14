@@ -32,14 +32,20 @@
       text-align: center;
   
       .icon {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
         margin: auto;
-        background-color: rgb(245, 158, 129);
-        background-size: cover;
-        background-position: center;
+        background-color: rgba(250, 206, 191, 1);
         border-radius: 50%;
         margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        object-fit: contain;
+      }
+      .icon img{
+        width: 50%;
+        height: auto;
       }
   
       .desc {

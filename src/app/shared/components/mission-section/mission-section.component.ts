@@ -10,19 +10,19 @@ import { CommonModule } from '@angular/common';
 export class MissionSectionComponent {
   missions = [
     {
-      icon: '/path/to/icon1.png',
+      icon: '/icons/iconsMissionGrid/Calque_1 (20).png',
       desc: "De participer au développement local des marques d'équipements techniques",
     },
     {
-      icon: '/path/to/icon2.png',
+      icon: '/icons/iconsMissionGrid/Calque_1 (21).png',
       desc: "D'assurer la mise en œuvre locale des systèmes d'équipements intégrés",
     },
     {
-      icon: '/path/to/icon3.png',
+      icon: '/icons/iconsMissionGrid/Calque_1 (22).png',
       desc: "D'assurer le suivi et la maintenance quotidienne des infrastructures technologiques",
     },
     {
-      icon: '/path/to/icon4.png',
+      icon: '/icons/iconsMissionGrid/Calque_1 (23).png',
       desc: "D'accompagner les constructeurs d'équipements dans le processus de maîtrise continue de la qualité",
     },
   ];

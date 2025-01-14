@@ -86,7 +86,8 @@ export class ServicesGridComponent {
         ' Systèmes de production de la vapeur',
         'Systèmes de production, traitement et  stockage d’eau chaude'
       ]
-    }
+    },
+    
   ];
 
 }

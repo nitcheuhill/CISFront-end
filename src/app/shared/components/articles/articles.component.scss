@@ -13,7 +13,7 @@
 
   .articles-title {
     color: #FF5722;
-    font-size: 48px;
+    font-size: 32px;
     font-weight: 700;
     margin: 0;
   }
@@ -50,7 +50,7 @@
   }
 
   .article-card {
-    flex: 0 0 380px; /* Largeur fixe pour chaque carte */
+    flex: 0 0 310px; /* Largeur fixe pour chaque carte */
     scroll-snap-align: start;
     position: relative;
     border-radius: 16px;
