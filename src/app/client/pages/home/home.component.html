@@ -59,7 +59,7 @@
     </p>
     
     <div class="services-grid" >
-      <div class="service-item" *ngFor="let service of services" routerLink="/nos-services">
+      <div class="service-item" *ngFor="let service of services" routerLink="/details-services">
         <div class="icon-container">
           <img [src]="service.icon" [alt]="service.desc">
         </div>
@@ -106,4 +106,8 @@
 </section>
 <app-temoignage></app-temoignage>
 <app-contact-form></app-contact-form>
+<div class="articles-header">
+  <h2 class="articles-title">Articles</h2>
+  <div class="title-underline"></div>
+</div>
 <app-articles></app-articles>

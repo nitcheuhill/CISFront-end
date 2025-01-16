@@ -32,11 +32,13 @@
       .carousel-track {
         display: flex;
         gap: 0.8rem;
-        animation: scroll 40s linear infinite;
+        overflow-y: auto;
+        scrollbar-width: none;
+        // animation: scroll 50s linear infinite;
         
-        &:hover {
-          animation-play-state: paused;
-        }
+        // &:hover {
+        //   animation-play-state: paused;
+        // }
       }
   
       .carousel-item {

@@ -1,6 +1,6 @@
 <div class="services-container">
     <div class="services-grid">
-        <div *ngFor="let service of services" class="service-card">
+        <div *ngFor="let service of services" class="service-card" routerLink="/details-services">
             <div class="icon-container">
                 <img [src]="service.icon" [alt]="service.title">
             </div>

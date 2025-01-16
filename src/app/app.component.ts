@@ -1,5 +1,5 @@
 import { RouterModule , Router,NavigationStart, NavigationEnd} from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoaderService } from './shared/sevices/loader.service';
 import { CommonModule } from '@angular/common';
@@ -13,14 +13,15 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   isLoading$;
 
   constructor(private router: Router, private loaderService: LoaderService) {
     this.isLoading$ = this.loaderService.isLoading;
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
     // Afficher le loader pendant le chargement initial
     this.loaderService.showLoader();
 
@@ -31,7 +32,12 @@ export class AppComponent {
       } else if (event instanceof NavigationEnd) {
         // Délai pour garantir le chargement complet de la page
         setTimeout(() => this.loaderService.hideLoader(), 1000);
+        //scrolle sur le haut de page
+        window.scrollTo(0, 0); 
+
       }
     });
-  }
+  };
+
+  
 }

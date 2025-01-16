@@ -1,30 +1,7 @@
 .articles-section {
-    padding: 48px 24px;
+    padding: 15px 24px;
     width: 100%;
     margin: 0 auto;
-  }
-
-  .articles-header {
-    margin-bottom: 40px;
-    position: relative;
-    width: 80%;
-    margin: auto;
-  }
-
-  .articles-title {
-    color: #FF5722;
-    font-size: 32px;
-    font-weight: 700;
-    margin: 0;
-  }
-
-  .title-underline {
-    position: absolute;
-    top: 32px;
-    left: 220px;
-    right: 0;
-    height: 2px;
-    background-color: #FF5722;
   }
 
   .articles-container {
@@ -85,7 +62,7 @@
     right: 0;
     height: 50%;
     background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-    border-radius: 0 0 16px 16px;
+    border-radius: 30px;
   }
 
   .card-title {

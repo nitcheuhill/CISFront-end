@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-services-grid',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './services-grid.component.html',
   styleUrl: './services-grid.component.scss'
 })
