@@ -18,3 +18,43 @@
     text-align: center;
     padding-bottom: 5%;
 }
+
+/* Conteneur de la grille */
+.service-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;  /* Égaliser les espaces entre les cartes */
+    gap: 1.5rem 0rem;  /* Espacement entre les cartes */
+    padding: 3rem;
+    margin: auto;
+    width: 80%;
+  }
+  
+  /* Pour chaque carte de service */
+  .service-card {
+    width: 350px;  /* Largeur fixe de 350px pour chaque carte */
+    height: 450px;  /* Hauteur fixe */
+    background: rgba(244, 244, 244, 1);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Pour les petits écrans, utiliser 2 cartes par ligne */
+  @media (max-width: 768px) {
+    .service-card {
+      width: 45%;  /* 2 cartes par ligne sur les écrans moyens */
+    }
+  }
+  
+  /* Pour les très petits écrans, utiliser 1 carte par ligne */
+  @media (max-width: 480px) {
+    .service-card {
+      width: 100%;  /* 1 carte par ligne sur les petits écrans */
+    }
+  }
+  

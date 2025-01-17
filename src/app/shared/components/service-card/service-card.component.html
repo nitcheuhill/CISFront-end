@@ -1,0 +1,14 @@
+<div class="service-card">
+  <div class="icon-container">
+    <img [src]="service.icon" alt="Icône du service">
+  </div>
+  <h3>{{ service.title }}</h3>
+  <div class="sub-services">
+    <ng-container *ngFor="let subService of service.subServices; let last = last">
+      <p>{{ subService }}</p>
+      <!-- Ajouter un separator seulement si ce n'est pas le dernier élément -->
+      <div *ngIf="!last" class="separator"></div>
+    </ng-container>
+  </div>
+  <div class="bottom"></div>
+</div>

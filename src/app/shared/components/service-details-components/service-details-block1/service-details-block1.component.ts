@@ -22,10 +22,7 @@ export class ServiceDetailsBlock1Component {
       ],
       description: [
         `Lorem ipsum dolor sit amet consectetur.
-        Egestas nulla est urna ullamcorper duis nibh vitae elementum.
-        Egestas nulla est urna ullamcorper duis nibh vitae elementum.
-         Egestas nulla est urna ullamcorper duis nibh vitae elementum. 
-          Egestas nulla est urna ullamcorper duis nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit. Amet eu..`,
+         Eros suspendisse natoque tortor urna tristique amet in nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit. Amet eu..`,
         `Egestas nulla est urna ullamcorper duis nibh vitae elementum. Eros suspendisse 
         natoque tortor urna tristique amet in nullam lacus. Neque dolor maecenas adipiscing 
         sed natoque aliquam. Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.`

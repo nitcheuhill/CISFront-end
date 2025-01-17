@@ -6,3 +6,15 @@
     </div>
   </section>
 <app-service-details-block1></app-service-details-block1>
+<app-service-details-block2></app-service-details-block2>
+<div class="articles-header">
+  <h2 class="articles-title">Autres services qui pourraient vous interesser</h2>
+  <div class="title-underline"></div>
+</div>
+  <div class="service-grid">
+    <app-service-card 
+      *ngFor="let service of services" 
+      [service]="service">
+    </app-service-card>
+  </div>
+

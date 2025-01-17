@@ -41,3 +41,44 @@
     line-height: 1.5;
     width: 90%;
   }
+  
+.articles-header {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2%;
+  margin-top: 5%;
+  padding: 0 0.8%;
+}
+
+.articles-title {
+  color: #FF5722;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.title-underline {
+  position: absolute;
+  top: 25px;
+  left: 800px;
+  right: 0;
+  height: 3px;
+  background-color: #FF5722;
+}
+
+.service-grid{
+  padding-left: 8%;
+  padding-right: 3%;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 1rem;
+  margin-bottom: 15%;
+}
+
+.service-grid app-service-card  .service-card {
+  height: 500px;
+ 
+}
