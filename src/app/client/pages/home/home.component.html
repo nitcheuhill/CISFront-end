@@ -59,11 +59,11 @@
     </p>
     
     <div class="services-grid" >
-      <div class="service-item" *ngFor="let service of services" routerLink="/details-services">
+      <div class="service-item" *ngFor="let service of infoservices" routerLink="/details-services">
         <div class="icon-container">
-          <img [src]="service.icon" [alt]="service.desc">
+          <img [src]="service.icon" [alt]="service.title">
         </div>
-        <p>{{service.desc}}</p>
+        <p>{{service.title}}</p>
       </div>
     </div>
   </div>

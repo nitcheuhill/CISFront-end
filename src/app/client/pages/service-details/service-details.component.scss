@@ -75,10 +75,16 @@
   overflow-x: auto;
   scrollbar-width: none;
   gap: 1rem;
-  margin-bottom: 15%;
+  margin-bottom: 10%;
 }
 
-.service-grid app-service-card  .service-card {
-  height: 500px;
- 
+.service-grid ::ng-deep .service-card {
+  height: 430px;
+  width: 326px !important;
+  border-radius: 25px;
+}
+.service-grid ::ng-deep .icon-container {
+  height: 80px;
+  width: 80px;
+  margin-top: 0.8rem;
 }

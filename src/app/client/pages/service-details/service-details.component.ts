@@ -29,12 +29,12 @@ export class ServiceDetailsComponent {
     };
 
     // donnéé services
-    services: any[] = []; 
+    infoservices : any [] = [];
   constructor(private servicesService: ServiceDataService) {}
 
   ngOnInit() {
-    this.services = this.servicesService.getServices();
-    console.log('Services récupérés :', this.services);
+    this.infoservices = this.servicesService.getServices();
+    console.log('Services récupérés :', this.infoservices);
   }
 
 

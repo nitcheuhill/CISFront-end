@@ -24,10 +24,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;  /* Égaliser les espaces entre les cartes */
-    gap: 1.5rem 0rem;  /* Espacement entre les cartes */
+    gap: 1.5rem 0.5rem;  /* Espacement entre les cartes */
     padding: 3rem;
     margin: auto;
-    width: 80%;
+    width: 85%;
   }
   
   /* Pour chaque carte de service */

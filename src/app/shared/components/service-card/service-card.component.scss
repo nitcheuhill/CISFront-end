@@ -1,7 +1,7 @@
 /* Pour chaque carte de service */
 .service-card {
-  width: 320px;  /* Largeur fixe de 350px pour chaque carte */
-  height:480px;
+  width: 400px;  /* Largeur fixe de 350px pour chaque carte */
+  height:430px;
   background: rgba(244, 244, 244, 1);
   border-radius: 1rem;
   padding: 1rem 1rem;
@@ -10,6 +10,11 @@
   align-items: center;
   text-align: center;
   position: relative;
+}
+@media(max-width:2000px){
+  .service-card{
+    width: 342px !important;
+  }
 }
 
 /* Pour l'icône du service */
@@ -21,7 +26,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 
   img {
     width: 30px;

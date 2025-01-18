@@ -5,7 +5,7 @@
   <h3>{{ service.title }}</h3>
   <div class="sub-services">
     <ng-container *ngFor="let subService of service.subServices; let last = last">
-      <p>{{ subService }}</p>
+      <p>{{ subService.title }}</p>
       <!-- Ajouter un separator seulement si ce n'est pas le dernier élément -->
       <div *ngIf="!last" class="separator"></div>
     </ng-container>
