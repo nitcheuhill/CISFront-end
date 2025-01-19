@@ -1,0 +1,64 @@
+<section class="header">
+    <div class="containerIntro">
+      <h1>Nos Réalisations</h1>
+      <p>Nous sommes une société à vocation  technologique, qui apporte des solutions 
+         locales en matière de commercialisation,  installations, suivi d’équipements
+          et  infrastructures techniques des secteurs  industriels et domestiques</p>
+    </div>
+  </section>
+
+  <section class="realisation-section">
+    <!-- Filtres -->
+    <div class="filtre">
+        <img src="images/realisationsassets/filter-search.png" alt="searchbutton" />
+        <span>Filtre</span>
+    </div>
+    <div class="filters">
+      <div class="by">
+        <div> <span>Par ordre</span></div>
+        <div><button class="button1"  (click)="filterByOrder('recent')">Plus récents</button></div>
+        <div><button (click)="filterByOrder('ancien')">Plus anciens</button></div>
+      </div>
+      <div class="by">
+        <div><span>Par catégorie</span></div>
+        <div class="categories-grid">
+        <button *ngFor="let categorie of categories" (click)="filterByCategory(categorie)">
+          {{ categorie }}
+        </button>
+      </div>
+    </div >
+      <div class="by">
+        <div><span>Par date</span></div>
+            <div><span>Du</span><input type="date" [(ngModel)]="dateDebut" placeholder="Du" /></div>
+            <div><span>Au</span><input type="date" [(ngModel)]="dateFin" placeholder="Au" /></div>
+            <div><button (click)="filterByDate()">Filtrer</button></div>
+      </div>
+      <div>
+        <div> <span>Recherche</span></div>
+        <div class="search"> <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." />
+        <button (click)="filterBySearch()" class="searchbutton">
+            <img src="images/realisationsassets/Frame 7 (3).png" alt="searchbutton" />
+        </button> </div>
+      </div>
+    </div>
+  
+    <!-- Liste des réalisations -->
+    <div class="realisation-list">
+      <div *ngFor="let realisation of filteredRealisations; let i = index"
+      [class.alternate]="i % 2 === 1"
+      class="realisation-item">
+        <div class="realisation-image">
+          <div class="realisation-overlay" [style.backgroundColor]="i % 2 === 0 ? 'rgba(254, 239, 235, 1)' : 'rgba(231, 241, 248, 1)'"></div>
+          <img [src]="realisation.image" [alt]="realisation.titre" />
+        </div>
+        <div class="realisation-content">
+          <h2>{{ realisation.titre }}</h2>
+          <p>{{ realisation.description }}</p>
+          <div class="voir-plus-container">
+            <a href="#" class="voir-plus">Voir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

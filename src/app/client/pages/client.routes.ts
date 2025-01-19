@@ -22,4 +22,8 @@ export const routes: Routes = [
       path: 'service/:title',
       loadComponent: () => import('./service-details/service-details.component').then(m => m.ServiceDetailsComponent) // Route pour le composant ServiceDetails
     },
+    {
+      path: 'realisations',
+      loadComponent: () => import('./realisations-page/realisations-page.component').then(m => m.RealisationsPageComponent) // Route pour le composant realisation
+    },
 ];
