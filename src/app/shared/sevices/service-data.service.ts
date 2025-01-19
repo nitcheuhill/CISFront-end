@@ -101,7 +101,7 @@ export class ServiceDataService {
         nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
-      imageUrl: 'images/HeaderDetailService2.png',
+      imageUrl: 'images/portrait-firefighter-standing-front-fire-engine.jpg',
       subServices: [
         {
           title: 'Courant fort (basse, moyenne et haute tension)',

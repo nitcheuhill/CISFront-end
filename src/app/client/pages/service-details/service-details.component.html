@@ -1,20 +1,140 @@
-<section class="services-section" [ngStyle]="{'background-image': 'url(' + service.imageUrl + ')'}">
-    <div class="overlay">
-      <span class="badge">Nos Services</span>
-      <h1>{{ service.title }}</h1>
-      <p>{{ service.introText }}</p>
+<!-- Header section -->
+<section class="services-section" [ngStyle]="{'background-image': 'url(' + currentService?.imageUrl + ')'}">
+  <div class="overlay">
+    <span class="badge">Nos Services</span>
+    <h1>{{ currentService?.title }}</h1>
+    <p>{{ currentService?.introText }}</p>
+  </div>
+</section>
+
+<!-- Bloc 1 -->
+<section class="service-section" *ngIf="shouldShowBlock(1) && currentService?.subServices[0]">
+  <h1>1. {{ currentService.subServices[0].title }}</h1>
+
+  <div class="description">
+    <p *ngFor="let paragraph of currentService.subServices[0].description1">{{ paragraph }}</p>
+  </div>
+
+  <div class="content">
+    <div class="text-content">
+      <p *ngFor="let paragraph of currentService.subServices[0].description">{{ paragraph }}</p>
     </div>
-  </section>
-<app-service-details-block1></app-service-details-block1>
-<app-service-details-block2></app-service-details-block2>
+
+    <div class="video-content">
+      <div class="video-thumbnail-container">
+        <img [src]="currentService.subServices[0].video.thumbnail" alt="Vidéo thumbnail" />
+        <button class="play-button" (click)="openVideoModal(currentService.subServices[0].video.url)">
+          <i class="fa-solid fa-play fa-beat"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-gallery">
+    <div class="image" *ngFor="let image of currentService.subServices[0].images">
+      <img [src]="image.src" [alt]="image.alt" />
+    </div>
+  </div>
+</section>
+
+<!-- Bloc 2 -->
+<section class="service-section" *ngIf="shouldShowBlock(2) && currentService?.subServices[1]">
+  <h1>2. {{ currentService.subServices[1].title }}</h1>
+
+  <div class="description">
+    <p *ngFor="let paragraph of currentService.subServices[1].description1">{{ paragraph }}</p>
+  </div>
+
+  <div class="content">
+    <div class="video-content">
+      <div class="video-thumbnail-container">
+        <img [src]="currentService.subServices[1].video.thumbnail" alt="Vidéo thumbnail" />
+        <button class="play-button" (click)="openVideoModal(currentService.subServices[1].video.url)">
+          <i class="fa-solid fa-play fa-beat"></i>
+        </button>
+      </div>
+    </div>
+    <div class="text-content">
+      <p *ngFor="let paragraph of currentService.subServices[1].description">{{ paragraph }}</p>
+    </div>
+  </div>
+
+  <div class="image-gallery">
+    <div class="image" *ngFor="let image of currentService.subServices[1].images">
+      <img [src]="image.src" [alt]="image.alt" />
+    </div>
+  </div>
+</section>
+
+<!-- Bloc 3 -->
+<section class="service-section" *ngIf="shouldShowBlock(3) && currentService?.subServices[2]">
+  <h1>3. {{ currentService.subServices[2].title }}</h1>
+
+  <div class="description">
+    <p *ngFor="let paragraph of currentService.subServices[2].description1">{{ paragraph }}</p>
+  </div>
+
+  <div class="content1">
+    <div class="video-content">
+      <div class="video-thumbnail-container">
+        <img [src]="currentService.subServices[2].video.thumbnail" alt="Vidéo thumbnail" />
+        <button class="play-button" (click)="openVideoModal(currentService.subServices[2].video.url)">
+          <i class="fa-solid fa-play fa-beat"></i>
+        </button>
+      </div>
+    </div>
+    <div class="text-content">
+      <p *ngFor="let paragraph of currentService.subServices[2].description">{{ paragraph }}</p>
+    </div>
+  </div>
+
+  <div class="image-gallery">
+    <div class="image" *ngFor="let image of currentService.subServices[2].images">
+      <img [src]="image.src" [alt]="image.alt" />
+    </div>
+  </div>
+</section>
+
+<!-- Bloc 4 -->
+<section class="service-section" *ngIf="shouldShowBlock(4) && currentService?.subServices[3]">
+  <h1>4. {{ currentService.subServices[3].title }}</h1>
+
+  <div class="description">
+    <p *ngFor="let paragraph of currentService.subServices[3].description1">{{ paragraph }}</p>
+  </div>
+
+  <div class="content2">
+    <div class="video-content">
+      <div class="video-thumbnail-container">
+        <img [src]="currentService.subServices[3].video.thumbnail" alt="Vidéo thumbnail" />
+        <button class="play-button" (click)="openVideoModal(currentService.subServices[3].video.url)">
+          <i class="fa-solid fa-play fa-beat"></i>
+        </button>
+      </div>
+    </div>
+    <div class="text-content">
+      <p *ngFor="let paragraph of currentService.subServices[3].description">{{ paragraph }}</p>
+    </div>
+  </div>
+
+  <div class="image-gallery">
+    <div class="image" *ngFor="let image of currentService.subServices[3].images">
+      <img [src]="image.src" [alt]="image.alt" />
+    </div>
+  </div>
+</section>
+
 <div class="articles-header">
   <h2 class="articles-title">Autres services qui pourraient vous interesser</h2>
   <div class="title-underline"></div>
 </div>
-  <div class="service-grid">
-    <app-service-card 
-      *ngFor="let service of infoservices" 
-      [service]="service">
-    </app-service-card>
-  </div>
 
+<div class="service-grid">
+  <app-service-card 
+    *ngFor="let service of infoservices" 
+    [service]="service">
+  </app-service-card>
+</div>
+
+<!-- Modal video -->
+<app-modal-video></app-modal-video>

@@ -13,11 +13,7 @@ export class ServiceCardComponent {
 
   constructor(private router: Router) {}
 
-  navigateToDetails(service: any) {
-    this.router.navigate(['/details-services'], {
-      queryParams: { title: service.title }
-    }).then(() => {
-      window.location.reload();
-    });
+  onServiceClick() {
+    this.router.navigate(['/service', this.service.title]);
   }
 }

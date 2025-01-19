@@ -59,7 +59,7 @@
     </p>
     
     <div class="services-grid" >
-      <div class="service-item" *ngFor="let service of infoservices" routerLink="/details-services">
+      <div class="service-item" *ngFor="let service of infoservices" (click)="onServiceClick(service)">
         <div class="icon-container">
           <img [src]="service.icon" [alt]="service.title">
         </div>
