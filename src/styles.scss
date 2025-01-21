@@ -3,11 +3,16 @@
 
 @font-face {
     font-family: 'poppins';
+    src: url('/fonts/poppins/Poppins-Regular.ttf')format('truetype');
+    font-style: normal;
+    font-weight: 900;
+}
+@font-face {
+    font-family: 'poppins-bold';
     src: url('/fonts/poppins/Poppins-SemiBold.ttf')format('truetype');
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
 }
-
 
 
 * {
@@ -17,3 +22,6 @@
     font-family: "poppins", sans-serif;
 }
 
+h3, h2,h1{
+    font-family: "poppins-bold", sans-serif;
+}

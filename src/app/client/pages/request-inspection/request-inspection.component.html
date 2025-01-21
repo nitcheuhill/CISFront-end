@@ -1,0 +1,115 @@
+<!-- request-inspection.component.html -->
+<div class="quote-request-container">
+    <h1>Demander un devis</h1>
+    
+    <p class="subtitle">Lorem ipsum dolor sit amet consectetur. 
+        Egestas nulla est urna ullamcorper duis nibh vitae elementum.
+         Eros suspendisse natoque tortor urna tristique amet 
+         Lorem ipsum dolor sit amet consectetur. Egestas nulla 
+         est urna ullamcorper duis nibh vitae elementum. 
+         Eros suspendisse natoque tortor urna tristique amet..</p>
+  
+    <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()">
+      <div class="form-section">
+        <div class="title"> <img src="icons/inspection/user-tag.png" alt="Aucune donnée trouvée" />
+              <h2>Vos informations</h2></div>
+       
+        
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input 
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Entrez votre nom"
+          >
+        </div>
+  
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input 
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="Entrez votre email"
+          >
+        </div>
+  
+        <div class="form-group">
+          <label for="phone">Numéro de téléphone</label>
+          <div class="phone-input">
+            <div class="country-selector" (click)="toggleCountryDropdown()">
+              <img *ngIf="selectedCountry" [src]="selectedCountry.flag" alt="flag">
+              <span>{{ selectedCountry?.dialCode }}</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <input 
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              placeholder="XX XX XX XX XX"
+            >
+            <div class="country-dropdown" *ngIf="showCountryDropdown">
+              <div class="country-search">
+                <input
+                  id="countrySearch"
+                  type="text"
+                  [value]="countrySearchText"
+                  (input)="searchCountry($event)"
+                  placeholder="Rechercher un pays..."
+                >
+              </div>
+              <div class="country-list">
+                <div 
+                  *ngFor="let country of filteredCountries"
+                  class="country-option"
+                  (click)="selectCountry(country)"
+                >
+                  <img [src]="country.flag" alt="flag">
+                  <span>{{ country.name }}</span>
+                  <span>{{ country.dialCode }}</span>
+                </div>
+                <div *ngIf="filteredCountries.length === 0" class="no-results">
+                  Aucun pays trouvé
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-section">
+        <div class="title"> <img src="icons/inspection/copy-success.png" alt="Aucune donnée trouvée" />
+            <h2>Pour quel(s) service(s) souhaitez-vous avoir un devis ?</h2></div>
+        
+        <div class="services-grid">
+          <div 
+            *ngFor="let service of displayedServices"
+            [id]="service.id"
+            class="service-item"
+            [class.selected]="isServiceSelected(service.id)"
+            (click)="toggleService(service.id)">
+            <div *ngIf="isServiceSelected(service.id)" class="cross-icon">×</div>
+            <span>{{ service.label }}</span>       
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-section">
+        <div class="title"> <img src="icons/inspection/information.png" alt="Aucune donnée trouvée" />
+            <h2>Donnez-nous plus de détail sur le(s) service(s) souhaité(s)</h2></div>
+        <textarea 
+          formControlName="description"
+          placeholder="Description"
+          rows="5"
+        ></textarea>
+      </div>
+  
+      <button 
+        type="submit"
+        [disabled]="!quoteForm.valid || selectedServices.length === 0"
+      >
+        Envoyer la demande de devis
+      </button>
+    </form>
+  </div>

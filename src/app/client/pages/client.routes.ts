@@ -26,4 +26,12 @@ export const routes: Routes = [
       path: 'realisations',
       loadComponent: () => import('./realisations-page/realisations-page.component').then(m => m.RealisationsPageComponent) // Route pour le composant realisation
     },
+    {
+      path: 'faq',
+      loadComponent: () => import('./faq-page/faq-page.component').then(m => m.FaqPageComponent) // Route pour le composant realisation
+    },
+    {
+      path: 'inspection',
+      loadComponent: () => import('./request-inspection/request-inspection.component').then(m => m.RequestInspectionComponent) // Route pour le composant de demande de dévis
+    },
 ];

@@ -171,7 +171,7 @@ export class ServiceDataService {
         nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
-      imageUrl: 'images/HeaderDetailService2.png',
+      imageUrl: 'images/HeaderDetailService1.png',
       subServices: [
         {
           title: 'Production photovoltaïque',
@@ -241,7 +241,7 @@ export class ServiceDataService {
         nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
-      imageUrl: 'images/HeaderDetailService2.png',
+      imageUrl: 'images/HeaderDetailService1.png',
       subServices: [
         {
           title: 'Systèmes d\'installations sanitaires domestique et industriel',
@@ -330,7 +330,7 @@ export class ServiceDataService {
         nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
-      imageUrl: 'images/HeaderDetailService2.png',
+      imageUrl: 'images/HeaderDetailService1.png',
       subServices: [
         {
           title: 'Groupe électrogène à combustion (essence, gasoil et gaz)',
@@ -363,7 +363,7 @@ export class ServiceDataService {
         nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
-      imageUrl: 'images/HeaderDetailService2.png',
+      imageUrl: 'images/HeaderDetailService1.png',
       subServices: [
         {
           title: 'Désenfumage',
@@ -434,7 +434,7 @@ export class ServiceDataService {
         nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
-      imageUrl: 'images/HeaderDetailService2.png',
+      imageUrl: 'images/portrait-firefighter-standing-front-fire-engine.jpg',
       subServices: [
         {
           title: 'Ascenseur',
@@ -485,7 +485,7 @@ export class ServiceDataService {
         nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
-      imageUrl: 'images/HeaderDetailService2.png',
+      imageUrl: 'images/portrait-firefighter-standing-front-fire-engine.jpg',
       subServices: [
         {
           title: 'Captage, pompage, filtrage et stockage',
@@ -536,7 +536,7 @@ export class ServiceDataService {
         nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
-      imageUrl: 'images/HeaderDetailService2.png',
+      imageUrl: 'images/portrait-firefighter-standing-front-fire-engine.jpg',
       subServices: [
         {
           title: 'Systèmes de conservation par le froid',

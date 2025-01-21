@@ -25,6 +25,16 @@
     width: 85%;
     margin: auto;
   }
+
+  @media(max-width : 2000px){
+    .realisation-section{
+      width: 90% ;
+      padding: 5rem 2rem;
+    }
+    .containerIntro p {
+      width: 85%;
+    }
+  }
   
   .filters {
     display: flex;
@@ -135,6 +145,16 @@
     margin-bottom: clamp(2rem, 15vh, 15%);
     width: 100%;
   }
+  @media(max-width : 2000px){
+    .realisation-item{
+      gap: clamp(8rem, 6vw, 8rem);
+    }
+    .realisation-content h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
+    }
+
+
+  }
   
   .realisation-item.alternate {
     flex-direction: row-reverse; /* Inverse les positions */
@@ -164,6 +184,9 @@
   @media (max-width: 768px) {
     .realisation-image {
       width: 100%;
+    }
+    .realisation-content h2 {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
     }
   }
   
@@ -257,3 +280,101 @@
     font-size: 1.5rem;
   }
   
+
+ @media(max-width:2000px){
+  .articles-header{
+    width: 90% !important;
+  }
+ } 
+
+.articles-header {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  padding: 0 0.8%;
+}
+
+.articles-title {
+  color: #FF5722;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.title-underline {
+  position: absolute;
+  top: 26px;
+  left: 670px;
+  right: 0;
+  height: 2px;
+  background-color: #FF5722;
+}
+
+
+// Ajoutez ces styles à votre fichier SCSS existant
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+  
+  .pagination-button {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    &:not(:disabled):hover {
+      background-color: rgba(7, 46, 76, 1);
+    }
+    fa-icon {
+      color: #000; // couleur par défaut
+      transition: color 0.3s ease;
+      font-weight: bold;
+    }
+    
+    &:hover {
+      background-color: #f0f0f0;
+      
+      fa-icon {
+        color: white; // couleur au hover - vous pouvez changer cette couleur
+      }
+    }
+  }
+  
+  .page-info {
+    font-size: 0.9rem;
+  }
+}
+
+.no-data-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  
+  img {
+    width: 350px; // Ajustez selon vos besoins
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.3rem;
+    color: rgba(7, 46, 76, 1);
+    margin: 0;
+    width: 50%;
+    margin: auto;
+  }
+}

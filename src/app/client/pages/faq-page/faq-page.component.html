@@ -1,0 +1,50 @@
+<section class="faq">
+    <div class="faq-page">
+        <header class="faq-header">
+            <h1>Foire Aux Questions</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper
+                duis nibh vitae elementum. Eros suspendisse natoque tortor urna tristique
+                amet.
+            </p>
+        </header>
+
+        <!-- Barre de recherche -->
+        <div class="search-bar">
+            <input
+              type="text"
+              [(ngModel)]="searchQuery"
+              placeholder="Recherche"
+              (input)="filterFaqs()"
+            />
+            <button class="search-btn">
+              <img src="images/realisationsassets/Frame 7 (3).png" alt="Search" />
+            </button>
+          </div>
+        <!-- Contenu de la FAQ -->
+        <div *ngIf="filteredFaqs.length > 0; else noResults">
+            <div class="faq-item" *ngFor="let faq of filteredFaqs; let i = index" [class.open]="openIndex === i">
+                <div class="faq-title" (click)="toggleFaq(i)">
+                    <h3>{{ faq.question }}</h3>
+                    <button class="toggle-btn">
+                        {{ openIndex === i ? '-' : '+' }}
+                    </button>
+                </div>
+                <div class="faq-content">
+                    <p>{{ faq.answer }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image "Aucun résultat" -->
+        <ng-template #noResults>
+            <div class="no-results">
+                <img src="images/realisationsassets/undraw_empty_4zx0-removebg-preview.png" alt="No Results Found" />
+                <p>Aucun résultat trouvé.</p>
+            </div>
+        </ng-template>
+    </div>
+    <div class="blockImage">
+        <img src="images/realisationsassets/faqImg.png" alt="Search" />
+    </div>
+</section>

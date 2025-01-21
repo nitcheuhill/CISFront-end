@@ -1,54 +1,66 @@
 <section class="header">
-    <div class="containerIntro">
-      <h1>Nos Réalisations</h1>
-      <p>Nous sommes une société à vocation  technologique, qui apporte des solutions 
-         locales en matière de commercialisation,  installations, suivi d’équipements
-          et  infrastructures techniques des secteurs  industriels et domestiques</p>
-    </div>
-  </section>
+  <div class="containerIntro">
+    <h1>Nos Réalisations</h1>
+    <p>Nous sommes une société à vocation technologique, qui apporte des solutions
+      locales en matière de commercialisation, installations, suivi d’équipements
+      et infrastructures techniques des secteurs industriels et domestiques</p>
+  </div>
+</section>
 
-  <section class="realisation-section">
-    <!-- Filtres -->
-    <div class="filtre">
-        <img src="images/realisationsassets/filter-search.png" alt="searchbutton" />
-        <span>Filtre</span>
+<section class="realisation-section">
+  <!-- Filtres -->
+  <div class="filtre">
+    <img src="images/realisationsassets/filter-search.png" alt="searchbutton" />
+    <span>Filtre</span>
+  </div>
+  <div class="filters">
+    <div class="by">
+      <div> <span>Par ordre</span></div>
+      <div><button class="button1" (click)="filterByOrder('recent')">Plus récents</button></div>
+      <div><button (click)="filterByOrder('ancien')">Plus anciens</button></div>
     </div>
-    <div class="filters">
-      <div class="by">
-        <div> <span>Par ordre</span></div>
-        <div><button class="button1"  (click)="filterByOrder('recent')">Plus récents</button></div>
-        <div><button (click)="filterByOrder('ancien')">Plus anciens</button></div>
-      </div>
-      <div class="by">
-        <div><span>Par catégorie</span></div>
-        <div class="categories-grid">
+    <div class="by">
+      <div><span>Par catégorie</span></div>
+      <div class="categories-grid">
         <button *ngFor="let categorie of categories" (click)="filterByCategory(categorie)">
           {{ categorie }}
         </button>
       </div>
-    </div >
-      <div class="by">
-        <div><span>Par date</span></div>
-            <div><span>Du</span><input type="date" [(ngModel)]="dateDebut" placeholder="Du" /></div>
-            <div><span>Au</span><input type="date" [(ngModel)]="dateFin" placeholder="Au" /></div>
-            <div><button (click)="filterByDate()">Filtrer</button></div>
-      </div>
-      <div>
-        <div> <span>Recherche</span></div>
-        <div class="search"> <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." />
+    </div>
+    <div class="by">
+      <div><span>Par date</span></div>
+      <div><span>Du</span><input type="date" [(ngModel)]="dateDebut" placeholder="Du" /></div>
+      <div><span>Au</span><input type="date" [(ngModel)]="dateFin" placeholder="Au" /></div>
+      <div><button (click)="filterByDate()">Filtrer</button></div>
+    </div>
+    <div>
+      <div> <span>Recherche</span></div>
+      <div class="search"> <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." />
         <button (click)="filterBySearch()" class="searchbutton">
-            <img src="images/realisationsassets/Frame 7 (3).png" alt="searchbutton" />
-        </button> </div>
+          <img src="images/realisationsassets/Frame 7 (3).png" alt="searchbutton" />
+        </button>
       </div>
     </div>
-  
-    <!-- Liste des réalisations -->
-    <div class="realisation-list">
-      <div *ngFor="let realisation of filteredRealisations; let i = index"
-      [class.alternate]="i % 2 === 1"
-      class="realisation-item">
+  </div>
+
+  <app-loader *ngIf="isLoading"></app-loader>
+  <!-- Liste des réalisations -->
+  <div class="realisation-list" *ngIf="!isLoading">
+
+    <!-- Message et image quand aucune donnée n'est trouvée -->
+    <div *ngIf="paginatedRealisations.length === 0" class="no-data-found">
+      <img src="images/realisationsassets/undraw_empty_4zx0-removebg-preview.png" alt="Aucune donnée trouvée" />
+      <p>Aucune réalisation ne correspond à vos critères de recherche</p>
+    </div>
+
+
+    <!-- Liste des réalisations existante -->
+    <div *ngIf="paginatedRealisations.length > 0">
+      <div *ngFor="let realisation of paginatedRealisations; let i = index" [class.alternate]="i % 2 === 1"
+        class="realisation-item">
         <div class="realisation-image">
-          <div class="realisation-overlay" [style.backgroundColor]="i % 2 === 0 ? 'rgba(254, 239, 235, 1)' : 'rgba(231, 241, 248, 1)'"></div>
+          <div class="realisation-overlay"
+            [style.backgroundColor]="i % 2 === 0 ? 'rgba(254, 239, 235, 1)' : 'rgba(231, 241, 248, 1)'"></div>
           <img [src]="realisation.image" [alt]="realisation.titre" />
         </div>
         <div class="realisation-content">
@@ -60,5 +72,21 @@
         </div>
       </div>
     </div>
-  </section>
-  
+  </div>
+  <!-- Contrôles de pagination -->
+  <div class="pagination-controls" *ngIf="totalPages > 0">
+    <button class="pagination-button" [disabled]="isPreviousDisabled()" (click)="goToPage(currentPage - 1)">
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </button>
+    <span class="page-info">Page {{ currentPage }} sur {{ totalPages }}</span>
+    <button class="pagination-button" [disabled]="isNextDisabled()" (click)="goToPage(currentPage + 1)">
+      <fa-icon [icon]="faChevronRight"></fa-icon>
+    </button>
+  </div>
+
+</section>
+<div class="articles-header">
+  <h2 class="articles-title">Articles qui pourraient vous interesser</h2>
+  <div class="title-underline"></div>
+</div>
+<app-articles></app-articles>
