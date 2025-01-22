@@ -19,42 +19,89 @@
     padding-bottom: 5%;
 }
 
-/* Conteneur de la grille */
-.service-container {
+
+.service-container1,.service-container2 {
+    background: url("/images/vent.png") no-repeat center center/cover;
+    position: relative;
+    margin: auto;
+    width: 75%;
+    height: 300px;
+    padding: 3rem;
+    margin-top: 8%;
+    transition: all 0.5s ease;
+    z-index: 1;
+    border-radius: 0 15px 15px  15px ;
+  }
+  .service-container2{
+    margin-bottom: 5% ;
+    background: url("/images/energique.png") no-repeat center center/cover;
+    .block1{
+      background-color: rgba(242, 117, 52, 1);
+    }
+  }
+  .service-container1:hover, .service-container2:hover {
+    height: 450px;
+    background-size: 110%;
+  }
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 15px 15px  15px ;
+  }
+  .block1{
+    background-color: rgba(17, 110, 182, 1);
+    width: 190px;
+    height: 60px;
+    position: absolute;
+    border-radius:15px 15px  0 0 ;
+    font-size: 15px;
+     top: 0; 
+    left: 0;
+    transform: translateY(-100%);
+    display: flex;
+    gap:0.6rem;
+    padding: 1.5rem;
+    align-items: center;
+    h3{
+      color: white;
+    }
+  }
+  .block2{
+    gap: 0.6rem;
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    min-height: 70px;
+    padding: 3%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;  /* Égaliser les espaces entre les cartes */
-    gap: 1.5rem 0.5rem;  /* Espacement entre les cartes */
-    padding: 3rem;
-    margin: auto;
-    width: 85%;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.5s ease;
+
   }
-  
-  /* Pour chaque carte de service */
-  .service-card {
-    width: 350px;  /* Largeur fixe de 350px pour chaque carte */
-    height: 450px;  /* Hauteur fixe */
-    background: rgba(244, 244, 244, 1);
-    border-radius: 1rem;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
+  .service-container1:hover .block2,
+.service-container2:hover .block2 {
+  opacity: 1;
+  height: 450px;
+  transform: translateY(0);
+}
+  .service{
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+    color: white;
+    height: 40px;
+    border-radius: 15px;
+    cursor: pointer;
   }
-  
-  /* Pour les petits écrans, utiliser 2 cartes par ligne */
-  @media (max-width: 768px) {
-    .service-card {
-      width: 45%;  /* 2 cartes par ligne sur les écrans moyens */
-    }
-  }
-  
-  /* Pour les très petits écrans, utiliser 1 carte par ligne */
-  @media (max-width: 480px) {
-    .service-card {
-      width: 100%;  /* 1 carte par ligne sur les petits écrans */
-    }
-  }
-  
+
