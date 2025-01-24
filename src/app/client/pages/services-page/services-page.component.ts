@@ -12,6 +12,16 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './services-page.component.scss'
 })
 export class ServicesPageComponent {
+  isActive1 = false;
+  isHovering1 = false;
+  toggleActive(containerIndex: number) {
+    if (containerIndex === 1) {
+      this.isActive1 = !this.isActive1;
+    }
+    // Répétez pour d'autres conteneurs si nécessaire
+  }
+
+
   infoservices : any [] = [];
   constructor(private servicesService : ServiceDataService,
     private router: Router 

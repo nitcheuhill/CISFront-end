@@ -1,48 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ArticlesService } from '../../sevices/articles.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-articles',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss'
 })
-export class ArticlesComponent {
-  articles = [
-    {
-      id: 1,
-      title: 'Maintenance industrielle : évitez les pannes',
-      imageUrl: '/images/Frame 23 (1).png',
-      alt: 'Personnel de maintenance industrielle'
-    },
-    {
-      id: 2,
-      title: 'Des équipements industriels pour vos défis',
-      imageUrl: '/images/Frame 24 (2).png',
-      alt: 'Technicien avec équipement industriel'
-    },
-    {
-      id: 3,
-      title: 'Experts en équipements et services industriels',
-      imageUrl: '/images/img2.jpeg',
-      alt: 'Expert en équipement industriel au travail'
-    },
-    {
-      id: 4,
-      title: 'Maintenance industrielle : évitez les pannes',
-      imageUrl: '/images/Frame 23 (1).png',
-      alt: 'Personnel de maintenance industrielle'
-    },
-    {
-      id: 5,
-      title: 'Experts en équipements et services industriels',
-      imageUrl: '/images/Frame 24 (2).png',
-      alt: 'Expert en équipement industriel au travail'
-    },
-    {
-      id: 6,
-      title: 'Experts en équipements et services industriels',
-      imageUrl: '/images/img2.jpeg',
-      alt: 'Expert en équipement industriel au travail'
-    }
-  ];
+export class ArticlesComponent implements OnInit {
+  infoarticles: any[] = [];
+  constructor(private dataArticleService : ArticlesService ){}
+
+  ngOnInit(): void {
+    this.infoarticles = this.dataArticleService.getArticles();
+    console.log('Services récupérés :', this.infoarticles);
+  }
 }

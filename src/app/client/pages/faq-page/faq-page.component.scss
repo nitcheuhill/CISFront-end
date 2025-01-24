@@ -1,6 +1,6 @@
 .faq{
     display: flex;
-    width: 85%;
+    max-width: 85%;
     margin: auto;
     gap: 3rem;
     margin-top: 10%;
@@ -8,17 +8,132 @@
     margin-bottom: 10%;
 }
 
-.blockImage{
+.blockImage, .blockImage1{
     display: flex;
-    // align-items: center;
     justify-content: center;
     max-width: 60%;
 }
-.blockImage img{
+.blockImage img, .blockImage1 img{
     max-width: 80%;
     max-height: 55%;
     object-fit: contain;
 }
+
+.blockImage1{
+  display: none;
+}
+@media (max-width: 500px)  {
+  
+  .faq{
+    width: 90% !important;
+    margin-top: 20%;
+  }  
+  .blockImage{
+      display: none !important;
+  }
+  .faq-header h1{
+    font-size: 2.5rem !important;
+    line-height: 1.2!important;
+  }
+  .faqblock{
+    margin-bottom: 70%;
+  }
+
+  .no-results{
+    max-width: 100% !important;
+    margin: auto;
+    margin-bottom: 50%;
+    img{
+      width: 100%;
+    }
+  }
+    .blockImage1{
+      display: block !important;
+      max-width: 100% !important;
+      justify-content: end !important;
+      img{
+        max-width: 100%;
+      }
+  }
+  @media (orientation: landscape) {
+    .faq {
+      margin-top: 8%;
+    }
+    .blockImage1{
+      display: block !important;
+      max-width: 100% !important;
+      justify-content: end !important;
+      img{
+        max-width: 80%;
+      }
+  }
+  .no-results{
+    margin-bottom: 10% !important;
+  }
+  .faqblock{
+    margin-bottom: 20%;
+  }
+  }
+}
+@media (max-width: 900px)  {
+  
+  .faq{
+    width: 90% !important;
+    margin-top: 10%;
+  }  
+  .blockImage{
+      display: none !important;
+  }
+  .faq-header h1{
+    font-size: 2.5rem !important;
+    line-height: 1.2!important;
+  }
+  .faqblock{
+    margin-bottom: 50%;
+  }
+  .faq-page{
+    max-width: 50%;
+  }
+
+  .no-results{
+    max-width: 100% !important;
+    margin: auto;
+    margin-bottom: 50%;
+    img{
+      width: 100%;
+    }
+  }
+    .blockImage1{
+      display: block !important;
+      max-width: 100% !important;
+      img{
+        max-width: 80%;
+      }
+  }
+  @media (orientation: landscape) {
+    .faq {
+      margin-top: 8%;
+      max-width: 90% !important;
+    }
+
+    .blockImage1{
+      display: block !important;
+      max-width: 100% !important;
+      justify-content: end !important;
+      img{
+        max-width: 80%;
+      }
+  }
+  .no-results{
+    margin-bottom: 10% !important;
+  }
+  .faqblock{
+    margin-bottom: 10%;
+  }
+  }
+}
+
+
 @media(max-width:2000px){
   .blockImage img{
     max-width: 75%;
@@ -36,6 +151,7 @@
     font-size: 3rem;
     color: #116eb6;
     font-weight: bold;
+    line-height: 1.2;
   }
   
   .faq-header p {

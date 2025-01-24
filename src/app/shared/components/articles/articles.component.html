@@ -1,16 +1,13 @@
 <section class="articles-section">
     <div class="articles-container">
-      <div class="articles-scroll">
-        @for(article of articles; track article.id) {
-          <!-- <a [routerLink]="['/article', article.id]" class="article-card"> -->
-          <a  class="article-card">
-            <div class="card-image-container">
+      <div class="articles-scroll" >
+          <a  class="article-card" *ngFor="let article of infoarticles"  >
+            <div class="card-image-container" >
               <img [src]="article.imageUrl" [alt]="article.alt" class="card-image">
               <div class="image-overlay"></div>
               <h3 class="card-title">{{ article.title }}</h3>
             </div>
           </a>
-        }
       </div>
     </div>
 

@@ -3,6 +3,7 @@
   padding: 4rem 4rem 0 4rem; // Supprime le padding bottom
   width: 100%;
   margin-top: 2%;
+  margin-bottom: 8%;
   position: relative; // Ajout pour le positionnement de l'image
 }
 
@@ -32,6 +33,16 @@
       object-fit: cover;
       display: block; // Évite l'espace sous l'image
   }
+}
+
+@media(max-width : 970px){
+    .image-container{
+        display: none;
+    }
+    .contact-section{
+        margin-bottom: 15%;
+        margin-top: 10%;
+    }
 }
 
 .form-container {
@@ -110,22 +121,26 @@
       background-color: rgba(17, 110, 182, 0.9);
   }
 }
-
 @media (max-width: 968px) {
+    .contact-section {
+        padding: 3rem 4rem 0 4rem;
+    }
+}  
+
+@media (max-width: 768px) {
   .contact-section {
-      padding: 2rem 2rem 0 2rem;
+      padding: 2rem 2rem 0 2rem !important;
+      margin-bottom: 40% !important;
   }
 
   .contact-container {
       flex-direction: column;
       gap: 2rem;
   }
-
-  .image-container {
-      .blockimg {
-          margin-bottom: -2rem; // Ajusté pour mobile
-      }
+  input, textarea {
+    border-radius: 15px !important;
   }
+
 
   .form-container {
       padding-bottom: 2rem;

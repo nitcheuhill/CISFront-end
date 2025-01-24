@@ -20,6 +20,66 @@
     text-align: center;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 1300px) {
+  .quote-request-container {
+    max-width: 90%;
+    margin-top: 5%;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0rem;
+    }
+    form{
+      width: 100%;
+      margin-bottom: 10%;
+      h2{
+        font-size: 1.1rem;
+      }
+    }
+  }
+  @media (orientation: landscape) {
+    .quote-request-container {
+      max-width: 80%;
+      margin-top: 8%;
+    }
+  }
+}
+@media screen and (min-width: 310px) and (max-width: 767px) {
+  .quote-request-container {
+    max-width: 100%;
+    margin-top: 5%;
+    padding: 1.2rem;
+    .subtitle {
+      font-size: 15px;
+      text-align: center;
+      padding: 0 1%;
+
+    }
+    button{
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 1.9rem !important;
+      padding: 0 2%;
+      margin-bottom: 0rem;
+      text-align: center;
+    }
+    form{
+      width: 100%;
+      margin-bottom: 50%;
+      border-radius: 15px;
+      padding: 8% 6%;
+      h2{
+        font-size: 1rem;
+      }
+    }
+  }
+  @media (orientation: landscape) {
+    .quote-request-container {
+      max-width: 80%;
+      margin-top: 8%;
+    }
+  }
+}
 
 form {
   border: 2px solid rgba(217, 217, 217, 1);
@@ -75,12 +135,12 @@ form {
   .country-selector {
     display: flex;
     align-items: center;
-    padding: 0.75rem 2rem;
+    padding: 0.75rem 1rem;
     border: 1px solid #ddd;
     border-radius: 10px 0 0 10px;
     cursor: pointer;
     background: #f8f9fa;
-    min-width: 100px;
+    width: auto;
 
     img {
       width: 20px;

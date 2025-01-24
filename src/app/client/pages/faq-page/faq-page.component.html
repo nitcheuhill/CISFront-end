@@ -8,6 +8,9 @@
                 amet.
             </p>
         </header>
+        <div class="blockImage1">
+            <img src="images/realisationsassets/faqImg.png" alt="Search" />
+        </div>
 
         <!-- Barre de recherche -->
         <div class="search-bar">
@@ -22,7 +25,7 @@
             </button>
           </div>
         <!-- Contenu de la FAQ -->
-        <div *ngIf="filteredFaqs.length > 0; else noResults">
+        <div *ngIf="filteredFaqs.length > 0; else noResults" class="faqblock">
             <div class="faq-item" *ngFor="let faq of filteredFaqs; let i = index" [class.open]="openIndex === i">
                 <div class="faq-title" (click)="toggleFaq(i)">
                     <h3>{{ faq.question }}</h3>

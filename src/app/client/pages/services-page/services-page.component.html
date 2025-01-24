@@ -16,7 +16,10 @@
 </section>
 
 
-<div class="service-container1" >
+<div class="service-container1" [class.active]="isActive1"
+(click)="toggleActive(1)"
+(mouseover)="isHovering1 = true"
+(mouseleave)="isHovering1 = false">
   <div class="map-overlay"></div>
   <div class="block1">
     <img src="/icons/Group 44.png" alt="Icône du service">
@@ -29,7 +32,10 @@
   </div>
 </div>
 
-<div class="service-container2" >
+<div class="service-container2" [class.active]="isActive1"
+(click)="toggleActive(1)"
+(mouseover)="isHovering1 = true"
+(mouseleave)="isHovering1 = false">
   <div class="map-overlay"> </div>
   <div class="block1">
     <img src="/icons/Group 44.png" alt="Icône du service">
@@ -44,10 +50,6 @@
 
 </div>
 
-<!-- 
-<div class="service-container">
-  <app-service-card *ngFor="let service of services" [service]="service">
-  </app-service-card>
-</div> -->
+
 
 <app-request-form></app-request-form>
