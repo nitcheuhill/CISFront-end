@@ -34,4 +34,8 @@ export const routes: Routes = [
       path: 'inspection',
       loadComponent: () => import('./request-inspection/request-inspection.component').then(m => m.RequestInspectionComponent) // Route pour le composant de demande de dévis
     },
+    {
+      path: 'articles',
+      loadComponent: () => import('./article-page/article-page.component').then(m => m.ArticlePageComponent) // Route pour le composant de demande de dévis
+    },
 ];

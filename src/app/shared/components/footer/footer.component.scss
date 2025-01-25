@@ -2,7 +2,7 @@
     background-color: #F85B1A;
     padding: 15px;
     position: relative;
-    width: 70% !important;
+    // width: 70% !important;
     margin: auto;
     border-radius: 30px;
   }
@@ -131,67 +131,86 @@
     background-color: rgba(17, 110, 182, 1);
     padding: 15px;
   }
+/* Media queries pour les écrans de largeur maximale 1200px */
+@media (max-width: 1200px) {
 
-  @media (max-width: 1200px) {
-    @media (max-width: 700px){
-      .banner-content {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-      }
-    }   
-
-    .banner-text {
+  .banner-text {
       max-width: 100%;
-    }
+  }
 
-    
-
-    .social {
+  .social {
       grid-column: span 2;
-    }
+  }
 
-    .footer-bottom {
+  .footer-bottom {
       flex-direction: column;
       gap: 20px;
       text-align: center;
-    }
+  }
+}
+
+/* Media queries pour les tailles de téléphone et orientations */
+@media (max-width: 799px) {
+  .banner-text {
+      font-size: 14px;
+  }
+  .banner-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+  /* Style pour l'orientation paysage */
+  @media (orientation: landscape) {
+      .footer-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
   }
 
-.sectionfooter {
-    position: relative;
-    margin-top: 5%;
-}
-.quote-banner{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    width: 90% !important;
-}
-@media (max-width : 800px){
-  .banner-text{
-    font-size: 16px;
+  /* Styles généraux pour les téléphones */
+  .quote-button {
+      padding: 12px 20px;
+      font-size: 15px;
   }
-  .quote-button{
-    padding: 18px;
+
+  .sectionfooter {
+      text-align: center;
   }
-  .sectionfooter{
-    text-align: center;
+
+  .footer-column {
+      width: 100%;
   }
-  .footer-column{
-    width: 100%;
+
+  .footer-column ul {
+      line-height: 2;
   }
-  .footer-content{
-    margin-top: 15%;
+
+  .footer-content {
+      margin-top: 15%;
   }
-  .footer-links{
-    gap: 10px;
+
+  .footer-links {
+      gap: 10px;
   }
-  .social-icons{
-    justify-content: center;
+
+  .social-icons {
+      justify-content: center;
   }
+
   .social-icon {
-    font-size: 2.6rem;
+      font-size: 2.6rem;
   }
-  
+}
+
+.sectionfooter {
+  position: relative;
+  margin-top: 5%;
+}
+
+.quote-banner {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 80% !important;
 }
