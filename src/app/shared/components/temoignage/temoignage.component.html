@@ -47,5 +47,8 @@
         </button>
       </div>
     </div>
+  <div class="givesec">
+    <button class="give" (click)="openModal()">Laisser un témoignage</button>
+  </div>
+  <app-testimonial-modal *ngIf="isModalOpen" (close)="closeModal()"></app-testimonial-modal>
   </section>
-  

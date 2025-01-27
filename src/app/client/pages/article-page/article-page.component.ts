@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ArticlesService } from '../../../shared/sevices/articles.service';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 import { FormsModule} from '@angular/forms';
+import { NewsLetterComponent } from '../../../shared/components/news-letter/news-letter.component';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-article-page',
-  imports: [CommonModule, LoaderComponent, FormsModule],
+  imports: [CommonModule, LoaderComponent, FormsModule, NewsLetterComponent, RouterModule],
   templateUrl: './article-page.component.html',
   styleUrl: './article-page.component.scss'
 })
@@ -28,12 +30,16 @@ export class ArticlePageComponent {
   categories: string[] = ['Maintenance', 'Equipements', 'Energie', 'Climatisation', 'Production', 'Infrastructure'];
   isFiltered: boolean = false;  // Indicateur pour savoir si un filtre est appliqué
 
-  constructor(private articleService: ArticlesService) {}
+  constructor(private articleService: ArticlesService, private router: Router ) {}
 
   ngOnInit(): void {
     this.loadArticles();
   }
 
+  // route sur le details article
+  onArticleClick(article: any): void {
+    this.router.navigate(['/article', article.title]);
+  }  
   
   loadArticles(): void {
     this.isLoading = true;

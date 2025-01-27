@@ -74,6 +74,7 @@
       width: 100%;
   }
 
+  
   input, textarea {
       width: 100%;
       padding: 1rem;
@@ -99,7 +100,7 @@
   }
 
   textarea {
-      resize: vertical;
+      resize: none;
       min-height: 120px;
   }
 }

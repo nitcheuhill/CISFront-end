@@ -99,9 +99,9 @@
     border: 1px solid rgba(0, 0, 0, 0.05);
     padding: 30px 30px;
     overflow: hidden;
-    max-width: 904px;
+    max-width: 900px;
     margin: 16px auto;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -333,63 +333,6 @@
     font-size: 14px;
 }
 
-
-.newsletter-container {
-    max-width: 340px;
-    width: auto;
-    padding: 30px 35px;
-    border-radius: 20px;
-    background: #ffffff;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.icon img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-.newsletter {
-    font-size: 26px;
-    font-family: 'poppins-bold';
-    color: rgba(7, 46, 76, 1);
-    line-height: 1.2;
-}
-
-.newsletterText {
-    font-size: 14px;
-    color: rgba(7, 46, 76, 1);
-    margin: 10px 0;
-}
-
-.input-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.email-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #cbd5e0;
-    border-radius: 10px;
-    font-size: 14px;
-}
-
-.submit-button {
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.submit-button img {
-    width: 38px;
-    height: 38px;
-}
 
 
 .voir {

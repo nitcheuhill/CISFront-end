@@ -1,0 +1,40 @@
+<div class="modal-backdrop" (click)="closeModal()"></div>
+<div class="modal">
+  <h2>Rédiger votre témoignage</h2>
+<div class="blockForm">
+  <form [formGroup]="testimonialForm" (ngSubmit)="submitForm()">
+    <div class="title"> <img src="icons/inspection/user-tag.png" alt="Aucune donnée trouvée" />
+        <h2>Vos informations</h2></div>
+    <div class="form-field">
+      <label for="name">Nom <span class="etoile">*</span></label>
+      <input type="text" id="name" placeholder="Saisissez votre nom" formControlName="name" required>
+    </div>
+    <div class="form-field">
+      <label for="email">E-mail <span class="etoile">*</span></label>
+      <input type="email" id="email" placeholder="Saisissez votre e-mail" formControlName="email" required>
+    </div>
+    <div class="form-field">
+      <label for="profession">Profession<span>(Facultatif)</span></label>
+      <input type="text" id="profession" placeholder="Saisissez votre profession" formControlName="profession">
+    </div>
+    <div class="title"> <img src="icons/inspection/information.png" alt="Aucune donnée trouvée" />
+        <h2>Temoignage</h2></div>
+    <div class="form-field">
+      <label for="description">Description du témoignage</label>
+      <textarea id="description" formControlName="description" rows="5" placeholder="Description" ></textarea>
+    </div>
+    
+    <div class="form-field">
+      <label for="image">Image du témoin</label>
+      <input type="file" id="image" (change)="onPhotoChange($event)">
+    </div>
+    <div *ngIf="selectedPhoto" class="image-preview">
+      <p>Aperçu de l'image :</p>
+      <img class="imgselect" [src]="selectedPhoto" alt="Aperçu de l'image">
+    </div>
+<div class="divButton">
+    <button type="submit" [disabled]="testimonialForm.invalid">Envoyer votre témoignage</button>
+</div>  
+</form>
+</div>
+</div>

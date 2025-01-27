@@ -1,0 +1,71 @@
+.services-section {
+    position: relative;
+    top: 0;
+    width: 100%;
+    min-height: 510px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 1%;
+    box-sizing: border-box;
+
+  }
+  
+  .overlay{
+    width: 85%;
+    margin: auto;
+    margin-top: 8%;
+    margin-bottom: 2%;
+    
+  }
+  .overlay h1{
+    font-size: 3rem;
+  }
+
+  .badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.25);
+    color:white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .custom-article-description {
+    font-size: 20px;
+    color: white;
+    line-height: 1.6;
+    margin: 12px 0;
+}
+
+.custom-article-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 50px;
+
+}
+
+.custom-author-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.custom-author-name {
+    font-size: 16px;
+    color: white;
+}
+
+.custom-article-date {
+    font-size: 16px;
+    color: white;
+    margin-left: auto;
+}

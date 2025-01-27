@@ -1,16 +1,40 @@
-<nav class="navbar"  [class.hidden]="!isVisible">
+<nav class="navbar" [class.hidden]="!isVisible">
   <div class="navbar-logo" routerLink="/">
     <img src="/icons/Logo.png" alt="Logo CIS Cameroun" />
   </div>
   <ul class="navbar-links">
-    <li><a routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">Accueil</a></li>
-    <li><a routerLink="/nos-services" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">Nos Services</a></li>
-    <li><a routerLink="/contacts" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">Contacts</a></li>
-    <li><a routerLink="/a-propos" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }">À Propos</a></li>
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a></li>
+    <li><a routerLink="/nos-services" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos Services</a></li>
+    <li><a routerLink="/contacts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contacts</a></li>
+    <li><a routerLink="/a-propos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">À Propos</a></li>
   </ul>
-  <div class="navbar-menu" [ngClass]="{ 'alternate-page': !isCurrentPageValid() }">
+  <div class="navbar-menu" 
+       [ngClass]="{ 
+         'alternate-page': !isCurrentPageValid(),
+         'open': isMenuOpen 
+       }"
+       (click)="toggleMenu()">
     <div></div>
     <div></div>
     <div></div>
   </div>
+
+  <!-- Menu déroulant -->
+  <div class="dropdown-menu" 
+       *ngIf="isMenuOpen"
+       [@slideInOut]
+       (click)="$event.stopPropagation()">
+    <ul>
+      <li><a routerLink="/realisations" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos réalisations</a></li>
+      <li><a routerLink="/inspection" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Démander un dévis</a></li>
+      <li><a routerLink="/faq" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Faq</a></li>
+    </ul>
+  </div>
 </nav>
+
+<!-- Overlay pour fermer le menu au clic en dehors -->
+<div class="overlay" 
+     *ngIf="isMenuOpen" 
+     (click)="closeMenu()"
+     [@slideInOut]>
+</div>

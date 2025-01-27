@@ -1,12 +1,103 @@
+/* Styles de base pour les très grands écrans (>2000px) */
 .firstsection {
-    background: url("/images/Pattern-Illustration.png") no-repeat center center/cover;
-    background-color: rgba(7, 46, 76, 1);
-    width: 100%;
-    height: 80vh;
-    color: white;
-    position: relative;
+  background: url("/images/Pattern-Illustration.png") no-repeat center center/cover;
+  background-color: rgba(7, 46, 76, 1);
+  width: 100%;
+  height: 80vh;
+  color: white;
+  position: relative;
 }
-.image-container{
+
+.firstblock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 85%;
+  height: 100%;
+  top: 50%;
+}
+
+.content {
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.niet {
+  font-size: 5rem;
+  margin-bottom: 2%;
+  font-weight: bold;
+}
+
+.desc {
+  margin-bottom: 5%;
+  font-size: 2em;
+}
+
+/* Styles de base pour la search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  position: relative;
+  width: 40%;
+  max-width: 400px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 15px 35px 20px 35px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  font-family: "poppins", sans-serif;
+}
+
+.search-container button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.search-container button img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Styles de base pour info */
+.info {
+  display: flex;
+  gap: 2rem;
+}
+
+.info div {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.info div img {
+  width: 30px;
+  height: 30px;
+}
+
+.team p, .clients p {
+  font-size: 20px;
+}
+
+/* Styles de base pour image container */
+.image-container {
   display: block !important;
   max-width: 40% !important;
   position: absolute !important;
@@ -15,6 +106,7 @@
   margin-right: 2rem;
   right: 10rem;
 }
+
 .image-container img {
   max-width: 2500px;
   width: 120%;
@@ -22,136 +114,254 @@
   object-fit: contain;
   display: block;
 }
-@media(max-width:2000px){
-  .firstsection{
-    height: 100vh;
+
+/* Écrans jusqu'à 2000px */
+@media (max-width: 2000px) {
+  .firstsection {
+      height: 100vh;
   }
+
+  .content {
+      max-width: 70% !important;
+  }
+
   .image-container {
-    display: block;
-    max-width: 30%;
-    position: absolute; 
-    bottom: 0; 
-    right: 5rem;
-    height: auto;
-    margin-right: 2rem; /* Ajoute un espace entre l'image et la bordure droite */
+      max-width: 30% !important;
+      right: 5rem;
   }
 
   .image-container img {
-    max-width: 450px;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
+      max-width: 450px;
+      width: 100%;
   }
+
   .niet {
-    font-size: 4rem !important;
-    margin-bottom: 3.6%;
-    font-weight: bold;
-}
-.desc {
-  margin-bottom: 5%;
-  font-size: 1.6em !important;
-}
-.content{
-  max-width: 70% !important;
-}
-  
-}
-.desc {
-  margin-bottom: 5%;
-  font-size: 2em;
-}
-.content {
-  max-width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centre verticalement le texte */
-}
-
-
-.firstblock {
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Centre verticalement le contenu */
-    margin: auto;
-    width: 85%;
-    height: 100%; /* Remplit toute la hauteur du parent */
-    top: 50%;
-}
-
-
-
-.niet {
-    font-size: 5rem;
-    margin-bottom: 2%;
-}
-
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
+      font-size: 4rem !important;
+      margin-bottom: 2%;
   }
-  
-  .search-bar input {
-    padding: 1rem 1rem;
-    border: none;
-    border-radius: 25px 0 0 25px;
-    width: 200px;
+
+  .desc {
+      font-size: 1.6em !important;
   }
+
   .search-container {
-    position: relative;
-    width: 40%;
-    max-width: 400px; /* Ajustez selon vos besoins */
+      width: 50%;
   }
-
-  .team p , .clients p {
-    font-size: 20px;
-  }
-  
-  .search-container input {
-    width: 100%;
-    padding: 15px 35px 20px 35px; /* Ajout d'espace pour le bouton */
-    border: 1px solid #ccc;
-    border-radius: 30px; /* Style arrondi */
-    font-size: 16px;
-    outline: none;
-    font-family: "poppins",sans-serif;
-  }
-  
-  .search-container button {
-    position: absolute;
-    top: 50%;
-    right: 10px; /* Ajustez selon la taille du bouton */
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-  }
-  
-  .search-container button img {
-    width: 30px; /* Ajustez selon vos besoins */
-    height: 30px;
-  }
-  
-  
-
-.info {
-    display: flex;
-    gap: 2rem;
 }
 
-.info div {
+/* Tablettes en paysage (768px-1024px) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .firstblock {
+      width: 90%;
+  }
+
+  .content {
+      max-width: 55% !important;
+  }
+
+  .image-container {
+      max-width: 35% !important;
+      right: 2rem;
+  }
+
+  .niet {
+      font-size: 3rem !important;
+  }
+
+  .desc {
+      font-size: 1.2em !important;
+  }
+
+  .search-container {
+      width: 80%;
+      max-width: 350px;
+  }
+
+  .search-container input {
+      padding: 12px 35px 12px 20px;
+  }
+
+  .info {
+      gap: 1.5rem;
+  }
+
+  .team p, .clients p {
+      font-size: 18px;
+  }
+}
+
+/* Tablettes en portrait */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .firstblock {
+      justify-content: flex-start;
+      width: 90%;
+  }
+
+  .content {
+      max-width: 100% !important;
+      padding-left: 2rem;
+  }
+
+  .image-container {
+      display: none !important;
+  }
+
+  .niet {
+      font-size: 3.8rem !important;
+  }
+
+  .desc {
+      font-size: 1.6em !important;
+  }
+
+  .search-container {
+      width: 80%;
+      max-width: 400px;
+  }
+
+  .search-container input {
+      padding: 12px 35px 12px 20px;
+  }
+
+  .info {
+      gap: 2rem;
+  }
+
+  .team p, .clients p {
+      font-size: 18px;
+  }
+}
+
+/* Téléphones en paysage */
+@media (max-width: 767px) and (orientation: landscape) {
+  .firstsection {
+      height: auto;
+      min-height: 150vh;
+  }
+
+  .firstblock {
+      justify-content: flex-start;
+      width: 90%;
+      padding: 2rem 0;
+  }
+
+  .content {
+      max-width: 100% !important;
+      padding-left: 1rem;
+  }
+
+  .image-container {
+      display: none !important;
+  }
+
+  .niet {
+      font-size: 2.5rem !important;
+      margin-bottom: 2%;
+  }
+
+  .desc {
+      font-size: 1em !important;
+      margin-bottom: 3%;
+  }
+
+  .search-container {
+      width: 90%;
+      max-width: 350px;
+  }
+
+  .search-container input {
+      padding: 10px 35px 10px 15px;
+      font-size: 14px;
+  }
+
+  .search-container button img {
+      width: 25px;
+      height: 25px;
+  }
+
+  .info {
+      gap: 1rem;
+  }
+
+  .team p, .clients p {
+      font-size: 16px;
+  }
+
+  .info div img {
+      width: 25px;
+      height: 25px;
+  }
+}
+
+/* Téléphones en portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+  .firstsection {
+    min-height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-}
+  }
 
-.info div img {
-    width: 30px;
-    height: 30px;
+  .firstblock {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 95%;
+    padding: 2rem 0;
+    margin: 0 auto;
+  }
+
+  .content {
+      max-width: 100% !important;
+      align-items: center;
+      padding: 0 1rem;
+  }
+
+  .image-container {
+      display: none !important;
+  }
+
+  .niet {
+      font-size: 3.1rem !important;
+      margin-bottom: 4%;
+      line-height: 1;
+  }
+
+  .desc {
+      font-size: 1.1em !important;
+      margin-bottom: 4%;
+      line-height: 1.5;
+  }
+
+  .search-container {
+      width: 100%;
+      max-width: 300px;
+  }
+
+  .search-container input {
+      padding: 10px 35px 10px 15px;
+      font-size: 14px;
+  }
+
+  .search-container button img {
+      width: 25px;
+      height: 25px;
+  }
+
+  .info {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+  }
+
+  .team p, .clients p {
+      font-size: 16px;
+  }
+
+  .info div img {
+      width: 25px;
+      height: 25px;
+  }
 }
 
 

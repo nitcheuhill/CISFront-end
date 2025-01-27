@@ -150,3 +150,17 @@
     }
   }
   
+  .givesec{
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+  }
+  .give{
+    border-radius: 15px;
+    font-size: 18px;
+    background: #116eb6;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    cursor: pointer;
+  }

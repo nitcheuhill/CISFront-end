@@ -1,7 +1,7 @@
 <section class="articles-section">
     <div class="articles-container">
       <div class="articles-scroll" >
-          <a  class="article-card" *ngFor="let article of infoarticles"  >
+          <a  class="article-card" *ngFor="let article of infoarticles"  (click)="onArticleClick(article)">
             <div class="card-image-container" >
               <img [src]="article.imageUrl" [alt]="article.alt" class="card-image">
               <div class="image-overlay"></div>
