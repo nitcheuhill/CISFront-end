@@ -2,39 +2,61 @@
   <div class="navbar-logo" routerLink="/">
     <img src="/icons/Logo.png" alt="Logo CIS Cameroun" />
   </div>
+
+  <!-- Menu desktop -->
   <ul class="navbar-links">
     <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a></li>
     <li><a routerLink="/nos-services" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos Services</a></li>
     <li><a routerLink="/contacts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contacts</a></li>
     <li><a routerLink="/a-propos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">À Propos</a></li>
   </ul>
+
+  <!-- Bouton menu -->
   <div class="navbar-menu" 
        [ngClass]="{ 
          'alternate-page': !isCurrentPageValid(),
-         'open': isMenuOpen 
+         'open': isMobileMenuOpen || isMenuOpen
        }"
-       (click)="toggleMenu()">
+       (click)="handleMenuClick($event)">
     <div></div>
     <div></div>
     <div></div>
   </div>
 
-  <!-- Menu déroulant -->
+  <!-- Dropdown menu desktop -->
   <div class="dropdown-menu" 
-       *ngIf="isMenuOpen"
+       *ngIf="isMenuOpen && !isMobile()"
        [@slideInOut]
        (click)="$event.stopPropagation()">
     <ul>
       <li><a routerLink="/realisations" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos réalisations</a></li>
       <li><a routerLink="/inspection" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Démander un dévis</a></li>
-      <li><a routerLink="/faq" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Faq</a></li>
+      <li><a routerLink="/faq" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">FAQ</a></li>
     </ul>
   </div>
-</nav>
 
-<!-- Overlay pour fermer le menu au clic en dehors -->
-<div class="overlay" 
-     *ngIf="isMenuOpen" 
-     (click)="closeMenu()"
-     [@slideInOut]>
+  <!-- Slidebar mobile -->
+  <div class="mobile-slidebar" 
+       [class.open]="isMobileMenuOpen"
+       [@slideInOut]
+       *ngIf="isMobile()">
+    <button class="close-button" (click)="closeMobileMenu()"> <img src="/icons/inspection/close-square.svg" /></button>
+    <ul class="mobile-menu">
+      <li><a routerLink="/" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a></li>
+      <li><a routerLink="/nos-services" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos Services</a></li>
+      <li><a routerLink="/contacts" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contacts</a></li>
+      <li><a routerLink="/a-propos" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">À Propos</a></li>
+      <li><a routerLink="/realisations" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos réalisations</a></li>
+      <li><a routerLink="/inspection" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Démander un dévis</a></li>
+      <li><a routerLink="/faq" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">FAQ</a></li>
+    </ul>
+  </div>
+
+ 
+</nav>
+ <!-- Overlay mobile -->
+ <div class="mobile-overlay" 
+ *ngIf="isMobile()"
+ [class.visible]="isMobileMenuOpen"
+ (click)="closeMobileMenu()">
 </div>

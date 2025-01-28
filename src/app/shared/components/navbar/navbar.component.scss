@@ -1,4 +1,4 @@
-/* Styles existants */
+// Styles de base de la navbar
 .navbar {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   position: fixed;
@@ -18,52 +18,44 @@
   margin-top: 2%;
   font-weight: bold;
   
-}
-
-.navbar.hidden {
-  transform: translate(-50%, -100%);
-  opacity: 0;
-}
-
-@media (max-width: 450px) {
-  .navbar {
-    margin-top: 0%;
-    width: 100%;
-    border-radius: initial;
-    padding: 0.3rem 2rem;
+  &.hidden {
+    transform: translate(-50%, -100%);
+    opacity: 0;
   }
 }
 
-.navbar-logo img {
-  max-height: 50px;
-}
-
-@media (max-width: 2000px) {
-  .navbar-logo img {
-    max-height: 30px !important;
+// Logo
+.navbar-logo {
+  img {
+    height: 50px;
+    
+    @media (max-width: 2000px) {
+      height: 35px;
+    }
   }
 }
 
+// Liens de navigation desktop
 .navbar-links {
   display: flex;
   list-style: none;
   gap: 2rem;
   margin: 0;
   padding: 0;
+  
+  li a {
+    text-decoration: none;
+    color: #002856;
+    font-family: "poppins-bold", sans-serif;
+    
+    &.active {
+      color: rgba(242, 117, 52, 1);
+      font-weight: 900;
+    }
+  }
 }
 
-.navbar-links li a {
-  text-decoration: none;
-  color: #002856;
-  font-family: "poppins-bold", sans-serif;
-}
-
-.navbar-links li a.active {
-  color: rgba(242, 117, 52, 1);
-  font-weight: 900;
-}
-
-/* Style du menu burger avec animation */
+// Bouton menu burger
 .navbar-menu {
   display: flex;
   flex-direction: column;
@@ -73,82 +65,79 @@
   cursor: pointer;
   position: relative;
   z-index: 1000;
-}
-
-.navbar-menu div {
-  width: 100%;
-  height: 3px;
-  background-color: #002856;
-  transition: all 0.3s ease-in-out;
-  transform-origin: center;
-}
-
-.navbar-menu.alternate-page div {
-  background-color: rgba(242, 117, 52, 1);
-}
-
-/* Animation du burger en croix */
-.navbar-menu.open {
-  div:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg);
+  
+  div {
+    width: 100%;
+    height: 3px;
+    background-color: #002856;
+    transition: all 0.3s ease-in-out;
+    transform-origin: center;
   }
-
-  div:nth-child(2) {
-    opacity: 0;
+  
+  &.alternate-page div {
+    background-color: rgba(242, 117, 52, 1);
   }
-
-  div:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg);
+  
+  &.open {
+    div:nth-child(1) {
+      transform: translateY(8.5px) rotate(45deg);
+    }
+    
+    div:nth-child(2) {
+      opacity: 0;
+    }
+    
+    div:nth-child(3) {
+      transform: translateY(-8.5px) rotate(-45deg);
+    }
   }
 }
 
-/* Styles du menu déroulant */
+// Dropdown menu desktop
 .dropdown-menu {
   position: fixed;
   top: 0;
+  right: 0;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 200px;
+  height: 25vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  right: 0;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  height: 30vh;
   background-color: white;
-  // box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   padding: 80px 20px 20px;
   z-index: -2;
-  opacity: 1;
-
+  
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
-
+    
     li {
       margin-bottom: 20px;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.3s forwards;
-
+      
       @for $i from 1 through 3 {
         &:nth-child(#{$i}) {
           animation-delay: #{$i * 0.1}s;
         }
       }
-
+      
       a {
         text-decoration: none;
         color: #002856;
         font-family: "poppins-bold", sans-serif;
         font-size: 1rem;
         transition: color 0.3s ease;
-
+        
         &:hover {
           color: rgba(242, 117, 52, 1);
         }
+        
         &.active {
           color: rgba(242, 117, 52, 1);
         }
@@ -157,6 +146,111 @@
   }
 }
 
+// Version mobile
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    border-radius: 0;
+    margin-top: 0;
+    padding: 0.5rem 2rem;
+    z-index: 999;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+  .navbar-logo img{
+    height: 40px ;
+  }
+
+  .dropdown-menu {
+    display: none;
+  }
+
+  // Slidebar mobile
+  .mobile-slidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    padding: 4rem 2rem 2rem;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+
+    &.open {
+      right: 0;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #002856;
+      cursor: pointer;
+      padding: 0.5rem;
+      line-height: 1;
+    }
+
+    .mobile-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        transform: translateX(20px);
+        animation: slideIn 0.3s forwards;
+
+        @for $i from 1 through 7 {
+          &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.1}s;
+          }
+        }
+
+        a {
+          text-decoration: none;
+          color: #002856;
+          font-family: "poppins-bold", sans-serif;
+          font-size: 1.2rem;
+          display: block;
+          padding: 0.5rem 0;
+
+          &.active {
+            color: rgba(242, 117, 52, 1);
+          }
+        }
+      }
+    }
+  }
+
+  // Overlay mobile
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// Animations
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -168,12 +262,13 @@
   }
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 998;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
