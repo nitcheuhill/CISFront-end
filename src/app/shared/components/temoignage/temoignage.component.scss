@@ -164,3 +164,44 @@
     border: none;
     cursor: pointer;
   }
+
+  @media (max-width: 767px) and (orientation: portrait) {
+    .testimonials-container{
+      width: 90%;
+    }
+    .subtitle {
+      font-size: 18px;
+    }
+    .testimonial-card {
+      width: 95%;
+      &.active {
+        opacity: 1;
+        transform: scale(1) translateY(-10px);
+        z-index: 2;
+      }
+    }
+    .profile-image {
+      width: 100px;
+      height: 100px;
+    }
+    .card-content {
+      padding-top: 70px;
+      padding-bottom: 20px;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+    .testimonial-text{
+      font-size: 13px;
+    }
+    .testimonials{
+      padding: 40px 0;
+      border-top-left-radius: 30px;
+    } 
+    .testimonials-cards{
+      margin-bottom: 20px !important;
+    }
+  .navigation-buttons{
+    margin-bottom: 20px;
+
+  }
+  }

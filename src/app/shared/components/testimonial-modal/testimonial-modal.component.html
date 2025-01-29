@@ -5,6 +5,14 @@
   <form [formGroup]="testimonialForm" (ngSubmit)="submitForm()">
     <div class="title"> <img src="icons/inspection/user-tag.png" alt="Aucune donnée trouvée" />
         <h2>Vos informations</h2></div>
+        <div class="form-field">
+          <label for="image">Profil du témoin</label>
+          <input type="file" id="image" (change)="onPhotoChange($event)">
+        </div>
+        <div *ngIf="selectedPhoto" class="image-preview">
+          <p>Aperçu de l'image :</p>
+          <img class="imgselect" [src]="selectedPhoto" alt="Aperçu de l'image">
+        </div>
     <div class="form-field">
       <label for="name">Nom <span class="etoile">*</span></label>
       <input type="text" id="name" placeholder="Saisissez votre nom" formControlName="name" required>
@@ -24,14 +32,6 @@
       <textarea id="description" formControlName="description" rows="5" placeholder="Description" ></textarea>
     </div>
     
-    <div class="form-field">
-      <label for="image">Image du témoin</label>
-      <input type="file" id="image" (change)="onPhotoChange($event)">
-    </div>
-    <div *ngIf="selectedPhoto" class="image-preview">
-      <p>Aperçu de l'image :</p>
-      <img class="imgselect" [src]="selectedPhoto" alt="Aperçu de l'image">
-    </div>
 <div class="divButton">
     <button type="submit" [disabled]="testimonialForm.invalid">Envoyer votre témoignage</button>
 </div>  

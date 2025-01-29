@@ -101,13 +101,13 @@
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 200px;
-  height: 25vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: white;
-  padding: 80px 20px 20px;
+  padding: 90px 20px 20px;
   z-index: -2;
   
   ul {

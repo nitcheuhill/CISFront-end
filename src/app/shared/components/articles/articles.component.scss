@@ -2,6 +2,7 @@
     padding: 15px 24px;
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 10%;
   }
 
   .articles-container {
@@ -129,4 +130,11 @@
     .card-title {
       font-size: 20px;
     }
+  }
+
+  @media (max-width: 767px) and (orientation: portrait) {
+  .articles-section{
+    margin-bottom: 28%;
+    padding: 0px 16px;
+  }
   }

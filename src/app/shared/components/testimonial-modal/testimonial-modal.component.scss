@@ -25,7 +25,6 @@
     position: relative;
     max-height: 60vh;
     overflow-y: auto;
-    padding-right: 1rem;
     scrollbar-width: none;
     
   }
@@ -133,4 +132,29 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+  }
+
+  @media (max-width: 767px) and (orientation: portrait) {
+    .modal {
+      padding: 2rem 1.5rem;
+    }
+    .modal h2 {
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+    .form-field input, .form-field textarea {
+      font-size: 12px;
+    }
+    .title{
+      margin-top: 0rem;
+      h2{
+        font-size: 18px;
+      }
+    }
+    .divButton {
+      margin-bottom: 0.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+    }
   }
