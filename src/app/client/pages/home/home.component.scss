@@ -344,7 +344,7 @@
     // background-color: inherit;
   }
   .services-description{
-    font-size: 18px !important;
+    font-size: 16px !important;
    }
    .services-description, .realisationscontent .text-content h3, .realisationscontent .text-content p {
     text-align: justify;
@@ -466,18 +466,18 @@
   display: none !important;
  }
  .text-content{
-  font-size: 18px !important;
+  font-size: 16px !important;
  }
  .title-line{
   display: none !important;
  }
  .title-section{
   justify-content: center;
-  margin-bottom: 15px !important;
+  margin-bottom: 5px !important;
  }
  .realisationscontent 
  .text-content h3{
-  font-size: 20px !important ;
+  font-size: 18px !important ;
  }
  .realisations-container{
   width: 95% !important;
@@ -487,6 +487,9 @@
  }
  .action-button{
   font-family: "poppins-bold" !important;
+ }
+ .service-item p {
+  font-size: 14px !important;
  }
  
 }
