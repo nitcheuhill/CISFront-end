@@ -346,6 +346,10 @@
   .services-description{
     font-size: 18px !important;
    }
+   .services-description, .realisationscontent .text-content h3, .realisationscontent .text-content p{
+    text-align: justify;
+    hyphens: auto;
+   }
 
   .firstblock {
     justify-content: center;
