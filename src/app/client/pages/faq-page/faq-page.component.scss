@@ -261,3 +261,13 @@
     color: #666;
   }
   
+
+  @media (max-width: 767px) and (orientation: portrait) {
+    .faq-header h1{
+      padding-top: 12%;
+      font-size: 30px !important;
+    }
+   
+  }
+  
+  

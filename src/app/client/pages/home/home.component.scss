@@ -346,7 +346,10 @@
   .services-description{
     font-size: 18px !important;
    }
- 
+   .services-description, .realisationscontent .text-content h3, .realisationscontent .text-content p {
+    text-align: justify;
+    hyphens: auto;
+}
 
   .firstblock {
     justify-content: center;
@@ -402,7 +405,7 @@
   }
   .realisationscontent{
     .text-content p{
-      font-size: 20px !important;
+      font-size: 16px !important;
     }
   } 
   .team p, .clients p {

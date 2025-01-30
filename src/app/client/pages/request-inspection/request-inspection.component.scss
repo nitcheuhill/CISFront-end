@@ -58,7 +58,7 @@
       font-size: 14px;
     }
     h1 {
-      font-size: 1.9rem !important;
+      font-size: 30px !important;
       padding: 0 2%;
       margin-bottom: 0rem;
       text-align: center;
@@ -306,4 +306,14 @@ button {
   font-family: "poppins-bold";
   background-color: rgba(17, 110, 182, 1);
   color: white;
+}
+
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .quote-request-container h1{
+    padding-top: 10%;
+  }
+  .quote-request-container form{
+    margin-bottom: 20%;
+  }
 }
