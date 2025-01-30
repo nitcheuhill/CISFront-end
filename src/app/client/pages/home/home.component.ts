@@ -18,11 +18,25 @@ export class HomeComponent implements OnInit {
   constructor(private servicesService : ServiceDataService,
     private router: Router 
   ) { }
+  isSmallScreen: boolean = false;
 
   ngOnInit(): void {
+    this.checkScreenSize();
+    window.addEventListener('resize', () => this.checkScreenSize());
+
     this.infoservices = this.servicesService.getServices();
     console.log('Services récupérés :', this.infoservices);
    }
+   checkScreenSize() {
+    this.isSmallScreen = window.innerWidth <= 768; // Ajuste selon ton besoin
+  }
+  getShortTitle(title: string): string {
+    if (title.length > 20) {
+      return this.isSmallScreen ? title.slice(0, 10) + '...' : title;
+    }
+    return title;
+  }
+
    onServiceClick(service: any): void {
     this.router.navigate(['/service', service.title]);
   }  
