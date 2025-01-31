@@ -10,7 +10,7 @@
         <label for="profil">Profil du temoin <span>(Facultatif)</span></label>
         <div class="image-preview">
           <img class="imgselect" [src]="selectedPhoto || '/icons/iconsMissionGrid/UnknowUser.jpg'" alt="Aperçu de l'image">
-          <button class="select" (click)="triggerFileInput()">+</button>
+          <button class="select" (click)="triggerFileInput()"><i class="fa-solid fa-plus"></i></button>
           <input type="file" id="image" (change)="onPhotoChange($event)" style="display: none;">
         </div>
       </div>
