@@ -31,6 +31,11 @@ export class TestimonialModalComponent {
     this.close.emit();
   }
 
+  triggerFileInput() {
+    const fileInput = document.getElementById('image') as HTMLInputElement;
+    fileInput.click();
+  }
+  
   onPhotoChange(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
@@ -41,7 +46,6 @@ export class TestimonialModalComponent {
       reader.readAsDataURL(input.files[0]);
     }
   }
-
   submitForm() {
     if (this.testimonialForm.valid) {
       console.log(this.testimonialForm.value); // Ici, tu peux gérer l'envoi de données
