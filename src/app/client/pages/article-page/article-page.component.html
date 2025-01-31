@@ -8,7 +8,7 @@
     <div class="search-bar">
         <div class="search-container">
             <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un article..." />
-            <button  (click)="searchArticles()">
+            <button (click)="searchArticles()">
                 <img src="/icons/Frame 7.png" alt="Recherche">
             </button>
         </div>
@@ -17,6 +17,56 @@
 <section class="Listarticles">
     <div class="blockLeft">
         <div>
+            <button class="filter-button-slide" (click)="toggleFilterSlider()">
+                <div class="filter-header">
+                    <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
+                    <h2>Filtre</h2>
+                </div>
+            </button>
+            <!-- Overlay pour l'effet d'ombre et de flou -->
+            <div class="overlay" [class.open]="isFilterSliderOpen" (click)="toggleFilterSlider()"></div>
+
+            <!-- /Slider filter -->
+            <div class="filter-slider" [class.open]="isFilterSliderOpen">
+                <div class="filter-header" (click)="toggleFilterSlider()">
+                    <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
+                    <h2>Filtre</h2>
+                </div>
+                <div class="filter-content">
+                    <!-- Filtre par ordre -->
+                    <div class="filter-group">
+                        <h3>Par ordre</h3>
+                        <button class="filter-button" (click)="onOrderChange('relevant')">Plus pertinents</button>
+                        <button class="filter-button" (click)="onOrderChange('newest')">Les plus récents</button>
+                    </div>
+                    <!-- Filtre par catégorie -->
+                    <div class="filter-group">
+                        <h3>Par catégorie</h3>
+                        <div class="category-buttons">
+                            <button class="filter-button" (click)="onCategoryChange('Maintenance')">Maintenance</button>
+                            <button class="filter-button" (click)="onCategoryChange('Equipements')">Equipements</button>
+                            <button class="filter-button" (click)="onCategoryChange('Energie')">Energie</button>
+                            <button class="filter-button"
+                                (click)="onCategoryChange('Climatisation')">Climatisation</button>
+                            <button class="filter-button" (click)="onCategoryChange('Production')">Production</button>
+                            <button class="filter-button"
+                                (click)="onCategoryChange('Infrastructure')">Infrastructure</button>
+                            <button class="filter-button" (click)="resetAllFilters()">Reset filtre</button>
+                        </div>
+                    </div>
+                    <!-- Filtre par date -->
+                    <div class="filter-group">
+                        <h3>Par date</h3>
+                        <div class="date-filter">
+                            <input type="date" class="date-input" [(ngModel)]="startDate"
+                                (change)="updateDisplayedArticles()" />
+                            <input type="date" class="date-input" [(ngModel)]="endDate"
+                                (change)="updateDisplayedArticles()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Article principal -->
             <div *ngIf="mainArticle" class="article-card" (click)="onArticleClick(mainArticle)">
                 <img [src]="mainArticle.bannerImage" alt="Image de bannière" class="banner-image" />
@@ -41,7 +91,8 @@
 
             <!-- Affichage des autres articles -->
             <div *ngIf="displayedArticles.length > 0">
-                <div *ngFor="let article of displayedArticles" class="custom-article-container" (click)="onArticleClick(article)">
+                <div *ngFor="let article of displayedArticles" class="custom-article-container"
+                    (click)="onArticleClick(article)">
                     <div class="custom-article-wrapper">
                         <img [src]="article.bannerImage" alt="Image de bannière" class="custom-banner-img" />
                         <div class="custom-article-details">
@@ -50,7 +101,8 @@
                             <p class="custom-article-description">{{ article.description }}</p>
                             <div class="custom-article-footer">
                                 <img [src]="article.authorImage" alt="Photo de l'auteur" class="custom-author-img" />
-                                <p class="custom-author-name">Rédigé par <span class="author-span">{{ article.authorName}}</span></p>
+                                <p class="custom-author-name">Rédigé par <span class="author-span">{{
+                                        article.authorName}}</span></p>
                                 <span class="custom-article-date">{{ article.date | date: 'dd MMMM yyyy' }}</span>
                                 <!-- Affichage de la date au format souhaité -->
                             </div>
@@ -60,10 +112,10 @@
             </div>
             <!-- Message "Aucune donnée" -->
             <div *ngIf="noDataFound" class="no-data">
-            <div>
-                <img [src]="noDataImage" alt="Aucune donnée" class="no-data-image" />
-                <p>Aucune donnée ne correspond à votre filtre</p>
-            </div>
+                <div>
+                    <img [src]="noDataImage" alt="Aucune donnée" class="no-data-image" />
+                    <p>Aucune donnée ne correspond à votre filtre</p>
+                </div>
             </div>
 
             <div class="voir" *ngIf="!noDataFound && displayedArticles.length >= 3">
@@ -72,8 +124,14 @@
                 </button>
             </div>
         </div>
+        <div *ngIf="isMobileView">
+            <app-news-letter></app-news-letter>
+        </div>
 
     </div>
+
+
+
 
     <div class="blockRight">
         <section class="filter-section">
@@ -98,7 +156,8 @@
                         <button class="filter-button" (click)="onCategoryChange('Energie')">Energie</button>
                         <button class="filter-button" (click)="onCategoryChange('Climatisation')">Climatisation</button>
                         <button class="filter-button" (click)="onCategoryChange('Production')">Production</button>
-                        <button class="filter-button"(click)="onCategoryChange('Infrastructure')">Infrastructure</button>
+                        <button class="filter-button"
+                            (click)="onCategoryChange('Infrastructure')">Infrastructure</button>
                         <button class="filter-button" (click)="resetAllFilters()"> Reset filtre</button>
                     </div>
                 </div>
@@ -115,6 +174,8 @@
                 </div>
             </div>
         </section>
-        <app-news-letter></app-news-letter>
+        <div class="blockRight" *ngIf="!isMobileView">
+            <app-news-letter></app-news-letter>
+        </div>
     </div>
 </section>
