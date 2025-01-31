@@ -8,37 +8,91 @@
 </section>
 
 <section class="realisation-section">
-  <!-- Filtres -->
-  <div class="filtre">
-    <img src="images/realisationsassets/filter-search.png" alt="searchbutton" />
-    <span>Filtre</span>
+  <!-- Overlay pour l'effet d'ombre et de flou -->
+<div class="overlay" [class.open]="isFilterSliderOpen && isMobileView" (click)="toggleFilterSlider()"></div>
+
+<!-- Slider des filtres -->
+<div class="filter-slider" [class.open]="isFilterSliderOpen && isMobileView">
+  <div class="filter-header" (click)="toggleFilterSlider()">
+    <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" (click)="toggleFilterSlider()"/>
+    <h2 (click)="toggleFilterSlider()" (click)="toggleFilterSlider()">Filtre</h2>
   </div>
-  <div class="filters">
-    <div class="by">
-      <div> <span>Par ordre</span></div>
-      <div><button class="button1" (click)="filterByOrder('recent')">Plus récents</button></div>
-      <div><button (click)="filterByOrder('ancien')">Plus anciens</button></div>
+  <div class="filter-content">
+    <!-- Filtre par ordre -->
+    <div class="filter-group">
+      <h3>Par ordre</h3>
+      <button class="filter-button" (click)="filterByOrder('recent')">Plus récents</button>
+      <button class="filter-button" (click)="filterByOrder('ancien')">Plus anciens</button>
     </div>
-    <div class="by">
-      <div><span>Par catégorie</span></div>
+    <!-- Filtre par catégorie -->
+    <div class="filter-group">
+      <h3>Par catégorie</h3>
       <div class="categories-grid">
-        <button *ngFor="let categorie of categories" (click)="filterByCategory(categorie)">
+        <button *ngFor="let categorie of categories" class="filter-button" (click)="filterByCategory(categorie)">
           {{ categorie }}
         </button>
       </div>
     </div>
-    <div class="by">
-      <div><span>Par date</span></div>
-      <div><span>Du</span><input type="date" [(ngModel)]="dateDebut" placeholder="Du" /></div>
-      <div><span>Au</span><input type="date" [(ngModel)]="dateFin" placeholder="Au" /></div>
-      <div><button (click)="filterByDate()">Filtrer</button></div>
+    <!-- Filtre par date -->
+    <div class="filter-group">
+      <h3>Par date</h3>
+      <div class="date-filter">
+        <span>Du</span>
+        <input type="date" [(ngModel)]="dateDebut" placeholder="Du" />
+        <span>Au</span>
+        <input type="date" [(ngModel)]="dateFin" placeholder="Au" />
+        <button class="filter-button" (click)="filterByDate()">Filtrer</button>
+      </div>
     </div>
-    <div>
-      <div> <span>Recherche</span></div>
-      <div class="search"> <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." />
-        <button (click)="filterBySearch()" class="searchbutton">
+    <!-- Filtre par recherche -->
+    <div class="filter-group">
+      <h3>Recherche</h3>
+      <div class="search">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." />
+        <button class="filter-button searchbutton" (click)="filterBySearch()">
           <img src="images/realisationsassets/Frame 7 (3).png" alt="searchbutton" />
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Filtres -->
+  <div class="filtre" *ngIf="isMobileView" (click)="toggleFilterSlider()">
+    <img src="images/realisationsassets/filter-search.png" alt="searchbutton" />
+    <span>Filtre</span>
+  </div>
+  <div class="filter-header1">
+    <img src="images/realisationsassets/filter-search.png" alt="searchbutton" />
+    <span>Filtre</span>
+  </div>
+  <div class="filters" [class.hidden]="isFilterSliderOpen">
+    <div class="filters">
+      <div class="by">
+        <div> <span>Par ordre</span></div>
+        <div><button class="button1" (click)="filterByOrder('recent')">Plus récents</button></div>
+        <div><button (click)="filterByOrder('ancien')">Plus anciens</button></div>
+      </div>
+      <div class="by">
+        <div><span>Par catégorie</span></div>
+        <div class="categories-grid">
+          <button *ngFor="let categorie of categories" (click)="filterByCategory(categorie)">
+            {{ categorie }}
+          </button>
+        </div>
+      </div>
+      <div class="by">
+        <div><span>Par date</span></div>
+        <div><span>Du</span><input type="date" [(ngModel)]="dateDebut" placeholder="Du" /></div>
+        <div><span>Au</span><input type="date" [(ngModel)]="dateFin" placeholder="Au" /></div>
+        <div><button (click)="filterByDate()">Filtrer</button></div>
+      </div>
+      <div>
+        <div> <span>Recherche</span></div>
+        <div class="search"> <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." />
+          <button (click)="filterBySearch()" class="searchbutton">
+            <img src="images/realisationsassets/Frame 7 (3).png" alt="searchbutton" />
+          </button>
+        </div>
       </div>
     </div>
   </div>

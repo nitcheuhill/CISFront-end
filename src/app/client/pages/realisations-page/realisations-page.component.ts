@@ -23,10 +23,12 @@ export class RealisationsPageComponent implements OnInit {
   dateFin: string = '';
   searchTerm: string = '';
   isLoading: boolean = true;
+  isMobileView: boolean = false;
+  isFilterSliderOpen: boolean = false; // État du slider
 
     // Pagination
     currentPage: number = 1;
-    pageSize: number = 2;
+    pageSize: number = 3;
     totalPages: number = 0;
     faChevronLeft = faChevronLeft;
     faChevronRight = faChevronRight;
@@ -34,15 +36,20 @@ export class RealisationsPageComponent implements OnInit {
   constructor(private dataRealisationService: RealisationsDataService) {}
 
   ngOnInit(): void {
+    this.checkMobileView();
+    window.addEventListener('resize', this.checkMobileView.bind(this))
     this.realisations = this.dataRealisationService.getRealisations();
     this.filteredRealisations = this.realisations; // Initialisation
     this.updatePagination();
     this.loadData();
   }
 
-    //méthode du loader
+   // Méthode pour ouvrir/fermer le slider
+   toggleFilterSlider(): void {
+    this.isFilterSliderOpen = !this.isFilterSliderOpen;
+  }
 
-    
+    //méthode du loader
   private async loadData(): Promise<void> {
     try {
       this.isLoading = true;
@@ -55,6 +62,10 @@ export class RealisationsPageComponent implements OnInit {
     } finally {
       this.isLoading = false;
     }
+  }
+  // Méthode pour vérifier la vue mobile
+  checkMobileView = () => {
+    this.isMobileView = window.innerWidth <= 840;
   }
 
     // Méthode pour mettre à jour la pagination

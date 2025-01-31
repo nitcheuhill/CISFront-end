@@ -29,6 +29,7 @@
        [@slideInOut]
        (click)="$event.stopPropagation()">
     <ul>
+      <li><a routerLink="/articles" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a></li>
       <li><a routerLink="/realisations" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos réalisations</a></li>
       <li><a routerLink="/inspection" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Démander un dévis</a></li>
       <li><a routerLink="/faq" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">FAQ</a></li>
@@ -46,6 +47,7 @@
       <li><a routerLink="/nos-services" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos Services</a></li>
       <li><a routerLink="/contacts" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contacts</a></li>
       <li><a routerLink="/a-propos" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">À Propos</a></li>
+      <li><a routerLink="/articles" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Articles</a></li>
       <li><a routerLink="/realisations" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Nos réalisations</a></li>
       <li><a routerLink="/inspection" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Démander un dévis</a></li>
       <li><a routerLink="/faq" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">FAQ</a></li>
