@@ -567,10 +567,22 @@
     display: flex; // Ou flex selon votre design
     margin-bottom: 20px;
     gap: 1px;
-    span{font-family: 'Poppins-bold', sans-serif;}
+    img{
+      width: 24px;
+      height: 24px;
+    }
+    span{font-family: 'Poppins-bold', sans-serif;
+    font-size: 20px;}
     
   }
   .filter-header {
+    img{
+    width: 24px;
+    height: 24px;
+  }
+  h2{
+    font-size: 20px;
+  }
     display: flex;
     gap: 5px;
     color: rgba(7, 46, 76, 1);
@@ -584,6 +596,12 @@
   }
   .filter-header1 {
     display: none !important;
+  }
+  .filter-slider input[type=text]{
+    width: 150px !important;
+  }
+  .searchbutton{
+    width: 50px !important;
   }
 }
 

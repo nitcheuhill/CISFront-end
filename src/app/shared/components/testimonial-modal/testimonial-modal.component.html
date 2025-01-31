@@ -3,16 +3,16 @@
   <h2>Rédiger votre témoignage</h2>
   <div class="blockForm">
     <form [formGroup]="testimonialForm" (ngSubmit)="submitForm()">
-      <div class="title"> <img src="icons/inspection/user-tag.png" alt="Aucune donnée trouvée" />
-        <h2>Vos informations</h2>
-      </div>
+      
       <div class="form-field">
-        <label for="profil">Profil du temoin <span>(Facultatif)</span></label>
         <div class="image-preview">
           <img class="imgselect" [src]="selectedPhoto || '/icons/iconsMissionGrid/UnknowUser.jpg'" alt="Aperçu de l'image">
           <button class="select" (click)="triggerFileInput()"><i class="fa-solid fa-plus"></i></button>
           <input type="file" id="image" (change)="onPhotoChange($event)" style="display: none;">
         </div>
+      </div>
+      <div class="title"> <img src="icons/inspection/user-tag.png" alt="Aucune donnée trouvée" />
+        <h2>Vos informations</h2>
       </div>
       <div class="form-field">
         <label for="name">Nom <span class="etoile">*</span></label>
