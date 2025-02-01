@@ -3,12 +3,13 @@ import { ModalVideoComponent } from '../../../shared/components/modal-video/moda
 import { ArticlesService } from '../../../shared/sevices/articles.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CommentModalComponent } from '../../../shared/components/comment-modal/comment-modal.component';
 
 
 
 @Component({
   selector: 'app-articles-details',
-  imports: [CommonModule],
+  imports: [CommonModule, ModalVideoComponent,CommentModalComponent],
   templateUrl: './articles-details.component.html',
   styleUrl: './articles-details.component.scss'
 })
@@ -16,6 +17,7 @@ export class ArticlesDetailsComponent implements OnInit {
   @ViewChild(ModalVideoComponent) videoModal!: ModalVideoComponent;
 
   currentService: any;
+  isModalOpen = false;
   infoarticles: any[] = [];
 
    constructor(
@@ -43,6 +45,23 @@ export class ArticlesDetailsComponent implements OnInit {
       this.videoModal.openModal();
     }
   }
+// Helper pour déterminer quels blocks afficher
+shouldShowBlock(blockNumber: number): boolean {
+  if (!this.currentService?.blog) return false;
+  return blockNumber <= this.currentService.blog.length;
+}
+ 
+
+
+openModal() {
+  this.isModalOpen = true;
+}
+
+closeModal() {
+  this.isModalOpen = false;
+}
+
+
 }
 
 

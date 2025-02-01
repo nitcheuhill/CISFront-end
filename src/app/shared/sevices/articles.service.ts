@@ -58,7 +58,7 @@ export class ArticlesService {
           id: 1,
           authorName: 'Gaëlle RITHEL',
           date: new Date(2025,0, 12),
-          authorImage: '/images/assetsArticles/photo1.jpeg',
+          authorImage: '/images/assetsArticles/comment1.png',
           message: `Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper.  
           vitae hendrerit hendrerit. Amet eu.`,
         },
@@ -66,7 +66,7 @@ export class ArticlesService {
           id: 2,
           authorName: 'Alex Hitche',
           date: new Date(2025,0, 11),
-          authorImage: '/images/assetsArticles/photo1.jpeg',
+          authorImage: '/images/assetsArticles/UnknowUser.jpg',
           message: `Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper.  
           vitae hendrerit hendrerit. Amet eu.`,
         },
@@ -74,7 +74,7 @@ export class ArticlesService {
           id: 3,
           authorName: 'Bertrand francklin',
           date: new Date(2025,0, 10),
-          authorImage: '/images/assetsArticles/photo1.jpeg',
+          authorImage: '/images/assetsArticles/comment2.jpg',
           message: `Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper.  
           vitae hendrerit hendrerit. Amet eu.`,
         }
@@ -107,6 +107,7 @@ export class ArticlesService {
           },
           {
             title:'Refroidissement des process industriels',
+            imageUrl: 'images/HeaderDetailService1.png',
             video: {
               thumbnail: 'images/assetsDétailsServices/Block2/Frame 97.png',
               url: 'images/vidéos/Video1.mp4',
@@ -218,7 +219,6 @@ export class ArticlesService {
         blog:[
           {
             title:'Conditionnement d’air des centres de données (data center)',
-            imageUrl: 'images/HeaderDetailService1.png',
             description: [
               `Block2`,
               `Egestas nulla est urna ullamcorper duis nibh vitae elementum. Eros suspendisse 
@@ -229,10 +229,7 @@ export class ArticlesService {
           },
           {
             title:'Refroidissement des process industriels',
-            video: {
-              thumbnail: 'images/assetsDétailsServices/Block2/Frame 97.png',
-              url: 'images/vidéos/Video1.mp4',
-            },
+            imageUrl: 'images/HeaderDetailService1.png',
             description: [
               `Block3`,
               `Egestas nulla est urna ullamcorper duis nibh vitae elementum. Eros suspendisse 
@@ -351,7 +348,6 @@ export class ArticlesService {
         blog:[
           {
             title:'Conditionnement d’air des centres de données (data center)',
-            imageUrl: 'images/HeaderDetailService1.png',
             description: [
               `Block2`,
               `Egestas nulla est urna ullamcorper duis nibh vitae elementum. Eros suspendisse 
@@ -362,10 +358,7 @@ export class ArticlesService {
           },
           {
             title:'Refroidissement des process industriels',
-            video: {
-              thumbnail: 'images/assetsDétailsServices/Block2/Frame 97.png',
-              url: 'images/vidéos/Video1.mp4',
-            },
+            imageUrl: 'images/HeaderDetailService1.png',
             description: [
               `Block3`,
               `Egestas nulla est urna ullamcorper duis nibh vitae elementum. Eros suspendisse 

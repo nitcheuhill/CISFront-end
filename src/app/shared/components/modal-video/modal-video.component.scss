@@ -52,3 +52,14 @@
     object-fit: contain;
     background: black;
   }
+
+  /* Téléphones en portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+  .close-button {
+    top: -50px;
+    right: -10px;
+
+  }
+
+
+}

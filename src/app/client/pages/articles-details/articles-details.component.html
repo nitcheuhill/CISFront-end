@@ -12,3 +12,84 @@
     </div>
   </div>
 </section>
+
+<!-- Bloc 1 -->
+<section class="service-section" *ngIf="shouldShowBlock(1) && currentService?.blog[0]">
+  <h1>1. {{ currentService.blog[0].title }}</h1>
+
+  <div class="content1">
+    <div class="text-content">
+      <p *ngFor="let paragraph of currentService.blog[0].description">{{ paragraph }}</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- Bloc 2 -->
+<section class="service-section" *ngIf="shouldShowBlock(2) && currentService?.blog[1]">
+  <h1>2. {{ currentService.blog[1].title }}</h1>
+  <div class="description">
+    <p *ngFor="let paragraph of currentService.blog[1].description1">{{ paragraph }}</p>
+  </div>
+
+  <div class="content">
+    <!-- Bloc image -->
+    <div class="video-content">
+      <div class="video-thumbnail-container">
+        <img [src]="currentService.blog[1].imageUrl" alt="Vidéo thumbnail" />
+      </div>
+    </div>
+    <div class="text-content">
+      <p *ngFor="let paragraph of currentService.blog[1].description">{{ paragraph }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Bloc 3 -->
+<section class="service-section" *ngIf="shouldShowBlock(3) && currentService?.blog[2]">
+  <h1>3. {{ currentService.blog[2].title }}</h1>
+
+  <div class="description">
+    <p *ngFor="let paragraph of currentService.blog[2].description1">{{ paragraph }}</p>
+  </div>
+
+  <div class="content1">
+    <div class="video-content">
+      <div class="video-thumbnail-container">
+        <img [src]="currentService.blog[2].video.thumbnail" alt="Vidéo thumbnail" />
+        <button class="play-button" (click)="openVideoModal(currentService.blog[2].video.url)">
+          <i class="fa-solid fa-play fa-beat"></i>
+        </button>
+      </div>
+    </div>
+    <div class="text-content">
+      <p *ngFor="let paragraph of currentService.blog[2].description">{{ paragraph }}</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Modal video -->
+<app-modal-video></app-modal-video>
+
+<div class="comment-section">
+  <h1 class="comment-title">Commentaires</h1>
+  <div class="underline"></div>
+</div>
+
+<div class="comment-container"  *ngFor="let comment of  currentService?.commentaire">
+  <img [src]="comment.authorImage ? comment.authorImage : '/icons/iconsMissionGrid/UnknowUser.jpg'" alt="User Image" class="user-image">
+  <div class="comment-content">
+      <div class="comment-header">
+          <span class="user-name">{{ comment.authorName }}</span>
+          <span class="comment-date">{{ comment.date | date: 'dd MMMM yyyy'  }}</span>
+      </div>
+      <p class="comment-text">{{ comment.message  }}</p>
+  </div>
+</div>
+
+<div class="givesec">
+  <button class="give" (click)="openModal()">Laisser un commentaire</button>
+</div>
+<app-comment-modal *ngIf="isModalOpen" (close)="closeModal()"></app-comment-modal>
+
