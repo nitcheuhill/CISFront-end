@@ -1,6 +1,6 @@
 /* Pour chaque carte de service */
 .service-card {
-  width: 400px;  /* Largeur fixe de 350px pour chaque carte */
+  width: 350px;  /* Largeur fixe de 350px pour chaque carte */
   height:430px;
   background: rgba(244, 244, 244, 1);
   border-radius: 1rem;
@@ -10,10 +10,11 @@
   align-items: center;
   text-align: center;
   position: relative;
+  margin-bottom: 15%;
 }
 @media(max-width:2000px){
   .service-card{
-    width: 342px !important;
+    width: 342px ;
   }
 }
 
@@ -84,3 +85,51 @@ h3 {
   border-top-right-radius: 30px;
 }
 
+     
+/* Tablettes en paysage (768px-1024px) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .service-card{
+    width: 300px ;
+    margin-bottom: 25%;
+  }
+  h3{
+    width: 100%;
+    font-size: 16px;
+  }
+  .icon-container{
+    width: 75px;
+    height: 75px;
+  }
+  .sub-services{
+    padding: 1% 1%;
+    p{
+      font-size: 14px;
+    }
+    
+  }
+}
+
+/* Téléphones en portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+  .service-card{
+    width: 280px ;
+    margin-bottom: 35%;
+  }
+  h3{
+    width: 100%;
+    font-size: 15px;
+  }
+  .icon-container{
+    width: 75px;
+    height: 75px;
+  }
+  .sub-services{
+    padding: 1% 1%;
+    p{
+      font-size: 13px;
+    }
+    
+  }
+
+
+}

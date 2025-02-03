@@ -62,7 +62,7 @@
   .slogan{
     width: 100%;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: rgba(17, 110, 182, 1);
     span{
       color: rgba(240, 97, 50, 1);
@@ -71,25 +71,24 @@
 
   /* Section Vision */
 .vision {
-  width: 70%;
+  width: 60%;
   margin: auto;
   display: flex;
   flex-wrap: wrap; /* Permet de passer en colonne sur petits écrans */
   gap: 1rem; /* Espacement entre les blocs */
   align-items: center; /* Aligne verticalement le texte et l'image */
   justify-content: center; /* Centrage global sur grands écrans */
-  padding: 3%;
   box-sizing: border-box;
 }
 @media(max-width: 2000px){
   .vision{
-    width: 80%;
+    width: 70%;
   }
 }
 /* Bloc image */
 .imageVision {
   flex: 1 1 300px; /* Le bloc occupe au moins 300px et peut grandir */
-  max-width: 40%; /* Limite la largeur de l'image sur grands écrans */
+  width: 40%; /* Limite la largeur de l'image sur grands écrans */
   padding: 2%; /* Marges intérieures */
   box-sizing: border-box;
 }
@@ -99,16 +98,16 @@
   height: auto; /* Garde les proportions de l'image */
   object-fit: cover;
   border-radius: 30px;
-  max-width: 400px;
+  max-height: 400px;
 }
 
 /* Bloc description */
 .descVision {
   flex: 1 1 400px; /* Le texte occupe au moins 400px et peut grandir */
-  max-width: 60%; /* Limite la largeur du texte sur grands écrans */
+  width: 60%; /* Limite la largeur du texte sur grands écrans */
   line-height: 1.8;
   color: rgba(7, 46, 76, 1);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .descVision span {
@@ -126,13 +125,93 @@
   }
 }
 
-@media (max-width: 768px) {
-  .vision {
-    flex-direction: column; /* Passe les blocs en colonne */
-    text-align: center; /* Centre le texte sur petits écrans */
-  }
 
-  .descVision {
-    padding: 2%; /* Réduit les marges pour petits écrans */
+
+     
+/* Tablettes en paysage (768px-1024px) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .about-section{
+   h1{
+    font-size: 32px;
+    margin-top: 8%;
+    margin-bottom: 0;
+  }
+  p{
+    width: 95%;
+    padding: 0;
+    margin-bottom: 10%;
   }
 }
+.img2{
+  width: 280px;
+  height: 250px;
+}
+.img1{
+  width: 200px;
+  height: 180px;
+}
+.about-images{
+  gap : 1rem;
+}
+.slogan{
+  margin-top: 20%;
+}
+.vision {
+  width: 95%;
+  padding: 1%;
+ }
+.descVision{
+  font-size: 18px;
+}
+.imageVision{
+  max-width: 34%;
+}
+  
+}
+
+/* Téléphones en portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+  .about-section{
+    padding: 60px 10px;
+    h1{
+     font-size: 32px;
+     margin-top: 8%;
+     margin-bottom: 0;
+   }
+   p{
+     width: 95%;
+     padding: 0;
+     font-size: 16px;
+     margin-bottom: 10%;
+   }
+   .img1{
+    display: none;
+   }
+   .img2{
+    width: 224px;
+    height: 200px;
+   }
+ }
+ .slogan{
+  margin-top: 35%;
+  font-size: 24px;
+  font-family: "poppins-bold";
+  margin-bottom: 3%;
+ }
+ .vision{
+  width: 95%;
+  flex-direction: column-reverse;
+  gap: 0;
+ }
+ .descVision{
+  width: 90%;
+  text-align: justify;
+  font-size: 15px;
+  hyphens: auto;
+  flex: 1 1 200px;
+ }
+ .imageVision{
+  width: 80%;
+  flex: 1 1 250px;
+ }
+}  

@@ -13,11 +13,7 @@ export class ServiceDataService {
       introText: `
         Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis 
         nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in 
-        nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
-        Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
-        Amet eu.Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna 
-        ullamcorper duis nibh vitae elementum. Eros suspendisse natoque tortor urna
-        tristique amet in Amet eu..
+        nullam lacus.
       `,
       imageUrl: 'images/HeaderDetailService1.png',
       subServices: [
@@ -98,8 +94,7 @@ export class ServiceDataService {
       introText: `
         Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis 
         nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in 
-        nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
-        Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
+        nullam lacus. Neque dolor.
       `,
       imageUrl: 'images/portrait-firefighter-standing-front-fire-engine.jpg',
       subServices: [
@@ -168,7 +163,7 @@ export class ServiceDataService {
       introText: `
         Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis 
         nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in 
-        nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
+        nullam lacus.. 
         Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
       `,
       imageUrl: 'images/HeaderDetailService1.png',
@@ -482,8 +477,7 @@ export class ServiceDataService {
       introText: `
         Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis 
         nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in 
-        nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
-        Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
+        nullam lacus..
       `,
       imageUrl: 'images/portrait-firefighter-standing-front-fire-engine.jpg',
       subServices: [
@@ -533,8 +527,7 @@ export class ServiceDataService {
       introText: `
         Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis 
         nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in 
-        nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
-        Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
+        nullam lacus. .
       `,
       imageUrl: 'images/portrait-firefighter-standing-front-fire-engine.jpg',
       subServices: [

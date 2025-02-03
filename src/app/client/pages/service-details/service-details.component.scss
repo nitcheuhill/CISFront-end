@@ -43,16 +43,16 @@
   
 .articles-header {
   position: relative;
-  width: 80%;
+  width: 85%;
   margin: auto;
   margin-bottom: 2%;
-  margin-top: 5%;
+  margin-top: 2%;
   padding: 0 0.8%;
 }
 
 .articles-title {
   color: #FF5722;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   margin: 0;
 }
@@ -60,33 +60,23 @@
 .title-underline {
   position: absolute;
   top: 25px;
-  left: 800px;
+  left: 750px;
   right: 0;
   height: 3px;
   background-color: #FF5722;
 }
 
 .service-grid{
-  padding-left: 8%;
   padding-right: 3%;
-  width: 100%;
+  width: 85%;
+  margin: auto;
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
   gap: 1rem;
-  margin-bottom: 10%;
+
 }
 
-.service-grid ::ng-deep .service-card {
-  height: 430px;
-  width: 326px !important;
-  border-radius: 25px;
-}
-.service-grid ::ng-deep .icon-container {
-  height: 80px;
-  width: 80px;
-  margin-top: 0.8rem;
-}
 
 
 //style block 1 
@@ -362,3 +352,187 @@
         }}
        
       }
+
+
+      
+/* Tablettes en paysage (768px-1024px) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  
+   .overlay{
+    width: 90%;
+    h1{
+      font-size: 2rem;
+    }
+    p{
+      width: 100%;
+      text-align: justify;
+      hyphens: auto;
+    }
+   }
+   .service-section h1{
+    font-size: 26px;
+   }
+   .content1 .text-content p{
+    text-align: justify;
+    hyphens: auto;
+    }
+   .comment-section,.comment-container{
+    width: 95%;
+   }
+   .service-section{
+    width: 95%;
+    .content .text-content p{
+      text-align: justify;
+      hyphens: auto;
+    }
+   }
+   .services-section{
+    min-height: 400px;
+   }
+   .articles-header{
+    width: 95%;
+    margin-top: 1%;
+   }
+   .articles-title{
+    font-size: 26px;
+   }
+
+   .title-underline {
+    left: 640px;
+
+  }
+  .service-grid{
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 95%;
+  }
+}
+
+/* Téléphones en portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+ 
+ .overlay{
+  margin-top: 18%;
+  width: 95%;
+  h1{
+    font-size: 18px;
+  }
+  p{
+    width: 100%;
+    font-size: 15px;
+  }
+ }
+ 
+ .badge{
+  font-size: 14px;
+ }
+ .custom-article-description{
+  font-size: 15px;
+ }
+ .services-section{
+  min-height: 330px;
+ }
+ .custom-author-img{
+  width: 45px;
+  height: 45px;
+ }
+ .service-section .image-gallery{
+  margin-top: 1rem;
+  gap: 1rem;
+  .image img{
+    height: 150px;
+    border-radius: 10px;
+  }
+ }
+ .custom-author-name{
+  font-size: 13px;
+ }
+ .custom-article-date{
+  font-size: 12px;
+ }
+ .custom-article-footer{
+  margin-top: 20px !important;
+ }
+ .service-section{
+  width: 95%;
+  h1{
+    font-size: 18px;
+    margin-top: 4%;
+  }
+  .content .text-content p{
+    font-size: 16px !important;
+  }
+  .description p{
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+ }
+ .content1 .text-content p{
+ font-size: 16px;
+ text-align: justify;
+ hyphens: auto;
+ }
+ .service-section .content{
+  flex-direction: column;
+  .text-content{
+    width: 100% !important;
+    text-align: justify;
+    hyphens: auto;
+  }
+  .video-content{
+    max-width: 100% !important;
+   }
+ }
+ .content1{
+  .video-content{
+    max-height: 25vh;
+  }
+ }
+ .comment-section,.comment-container{
+  width: 95%;
+  padding: 0.5rem;
+ }
+ .comment-title{
+  font-size: 20px;
+ }
+ .user-image{
+  width: 45px;
+  height: 45px;
+ }
+ .comment-container{
+  gap:1rem
+ }
+ .user-name{
+  font-size: 18px;
+ }
+ .comment-date{
+  font-size: 12px;
+ }
+ .comment-text{
+  font-size: 15px;
+  text-align: justify;
+  hyphens: auto;
+ }
+ .givesec{
+  margin-bottom:30%;
+ }
+ .give{
+  font-size: 16px;
+ }
+ .articles-header{
+  width: 95%;
+  margin-top: 1%;
+ }
+ .articles-title{
+  font-size: 18px;
+ }
+ .service-grid{
+  padding-left: 3%;
+  padding-right: 3%;
+  width: 95%;
+}
+.content2 .text-content p {
+  font-size: 16px;
+}
+
+}

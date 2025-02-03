@@ -75,3 +75,56 @@
       transform: translateX(calc(-50%));
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .team-section{
+      padding: 1rem;
+      p{
+        padding: 0;
+        font-size: 18px;
+        margin-bottom: 1rem;
+      }
+      h2{
+        font-size: 32px;
+        padding: 0;
+      }
+      .carousel .carousel-item{
+        flex: 0 0 240px;
+        padding: 0 0.5rem;
+      }
+    }
+      }
+
+
+      
+  /* Téléphones en portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+  .team-section{
+    padding: 0.5rem;
+    h2{
+      width: 95%;
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+    p{ width: 95%;
+      font-size: 15px;
+      text-align: justify;
+      hyphens: auto;
+      padding: 0;
+    }
+    .carousel-item{
+   flex: 0 0 250px !important;
+   padding: 0 0.5rem !important;
+   h3{
+    margin-top: 0 !important;
+    font-size: 16px;
+   }
+   p{
+    margin: 0 !important;
+    text-align: center;
+    font-size: 14px !important;
+   }
+    }
+  }
+  
+}  

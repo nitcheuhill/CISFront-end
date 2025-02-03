@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
   getShortTitle(title: string): string {
     if (title.length > 20) {
-      return this.isSmallScreen ? title.slice(0, 18) + '...' : title;
+      return this.isSmallScreen ? title.slice(0, 40) + '...' : title;
     }
     return title;
   }

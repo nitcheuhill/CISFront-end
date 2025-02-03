@@ -57,3 +57,50 @@
     }
   }
   
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+.mission-section{
+  width: 95%;
+  padding: 1rem;
+  p{
+    padding: 0;
+    font-size: 18px;
+    margin-bottom: 1rem;
+  }
+  h2{
+    font-size: 32px;
+  }
+}
+  }
+
+  /* Téléphones en portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+  .mission-section{
+    max-width: 95%;
+    padding: 0.5rem;
+    h2{
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+    p{
+      font-size: 15px;
+      text-align: justify;
+      hyphens: auto;
+    }
+    .mission{
+      width: 160px;
+    }
+    .missions{
+      gap: 0;
+    }
+  }
+ .mission .desc{
+    text-align: center;
+    font-size: 11px !important;
+    color: rgba(7, 46, 76, 1);
+  }
+  .mission .icon{
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+}  
