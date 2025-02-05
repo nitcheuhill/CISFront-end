@@ -2,7 +2,7 @@
     position: relative;
     top: 0;
     width: 100%;
-    min-height: 510px;
+    min-height: 410px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,10 +13,27 @@
     padding: 1%;
     box-sizing: border-box;
   }
+    
+  .services-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Couche sombre avec opacité */
+    z-index: 1; /* Place l'overlay en arrière-plan */
+  }
   
-  .overlay{
+  
+  .overlay {
     width: 85%;
+    position: relative;
+    z-index: 2; /* Place le contenu au-dessus de l'overlay */
     margin: auto;
+    margin-top: 0%;
+    margin-bottom: 2%;
+  
   }
 
   .badge {
@@ -357,7 +374,6 @@
       
 /* Tablettes en paysage (768px-1024px) */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  
    .overlay{
     width: 90%;
     h1{
