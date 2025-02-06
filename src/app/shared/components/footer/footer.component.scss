@@ -33,9 +33,22 @@
   }
 
   .footer {
-    background-color: #002B4B;
+    background: linear-gradient(95deg, rgb(1, 12, 61) 0%, rgba(0,43,75,1) 35%, rgb(2, 159, 190) 100%);
+  background-size: 300% 300%;
+  animation: gradientAnimation 8s infinite linear;
     color: white;
     padding: 100px 20px 20px;
+  }
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   .footer-content {
