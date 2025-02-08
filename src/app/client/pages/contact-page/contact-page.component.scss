@@ -38,6 +38,7 @@ strong{
     width: auto;
     max-width: 500px;
     margin-left: 12%;   
+    margin-bottom: 10%;
 }
 .addresses h3{
     color: rgba(242, 117, 52, 1);
@@ -175,12 +176,138 @@ label{
 
       
 /* Tablettes en paysage (768px-1024px) */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  
-  
- }
- 
- /* Téléphones en portrait */
- @media (max-width: 767px) and (orientation: portrait) {
-  
- }
+@media (min-width: 768px) and (max-width: 1024px) {
+    .contacts-section {
+        flex-direction: column;
+        padding: 12% 8%;
+        height: 70vh;
+    }
+
+    .contacts-container {
+        gap: 15px;
+    }
+
+    .contact-form {
+        width: 100%;
+        position: static;
+        transform: none;
+        left: auto;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .addresses {
+        margin:auto;
+        width: 80%;
+        margin-top: 35%;
+        margin-bottom: 15%;
+        max-width: none;
+    }
+
+    .contacts p {
+        width: 80%;
+        margin-top: 1%;
+        height: auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .contact-form button {
+        width: 60%;
+    }
+}
+
+/* Téléphones en portrait (max-width: 767px) */
+@media (max-width: 767px) {
+    .contacts-section {
+        flex-direction: column;
+        padding: 5% 5%;
+        margin-top: 12%;
+        h2{
+            font-size: 32px;
+        }
+    }
+
+    .contacts-container {
+        gap: 10px;
+    }
+
+    .contact-form {
+        width: 100%;
+        position: static;
+        transform: none;
+        left: auto;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 20px 30px;
+    }
+
+    .addresses {
+        width: 90%;
+        margin: auto;
+        max-width: none;
+        margin-bottom: 30%;
+        h3{
+            font-size: 32px;
+        }
+    }
+
+    .contacts p {
+        width: 100%;
+        height: auto;
+        margin-top: 1.5%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .contact-form button {
+        width: 100%;
+    }
+
+    h2, h3 {
+        font-size: 2.5rem;
+    }
+
+    .contact-form h3 {
+        font-size: 2rem;
+    }
+
+    .contact-form p {
+        font-size: 1rem;
+    }
+
+    .contact-form .form-desc {
+        font-size: 0.9rem;
+    }
+
+    .blockinfo-text span {
+        font-size: 14px;
+    }
+
+    .blockinfo-text p {
+        font-size: 14px;
+    }
+
+    .icon {
+        margin-right: 5px;
+    }
+
+    
+
+    .blockinfo-icon {
+        margin-bottom: 10px;
+    }
+
+    .map img {
+        width: 100%;
+        height: auto;
+    }
+}

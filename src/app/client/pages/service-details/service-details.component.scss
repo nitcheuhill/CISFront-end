@@ -546,6 +546,10 @@
   padding-left: 3%;
   padding-right: 3%;
   width: 95%;
+  scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    -webkit-overflow-scrolling: touch;
 }
 .content2 .text-content p {
   font-size: 16px;

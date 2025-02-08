@@ -151,10 +151,14 @@
   
   @media screen and (max-width: 480px) {
     .service-container1, .service-container2 {
-      width: 100%;
+      width: 95%;
       height: 250px;
       padding: 1rem;
       margin-top: 10%;
+      border-radius: 15px;
+      .map-overlay,.block1,.block2 {
+        border-radius: 15px;
+      }
     }
     .containerIntro p{
       width: 90%;
