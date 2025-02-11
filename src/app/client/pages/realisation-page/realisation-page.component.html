@@ -1,0 +1,52 @@
+<section class="services-section" [ngStyle]="{'background-image': 'url(' + currentService?.bannerImage + ')'}">
+    <div class="overlay">
+      <span class="badge" routerLink="/realisations">Realisations</span>
+      <h1>{{ currentService?.title }}</h1>
+      <p class="custom-article-description">{{ currentService?.description }}</p>
+      <button class="visualButton"><img src="/icons/iconsRealisation/Frame 126.png" alt="Photo de l'auteur" class="custom-author-img" />Visualisation 3D</button>
+      <div class="custom-article-footer">
+        <img src="/icons/iconsRealisation/hashtag.png" alt="Photo de l'auteur" class="custom-author-img" />
+        <p class="custom-author-name"><span class="author-span">{{ currentService?.type}}</span></p>
+        <p class="custom-author-name">Client : <span class="author-span">{{ currentService?.infoProject[0].client.name}}</span></p>
+        <span class="custom-article-date"><img src="/icons/iconsRealisation/voice-cricle.png" alt="Photo de l'auteur" class="custom-author-img" />Durée de la réalisation : {{ currentService?.temps}} jours</span>
+      </div>
+    </div>
+  </section>
+  <!-- Bloc 1 -->
+<section class="service-section">
+  <h1>Le projet en quelque ligne : Conception, planification et réalisation</h1>
+
+  <div class="content1">
+    <div class="text-content">
+      <p *ngFor="let paragraph of currentService.infoProject[0].description">{{ paragraph }}</p>
+    </div>
+  </div>
+
+</section>
+  <!-- Bloc 2 -->
+<section class="service-section">
+  <h1>Espace galerie</h1>
+
+  <div class="photo-grid">
+    <ng-container *ngFor="let image of currentService.infoProject[0].images" [class]="'mosaic-item ' + image.size">
+      <img [src]="image.src" [alt]="image.alt" class="mosaic-image">
+    </ng-container>
+  </div>
+ 
+</section>
+<section class="service-section">
+  <h1>Espace video</h1>
+<div class="content1">
+  <div class="video-content">
+    <div class="video-thumbnail-container">
+      <img [src]="currentService.infoProject[0].video.thumbnail" alt="Vidéo thumbnail" />
+      <button class="play-button" (click)="openVideoModal(currentService.infoProject[0].video.url)" >
+        <i class="fa-solid fa-play fa-beat"></i>
+      </button>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Modal video -->
+<app-modal-video></app-modal-video>

@@ -1,0 +1,105 @@
+.loginBlock{
+    width: 100%;
+    height: auto;
+    align-items: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: url("/images/AdminPageAssets/Admin-Homepage-CIS.png") no-repeat center center/cover;
+}
+
+
+::ng-deep .sectionfooter{
+    margin-top: 0 !important;
+  }
+
+
+  .login-container {
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.logo{
+    width: 50%;
+    margin: auto;
+    margin-top: 20%;
+    margin-bottom: 10%;
+    padding-bottom: 20%;
+    img{
+        height: 70px;
+    }
+    p{
+        font-size: 20px;
+    }
+}
+h2{
+    color: rgba(7, 46, 76, 1);
+    font-family: 'poppins';
+    font-size: 26px;
+}
+
+.blue { color: rgba(17, 110, 182, 1);
+    font-family: 'poppins-bold';
+}
+.tagline{
+    color: rgba(17, 110, 182, 1)
+    ;
+}
+.orange { color: #ff5722; }
+
+.login-form {
+    margin-top: 1rem;
+    text-align: left;
+    margin-bottom: 20%;
+}
+
+label {
+    font-family: 'poppins-bold';
+    color:rgba(7, 46, 76, 1);
+    display: block;
+    margin-top: 10px;
+}
+span{
+    color: rgba(255, 10, 10, 1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgb(247, 247, 247);
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    cursor: pointer;
+    margin-left: -30px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: rgba(17, 110, 182, 1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.footer-links {
+    margin-bottom: 20%;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: rgba(17, 110, 182, 1);
+}

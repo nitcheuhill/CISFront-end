@@ -1,0 +1,26 @@
+.notavailable{
+    width: 100%;
+    height: auto;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20%;
+    margin-bottom: 30%;
+}
+h2{
+    color: rgba(7, 46, 76, 1);
+    font-family: 'poppins';
+    font-size: 26px;
+}
+@media (max-width: 767px) and (orientation: portrait) {
+   .notavailable img{
+    width: 300px;
+   }
+   .notavailable h2{
+    font-size: 20px;
+   }
+
+   
+  }

@@ -27,6 +27,10 @@ export const routes: Routes = [
       loadComponent: () => import('./articles-details/articles-details.component').then(m => m.ArticlesDetailsComponent) // Route pour le composant ServiceDetails
     },
     {
+      path: 'realisation/:title',
+      loadComponent: () => import('./realisation-page/realisation-page.component').then(m => m.RealisationPageComponent) // Route pour le composant ServiceDetails
+    },
+    {
       path: 'realisations',
       loadComponent: () => import('./realisations-page/realisations-page.component').then(m => m.RealisationsPageComponent) // Route pour le composant realisation
     },
@@ -41,5 +45,9 @@ export const routes: Routes = [
     {
       path: 'articles',
       loadComponent: () => import('./article-page/article-page.component').then(m => m.ArticlePageComponent) // Route pour le composant de demande de dévis
+    },
+    {
+      path: 'login',
+      loadComponent: () => import('./login-page/login-page.component').then(m => m.LoginPageComponent) // Route pour le composant de demande de dévis
     },
 ];

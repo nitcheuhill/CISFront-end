@@ -6,11 +6,12 @@ import { ArticlesComponent } from '../../../shared/components/articles/articles.
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
-
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-realisations-page',
-  imports: [CommonModule, FormsModule,ArticlesComponent, FontAwesomeModule,LoaderComponent],
+  standalone: true,
+  imports: [CommonModule,RouterModule, FormsModule, ArticlesComponent, FontAwesomeModule, LoaderComponent],
   templateUrl: './realisations-page.component.html',
   styleUrl: './realisations-page.component.scss'
 })
@@ -26,14 +27,15 @@ export class RealisationsPageComponent implements OnInit {
   isMobileView: boolean = false;
   isFilterSliderOpen: boolean = false; // État du slider
 
-    // Pagination
-    currentPage: number = 1;
-    pageSize: number = 3;
-    totalPages: number = 0;
-    faChevronLeft = faChevronLeft;
-    faChevronRight = faChevronRight;
+  // Pagination
+  currentPage: number = 1;
+  pageSize: number = 4;
+  totalPages: number = 0;
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
+  
 
-  constructor(private dataRealisationService: RealisationsDataService) {}
+  constructor(private dataRealisationService: RealisationsDataService,private router: Router ) { }
 
   ngOnInit(): void {
     this.checkMobileView();
@@ -44,18 +46,18 @@ export class RealisationsPageComponent implements OnInit {
     this.loadData();
   }
 
-   // Méthode pour ouvrir/fermer le slider
-   toggleFilterSlider(): void {
+  // Méthode pour ouvrir/fermer le slider
+  toggleFilterSlider(): void {
     this.isFilterSliderOpen = !this.isFilterSliderOpen;
   }
 
-    //méthode du loader
+  //méthode du loader
   private async loadData(): Promise<void> {
     try {
       this.isLoading = true;
       // Simuler un délai pour voir le loader (à enlever en production)
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       this.realisations = this.dataRealisationService.getRealisations();
       this.filteredRealisations = this.realisations;
       this.updatePagination();
@@ -67,38 +69,45 @@ export class RealisationsPageComponent implements OnInit {
   checkMobileView = () => {
     this.isMobileView = window.innerWidth <= 840;
   }
+  onRealisationClick(realisation: any): void {
+    this.router.navigate(['/realisation', realisation.title]);
+  }
+  
+  // Méthode pour mettre à jour la pagination
+  private updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredRealisations.length / this.pageSize);
+    this.currentPage = Math.min(this.currentPage, this.totalPages);
+    if (this.currentPage === 0 && this.totalPages > 0) this.currentPage = 1;
+    this.updatePaginatedRealisations();
+  }
 
-    // Méthode pour mettre à jour la pagination
-    private updatePagination(): void {
-      this.totalPages = Math.ceil(this.filteredRealisations.length / this.pageSize);
-      this.currentPage = Math.min(this.currentPage, this.totalPages);
-      if (this.currentPage === 0 && this.totalPages > 0) this.currentPage = 1;
-      this.updatePaginatedRealisations();
-    }
-
-      // Mettre à jour les réalisations paginées
+  // Mettre à jour les réalisations paginées
   private updatePaginatedRealisations(): void {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.paginatedRealisations = this.filteredRealisations.slice(startIndex, endIndex);
   }
 
-    // Navigation dans la pagination
-    goToPage(page: number): void {
-      if (page >= 1 && page <= this.totalPages) {
+  // Navigation dans la pagination
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.isLoading = true; // Activer le loader
+      setTimeout(() => {
         this.currentPage = page;
         this.updatePaginatedRealisations();
-      }
+        this.isLoading = false; // Désactiver le loader après la mise à jour
+      }, 500); // Simuler un délai de chargement
     }
-  
-    // Vérifier si les boutons doivent être désactivés
-    isPreviousDisabled(): boolean {
-      return this.currentPage <= 1 || this.totalPages === 0;
-    }
-  
-    isNextDisabled(): boolean {
-      return this.currentPage >= this.totalPages || this.totalPages === 0;
-    }
+  }
+
+  // Vérifier si les boutons doivent être désactivés
+  isPreviousDisabled(): boolean {
+    return this.currentPage <= 1 || this.totalPages === 0 || this.isLoading;
+  }
+
+  isNextDisabled(): boolean {
+    return this.currentPage >= this.totalPages || this.totalPages === 0 || this.isLoading;
+  }
 
   // Mettre à jour tous vos filtres pour gérer le loading
   filterByOrder(order: string): void {
@@ -153,7 +162,7 @@ export class RealisationsPageComponent implements OnInit {
     setTimeout(() => {
       const term = this.searchTerm.toLowerCase();
       this.filteredRealisations = this.realisations.filter(realisation =>
-        realisation.titre.toLowerCase().includes(term) || 
+        realisation.titre.toLowerCase().includes(term) ||
         realisation.description.toLowerCase().includes(term)
       );
       this.currentPage = 1;

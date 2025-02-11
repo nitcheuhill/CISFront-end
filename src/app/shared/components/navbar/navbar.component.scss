@@ -23,6 +23,9 @@
     opacity: 0;
   }
 }
+.fa-solid{
+  margin-right: 0.5rem;
+}
 
 // Logo
 .navbar-logo {
@@ -100,7 +103,7 @@
   right: 0;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  width: 200px;
+  width: 210px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -270,5 +273,10 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+@media (max-width: 900px) {
+  .connect{
+  display: none;
   }
 }

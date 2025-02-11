@@ -1,12 +1,11 @@
 export const environment = {
-    production: false,
-    firebase: {
-      apiKey: 'DEV_API_KEY',
-      authDomain: 'DEV_PROJECT_ID.firebaseapp.com',
-      projectId: 'DEV_PROJECT_ID',
-      storageBucket: 'DEV_PROJECT_ID.appspot.com',
-      messagingSenderId: 'DEV_MESSAGING_SENDER_ID',
-      appId: 'DEV_APP_ID'
-    }
-  };
-  
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyCBctD_CyJ5LCoCCV0rrm-JU_XIk5MQHkE",
+    authDomain: "ciscameroun-a8a05.firebaseapp.com",
+    projectId: "ciscameroun-a8a05",
+    storageBucket: "ciscameroun-a8a05.firebasestorage.app",
+    messagingSenderId: "1057495660039",
+    appId: "1:1057495660039:web:b793f30dd6b02e90889ca2"
+  }
+};

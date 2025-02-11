@@ -4,8 +4,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoaderService } from './shared/sevices/loader.service';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './shared/components/footer/footer.component';
-
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { AuthService } from './shared/sevices/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +16,16 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 export class AppComponent implements OnInit{
   isLoading$;
 
-  constructor(private router: Router, private loaderService: LoaderService) {
+  constructor(private router: Router, private loaderService: LoaderService,private authService: AuthService) {
     this.isLoading$ = this.loaderService.isLoading;
   }
 
   ngOnInit() 
   {
+    if (!this.authService.isLoggedIn() && this.router.url.includes('/dashboard')) {
+      this.router.navigate(['/login']);
+    }
+
     // Afficher le loader pendant le chargement initial
     this.loaderService.showLoader();
 

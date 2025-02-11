@@ -115,13 +115,13 @@
         <div class="realisation-image">
           <div class="realisation-overlay"
             [style.backgroundColor]="i % 2 === 0 ? 'rgba(254, 239, 235, 1)' : 'rgba(231, 241, 248, 1)'"></div>
-          <img [src]="realisation.image" [alt]="realisation.titre" />
+          <img [src]="realisation.image" [alt]="realisation.titre" (click)="onRealisationClick(realisation)"/>
         </div>
         <div class="realisation-content">
-          <h2>{{ realisation.titre }}</h2>
+          <h2>{{ realisation.title }}</h2>
           <p>{{ realisation.description }}</p>
           <div class="voir-plus-container">
-            <a href="#" class="voir-plus">Voir plus</a>
+            <a (click)="onRealisationClick(realisation)" class="voir-plus">Voir plus</a>
           </div>
         </div>
       </div>

@@ -1,9 +1,8 @@
 <!-- Header section -->
 <section class="services-section" [ngStyle]="{'background-image': 'url(' + currentService?.bannerImage + ')'}">
   <div class="overlay">
-    <span class="badge">Article / {{ currentService?.type }}</span>
+    <span class="badge" routerLink="/articles">Article / {{ currentService?.type }}</span>
     <h1>{{ currentService?.title }}</h1>
-    <p>{{ currentService?.introText }}</p>
     <p class="custom-article-description">{{ currentService.description }}</p>
     <div class="custom-article-footer">
       <img [src]="currentService.authorImage" alt="Photo de l'auteur" class="custom-author-img" />
