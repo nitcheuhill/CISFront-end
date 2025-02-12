@@ -556,3 +556,56 @@
   font-size: 16px;
  }
 }
+
+.author-response {
+  margin-top: 1%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.author-response.show {
+  max-height: 500px;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.toggle-response-btn{
+  background: none;
+  border: none;
+  color: #E67E22;
+  font-size: 16px;
+  font-family: 'poppins-bold';
+  cursor: pointer;
+  margin-top: 1%;
+
+}
+.author-response p{
+  color: rgb(7, 46, 76);
+}
+.entResp{
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.2rem;
+  align-items: center;
+}
+.info-author{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.user-image1{
+  width: 45px;
+  height: 45px;
+  border-radius: 30%;
+  object-fit: cover;
+}
+
+.user-name1{
+  font-family: "poppins-bold";
+  font-size: 16px;
+  color: rgb(17, 110, 182);
+}

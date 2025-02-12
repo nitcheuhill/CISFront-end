@@ -12,12 +12,14 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   styleUrl: './navbar.component.scss',
   animations: [
     trigger('slideInOut', [
+      state('void', style({ transform: 'translateY(-100%)', opacity: 0 })),
+      state('*', style({ transform: 'translateY(0)', opacity: 1 })),
       transition(':enter', [
-        style({ transform: 'translateX(100%)' }),
-        animate('300ms ease-out', style({ transform: 'translateX(0)' }))
+        style({ transform: 'translateY(-100%)', opacity: 0 }),
+        animate('300ms ease-in-out')
       ]),
       transition(':leave', [
-        animate('300ms ease-in', style({ transform: 'translateX(100%)' }))
+        animate('300ms ease-in-out', style({ transform: 'translateY(-100%)', opacity: 0 }))
       ])
     ])
   ]

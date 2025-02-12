@@ -6,23 +6,23 @@
         </div>
         <img src="/images/AdminPageAssets/Calque_1.png" alt="iconkey" />
         <h2>Bienvenu à vous !!</h2>
-        <form class="login-form" (ngSubmit)="onLogin()">
+        <form class="login-form" (ngSubmit)="onSubmit()">
             <label for="email">E-mail <span>*</span></label>
-            <input type="email" id="email" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" placeholder="Saisissez votre e-mail" required>
+            <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Saisissez votre e-mail" required>
             
             <label for="password">Mot de passe <span>*</span></label>
             <div class="password-container">
-                <input type="password" id="password" [(ngModel)]="password" [ngModelOptions]="{standalone:true}"  placeholder="Saisissez votre mot de passe" required>
+                <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Saisissez votre mot de passe" required>
             </div>
             
             <button type="submit">Se connecter</button>
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
         </form>
         <div class="footer-links">
             <a href="#">Mot de passe <span class="blue">oublié ?</span></a> | 
             <a href="#">Conditions et politiques d’utilisations</a>
         </div>
     </div>
-
 </section>
 <!-- Utilisation du composant partagé -->
 <app-not-available *ngIf="shouldShowNotAvailable"></app-not-available>

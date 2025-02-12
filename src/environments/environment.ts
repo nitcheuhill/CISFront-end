@@ -1,11 +1,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCBctD_CyJ5LCoCCV0rrm-JU_XIk5MQHkE",
-    authDomain: "ciscameroun-a8a05.firebaseapp.com",
-    projectId: "ciscameroun-a8a05",
-    storageBucket: "ciscameroun-a8a05.firebasestorage.app",
-    messagingSenderId: "1057495660039",
-    appId: "1:1057495660039:web:b793f30dd6b02e90889ca2"
+    apiKey: "AIzaSyCM6sjymYoOtVmBpPQs7d63uXCOOfc8pyk",
+    authDomain: "ciscameroun-5ad46.firebaseapp.com",
+    projectId: "ciscameroun-5ad46",
+    storageBucket: "ciscameroun-5ad46.firebasestorage.app",
+    messagingSenderId: "13712963544",
+    appId: "1:13712963544:web:bc90f2914616c7195024ad",
+    measurementId: "G-S6QB54LFK0",
   }
 };

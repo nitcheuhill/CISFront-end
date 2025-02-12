@@ -75,9 +75,9 @@
                     <h2 class="title">{{ mainArticle.title }}</h2>
                     <p class="description">{{ mainArticle.description }}</p>
                     <div class="author">
-                        <img [src]="mainArticle.authorImage" alt="Photo de l'auteur" class="author-image" />
+                        <img [src]="mainArticle.author.authorImage" alt="Photo de l'auteur" class="author-image" />
                         <div class="details">
-                            <p class="author-name">Rédigé par <span class="author-span">{{ mainArticle.authorName
+                            <p class="author-name">Rédigé par <span class="author-span">{{ mainArticle.author.authorName
                                     }}</span></p>
                             <p class="date">{{ mainArticle.date | date: 'dd MMMM yyyy' }}</p>
                             <!-- Affichage de la date au format souhaité -->
@@ -100,9 +100,9 @@
                             <h2 class="custom-article-title">{{ article.title }}</h2>
                             <p class="custom-article-description">{{ article.description }}</p>
                             <div class="custom-article-footer">
-                                <img [src]="article.authorImage" alt="Photo de l'auteur" class="custom-author-img" />
+                                <img [src]="article.author.authorImage" alt="Photo de l'auteur" class="custom-author-img" />
                                 <p class="custom-author-name">Rédigé par <span class="author-span">{{
-                                        article.authorName}}</span></p>
+                                        article.author.authorName}}</span></p>
                                 <span class="custom-article-date">{{ article.date | date: 'dd MMMM yyyy' }}</span>
                                 <!-- Affichage de la date au format souhaité -->
                             </div>

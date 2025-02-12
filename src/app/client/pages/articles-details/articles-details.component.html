@@ -5,8 +5,8 @@
     <h1>{{ currentService?.title }}</h1>
     <p class="custom-article-description">{{ currentService.description }}</p>
     <div class="custom-article-footer">
-      <img [src]="currentService.authorImage" alt="Photo de l'auteur" class="custom-author-img" />
-      <p class="custom-author-name">Rédigé par <span class="author-span">{{ currentService.authorName}}</span></p>
+      <img [src]="currentService.author.authorImage" alt="Photo de l'auteur" class="custom-author-img" />
+      <p class="custom-author-name">Rédigé par <span class="author-span">{{ currentService.author.authorName}}</span></p>
       <span class="custom-article-date">{{ currentService.date | date: 'dd MMMM yyyy' }}</span>
     </div>
   </div>
@@ -84,6 +84,23 @@
           <span class="comment-date">{{ comment.date | date: 'dd MMMM yyyy'  }}</span>
       </div>
       <p class="comment-text">{{ comment.message  }}</p>
+       <!-- Bouton Voir/Masquer la réponse -->
+    <button *ngIf="comment.authorResponse" (click)="comment.showResponse = !comment.showResponse" class="toggle-response-btn">
+      {{ comment.showResponse ? 'Masquer la réponse' : 'Voir la réponse' }}
+    </button>
+        <!-- Réponse de l'auteur -->
+    <div [class.show]="comment.showResponse" class="author-response">
+      <div class="entResp">
+        <div class="img-author">
+          <img [src]="currentService.author.authorImage" alt="User Image" class="user-image1">
+        </div>
+        <div class="info-author">
+          <span class="user-name1">{{ currentService.author.authorName }}</span>
+          <span class="comment-date">{{ comment.authorResponse?.date ? (comment.authorResponse.date | date: 'dd MMMM yyyy') : 'Date inconnue'  }}</span>
+        </div>
+      </div>
+      <p>{{ comment.authorResponse?.message || 'Pas de réponse pour le moment.'}}</p>
+    </div>
   </div>
 </div>
 

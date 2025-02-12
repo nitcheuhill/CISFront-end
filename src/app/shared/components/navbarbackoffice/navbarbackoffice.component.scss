@@ -1,0 +1,66 @@
+.sidebar {
+    width: 10vw;
+    background: url("/images/AdminPageAssets/Frame 216 (1).png") no-repeat center center/cover;
+    height: 100vh;
+    color: rgba(137, 133, 131, 1);
+    transition: width 0.6s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3%;
+    border-right: 1px solid rgba(137, 133, 131, 0.5);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  
+  .sidebar.expanded {
+    width: 250px;
+    align-items: center;
+  }
+  .profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+    .name{
+       color: rgba(17, 110, 182, 1);;
+        font-family: "poppins-bold";
+    }
+  }
+  .profile img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .menu{
+    margin-top: 10%;
+  }
+  ul.menu {
+    list-style: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  ul.menu li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    font-family: 'poppins-bold' !important;
+  }
+  ul.menu img {
+    width: 30px;
+    height: 30px;
+  }
+  .logo img{
+    width: 70px;
+    height: 55px;
+  }
+
+  ul.menu li:hover {
+    color: rgba(17, 110, 182, 1); /* Couleur pour l'élément actif */
+  }
+  ul.menu li:hover {
+    cursor: pointer;
+  }
