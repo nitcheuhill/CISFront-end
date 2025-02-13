@@ -199,6 +199,8 @@
       padding-bottom: 20px;
       padding-left: 25px;
       padding-right: 25px;
+      min-height: 45vh;
+      height: auto;
     }
     .testimonial-text{
       font-size: 13px;
@@ -213,6 +215,16 @@
   .navigation-buttons{
     margin-bottom: 20px;
 
+  }
+  .profile-info{
+    padding: 10px;
+    h3{
+      font-size: 18px;
+      margin-bottom: inherit;
+    }
+    p{
+      font-size: 15px;
+    }
   }
   .give{
     font-size: 15px;

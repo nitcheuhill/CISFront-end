@@ -1,8 +1,11 @@
 import { Component, EventEmitter, Output, ElementRef,Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TestimonialPushDataService } from '../../sevices/testimonial-push-data.service';
+import { ToastService } from '../../sevices/toast.service';
 
 @Component({
+  standalone: true,
   selector: 'app-testimonial-modal',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './testimonial-modal.component.html',
@@ -19,8 +22,9 @@ export class TestimonialModalComponent {
   });
 
   selectedPhoto: string | ArrayBuffer | null = null;
+  isSubmitting = false;
 
-  constructor(private renderer: Renderer2, private elRef: ElementRef) {}
+  constructor(private renderer: Renderer2, private elRef: ElementRef,private testimonialService:TestimonialPushDataService, private toastService: ToastService) {}
 
   openModal() {
     this.renderer.addClass(this.elRef.nativeElement.ownerDocument.body, 'overflow-hidden');
@@ -46,10 +50,28 @@ export class TestimonialModalComponent {
       reader.readAsDataURL(input.files[0]);
     }
   }
-  submitForm() {
-    if (this.testimonialForm.valid) {
-      console.log(this.testimonialForm.value); // Ici, tu peux gérer l'envoi de données
-      this.closeModal();
+  async submitForm() {
+    if (this.testimonialForm.valid && !this.isSubmitting) {
+      try {
+        this.isSubmitting = true;
+        
+        const testimonialData = {
+          name: this.testimonialForm.get('name')?.value || '',
+          email: this.testimonialForm.get('email')?.value || '',
+          profession: this.testimonialForm.get('profession')?.value || '',
+          description: this.testimonialForm.get('description')?.value || '',
+          image: this.selectedPhoto?.toString() || ''
+        };
+
+        await this.testimonialService.addTestimonial(testimonialData);
+        this.toastService.show('Merci pour votre témoignage !', 'success');
+        this.closeModal();
+      } catch (error) {
+        console.error("Erreur lors de l'envoi du témoignage:", error);
+        this.toastService.show('Une erreur est survenue lors de l\'envoi du témoignage.', 'error');
+      } finally {
+        this.isSubmitting = false;
+      }
     }
   }
 }

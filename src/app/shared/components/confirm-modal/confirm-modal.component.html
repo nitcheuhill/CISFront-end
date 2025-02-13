@@ -1,0 +1,20 @@
+<div class="modal-overlay" *ngIf="isVisible" (click)="onClose()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="bock"></div>
+        <div class="modal-icon">
+            <img src="assets/images/AdminPageAssets/trash.svg" alt="delete">
+        </div>
+        <h2>Supprimer ce témoignage</h2>
+        <p>de {{ itemName }}</p>
+
+        <div class="modal-actions">
+            <button class="confirm-button" (click)="onConfirm()" [disabled]="isLoading">
+
+                <span *ngIf="!isLoading" class="confirm-text">Oui supprimer ce témoignage</span>
+            </button>
+            <button class="cancel-button" (click)="onClose()" [disabled]="isLoading">Non</button>
+        </div>
+        
+        <app-loader *ngIf="isLoading"></app-loader>
+    </div>
+</div>

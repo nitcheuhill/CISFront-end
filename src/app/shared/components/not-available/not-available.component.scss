@@ -1,13 +1,17 @@
 .notavailable{
     width: 100%;
-    height: auto;
+    height: 100vh;
     align-items: center;
     flex-direction: column;
     display: flex;
     text-align: center;
     justify-content: center;
-    margin-top: 20%;
-    margin-bottom: 30%;
+    background: white;
+    z-index: 9999; 
+    position: fixed;
+
+    
+
 }
 h2{
     color: rgba(7, 46, 76, 1);
