@@ -15,6 +15,7 @@ export class LoginPageComponent {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -37,6 +38,7 @@ export class LoginPageComponent {
     const isLoggedIn = await this.authService.login(this.email, this.password);
     console.log('isLoggedIn' + isLoggedIn);
     if (isLoggedIn) {
+      // this.router.navigate(['/']);
       alert('salut');
       this.router.navigate(['/dashboard']);
     } else {

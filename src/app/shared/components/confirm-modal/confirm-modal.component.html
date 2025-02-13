@@ -2,17 +2,20 @@
     <div class="modal-content" (click)="$event.stopPropagation()">
         <div class="bock"></div>
         <div class="modal-icon">
-            <img src="assets/images/AdminPageAssets/trash.svg" alt="delete">
+            <img src="/images/AdminPageAssets/trash.svg" alt="delete">
+            <h2>Supprimer ce témoignage</h2>
         </div>
-        <h2>Supprimer ce témoignage</h2>
-        <p>de {{ itemName }}</p>
+        <h2>Supprimer ce témoignage de <span>{{ itemName }}</span></h2>
 
         <div class="modal-actions">
             <button class="confirm-button" (click)="onConfirm()" [disabled]="isLoading">
-
+                <img src="/images/AdminPageAssets/Group 178.png" alt="confirm">
                 <span *ngIf="!isLoading" class="confirm-text">Oui supprimer ce témoignage</span>
             </button>
-            <button class="cancel-button" (click)="onClose()" [disabled]="isLoading">Non</button>
+            <button class="cancel-button" (click)="onClose()" [disabled]="isLoading"> 
+                <img src="/images/AdminPageAssets/close-circle.svg" alt="confirm">
+                <span class="canceltext">Non</span>
+            </button>
         </div>
         
         <app-loader *ngIf="isLoading"></app-loader>

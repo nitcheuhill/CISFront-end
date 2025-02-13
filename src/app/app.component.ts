@@ -7,10 +7,11 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { AuthService } from './shared/sevices/auth.service';
 import { NavbarbackofficeComponent } from './shared/components/navbarbackoffice/navbarbackoffice.component';
+import { ToastComponent } from './shared/components/toast/toast.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule,NavbarComponent,CommonModule,LoaderComponent,FooterComponent, NavbarbackofficeComponent],
+  imports: [RouterModule,NavbarComponent,CommonModule,LoaderComponent,FooterComponent, NavbarbackofficeComponent,ToastComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

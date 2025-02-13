@@ -1,5 +1,6 @@
 <app-loader *ngIf="isLoading$ | async"></app-loader>
 <app-navbar *ngIf="!isBackOffice"></app-navbar>
-<app-navbarbackoffice *ngIf="isBackOffice"></app-navbarbackoffice>
+<app-navbarbackoffice *ngIf="isBackOffice" class="fixed-navbar"></app-navbarbackoffice>
 <router-outlet></router-outlet>
 <app-footer *ngIf="!isBackOffice"></app-footer>
+<app-toast></app-toast>

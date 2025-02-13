@@ -1,0 +1,57 @@
+<section class="block2" *ngIf="!shouldShowNotAvailable">
+  <h3>Temoignages</h3>  
+  <div class="filters">
+      <button (click)="setFilter('all')" [class.active]="filter === 'all'">
+        Tous ({{ testimonials.length }})
+      </button>
+      <button (click)="setFilter('active')" [class.active]="filter === 'active'">
+        Actifs ({{ activeTestimonialsCount }})
+      </button>
+      <button (click)="setFilter('inactive')" [class.active]="filter === 'inactive'">
+        Inactifs ({{ inactiveTestimonialsCount }})
+      </button>
+    </div>
+    <div class="testimonialblock">
+      <div *ngFor="let testimonial of filteredTestimonials" class="testimonial">
+        <img [src]="testimonial.image || 'assets/images/default.jpg'" alt="{{ testimonial.name }}">
+        <div class="info">
+          <h3>{{ testimonial.name }}</h3>
+          <p><strong>{{ testimonial.profession }}</strong></p>
+          <p>{{ testimonial.description }}</p>
+          <p class="date">{{ testimonial.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
+        </div>
+        <div class="actions">
+          <button 
+            (click)="toggleActive(testimonial)" 
+            [class.active]="testimonial.isActive"
+            [disabled]="loadingTestimonialId === testimonial.id">
+            <ng-container *ngIf="loadingTestimonialId === testimonial.id">
+              <app-loader></app-loader>
+            </ng-container>
+            <span *ngIf="loadingTestimonialId !== testimonial.id">
+              {{ testimonial.isActive ? 'Actif' : 'Inactif' }}
+            </span>
+          </button>
+          <button 
+            *ngIf="testimonial.id" 
+            (click)="openDeleteModal(testimonial)" 
+            class="delete"
+            [disabled]="deletingTestimonialId === testimonial.id">
+            <img *ngIf="deletingTestimonialId !== testimonial.id" 
+                 src="/images/AdminPageAssets/trash.svg" 
+                 alt="delete">
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Ajouter à la fin du template -->
+<app-confirm-modal
+[isVisible]="showDeleteModal"
+[itemName]="selectedTestimonial?.name || ''"
+[isLoading]="isDeleting"
+(confirm)="confirmDelete()"
+(close)="closeDeleteModal()">
+</app-confirm-modal>
+  
+  <app-not-available *ngIf="shouldShowNotAvailable"></app-not-available>
