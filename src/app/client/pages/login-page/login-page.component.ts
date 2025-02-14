@@ -39,8 +39,8 @@ export class LoginPageComponent {
     console.log('isLoggedIn' + isLoggedIn);
     if (isLoggedIn) {
       // this.router.navigate(['/']);
-      alert('salut');
-      this.router.navigate(['/dashboard']);
+      //alert('salut');
+      this.router.navigate(['back-office']);
     } else {
       this.errorMessage = 'Email ou mot de passe incorrect';
     }

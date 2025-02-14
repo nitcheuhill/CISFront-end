@@ -22,6 +22,6 @@ export const routes: Routes = [
         component: TestimonialspageComponent,
         // canActivate: [authGuard],
       },
-      { path: '**', redirectTo: 'login' },
-     
+      { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
+
 ];
