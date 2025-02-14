@@ -24,7 +24,10 @@ export class TestimonialModalComponent {
   selectedPhoto: string | ArrayBuffer | null = null;
   isSubmitting = false;
 
-  constructor(private renderer: Renderer2, private elRef: ElementRef,private testimonialService:TestimonialPushDataService, private toastService: ToastService) {}
+  constructor(private renderer: Renderer2,
+     private elRef: ElementRef,
+     private testimonialService:TestimonialPushDataService, 
+     private toastService: ToastService) {}
 
   openModal() {
     this.renderer.addClass(this.elRef.nativeElement.ownerDocument.body, 'overflow-hidden');
@@ -45,7 +48,38 @@ export class TestimonialModalComponent {
     if (input.files && input.files[0]) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.selectedPhoto = reader.result; // Contient l'aperçu de l'image
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          // Définir les dimensions maximales
+          const maxWidth = 800;
+          const maxHeight = 600;
+          let width = img.width;
+          let height = img.height;
+
+          // Calculer les nouvelles dimensions proportionnelles
+          if (width > height) {
+            if (width > maxWidth) {
+              height *= maxWidth / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height > maxHeight) {
+              width *= maxHeight / height;
+              height = maxHeight;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          ctx?.drawImage(img, 0, 0, width, height);
+          
+          // Convertir en format JPEG avec une qualité de 0.8
+          this.selectedPhoto = canvas.toDataURL('image/jpeg', 0.8);
+        };
+        img.src = reader.result as string;
       };
       reader.readAsDataURL(input.files[0]);
     }

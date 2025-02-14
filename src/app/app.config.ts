@@ -7,7 +7,7 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
-
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,5 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideAnimations(),
+    provideStorage(() => getStorage()),
   ],
 };
