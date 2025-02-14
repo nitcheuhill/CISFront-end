@@ -9,6 +9,7 @@ export interface Testimonial {
   description: string;
   image?: string;
   isActive: boolean;
+  isValidated?: boolean;
   createdAt: Date;
 }
 
@@ -89,6 +90,15 @@ export class TestimonialPushDataService {
       await deleteDoc(testimonialRef);
     } catch (error) {
       console.error("Erreur lors de la suppression du témoignage:", error);
+      throw error;
+    }
+  }
+  async updateTestimonialValidation(testimonialId: string, isValidated: boolean): Promise<void> {
+    try {
+      const testimonialRef = doc(this.firestore, 'testimonials', testimonialId);
+      await updateDoc(testimonialRef, { isValidated });
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de la validation:", error);
       throw error;
     }
   }
