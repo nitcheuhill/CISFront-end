@@ -151,8 +151,8 @@
   .quotes-list {
     flex: 1;
     min-width: 320px;
-    max-width: 400px;
-    padding-left: 1rem;
+    max-width: 600px;
+    padding-left: 3rem;
     border-left: 0.5px solid rgba(169, 169, 169, 1);
   
     .search-input {
@@ -177,7 +177,7 @@
   
   .quote-item {
     padding: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     cursor: pointer;
     transition: background-color 0.2s;
     margin-bottom: 0.5rem;
@@ -190,6 +190,15 @@
       background: #EBF5FF;
     }
   
+    &.processed {
+      opacity: 0.6;
+      background-color: rgba(238, 238, 238, 1);
+      
+      &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+    }
     .item-header {
       display: flex;
       gap: 1rem;
@@ -207,6 +216,28 @@
         img {
          object-fit:cover;
         }
+      }
+    }
+    
+  .delete-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      opacity: 1;
+      border-radius: 4px;
+    }
+      img {
+        width: 20px;
+        height: 20px;
       }
     }
   
@@ -236,7 +267,11 @@
       }
     }
   }
-  
+  .foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   // Scrollbar styles
   ::-webkit-scrollbar {
     width: 4px;
@@ -265,3 +300,11 @@
       max-width: none;
     }
   }
+  .quotes-container{
+    height: 80vh;
+    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+ 

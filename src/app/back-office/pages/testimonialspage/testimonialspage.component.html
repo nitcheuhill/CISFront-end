@@ -13,7 +13,7 @@
     </div>
     <div class="testimonialblock">
       <div *ngFor="let testimonial of filteredTestimonials" class="testimonial">
-        <img [src]="testimonial.image || 'assets/images/default.jpg'" alt="{{ testimonial.name }}">
+        <img [src]="testimonial.image || '/icons/iconsMissionGrid/UnknowUser.jpg'" alt="{{ testimonial.name }}">
         <div class="info">
           <h3>{{ testimonial.name }}</h3>
           <p><strong>{{ testimonial.profession }}</strong></p>

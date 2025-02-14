@@ -32,6 +32,9 @@
       <div class="form-field">
         <label for="description">Description du témoignage</label>
         <textarea id="description" formControlName="description" rows="5" placeholder="Description"></textarea>
+        <div class="character-count">
+          {{ testimonialForm.get('description')?.value?.length || 0 }}/299 caractères
+        </div>
       </div>
 
       <div class="divButton">

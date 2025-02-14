@@ -63,7 +63,7 @@
 
         <div class="quotes-container">
             <div *ngFor="let quote of filteredQuotes" class="quote-item"
-                [class.selected]="selectedQuote?.id === quote.id" (click)="selectQuote(quote)">
+                [class.selected]="selectedQuote?.id === quote.id" [class.processed]="quote.isProcessed" (click)="selectQuote(quote)">
                 <div class="item-header">
                     <div class="icon-small">
                         <img src="/images/AdminPageAssets/Frame 224.svg" alt="Quote">
@@ -75,11 +75,17 @@
                                 {{ service }}{{ !isLast ? ', ' : '' }}
                             </span>
                         </p>
+                    <div class="foot">
                         <p class="item-timestamp">
                             {{ quote.createdAt | date:'dd/MM/yyyy HH:mm' }}
                         </p>
+                        <button class="delete-button" (click)="deleteQuote($event, quote.id!)">
+                            <img src="/images/AdminPageAssets/trash.svg" alt="Supprimer">
+                        </button>
+                    </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
           [class.next]="i === currentIndex + 1"
         >
           <div class="profile-image">
-            <img [src]="testimonial.image" [alt]="testimonial.name" />
+            <img [src]="testimonial.image ? testimonial.image : '/icons/iconsMissionGrid/UnknowUser.jpg'" [alt]="testimonial.name" />
           </div>
           <div class="card-content">
             <p class="testimonial-text">{{ testimonial.description }}</p>
