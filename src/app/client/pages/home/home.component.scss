@@ -9,6 +9,7 @@
   overflow: hidden;
 }
 
+
 .video-background {
   position: absolute;
   top: 0;
@@ -187,6 +188,11 @@
 
   .search-container {
       width: 50%;
+  }
+}
+.contact-phone{
+  div {
+    margin-bottom: 4px;
   }
 }
 
@@ -444,6 +450,7 @@
   .contact-section{
     border-radius: 20px !important;
   }
+ 
   .contact-info{
     margin-left: initial !important;
     div{
@@ -642,7 +649,7 @@ h2 {
 }
 
 .services-description {
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto 40px;
   color: rgba(7, 46, 76, 1);
   line-height: 1.6;

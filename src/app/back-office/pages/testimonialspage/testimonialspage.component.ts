@@ -22,6 +22,7 @@ export class TestimonialspageComponent implements OnInit {
   showDeleteModal = false;
   selectedTestimonial: Testimonial | null = null;
   isDeleting = false;
+  loadingValidationId: string | null = null;
 
   constructor(private testimonialService: TestimonialPushDataService) {}
   
@@ -44,7 +45,22 @@ export class TestimonialspageComponent implements OnInit {
       console.error("Erreur lors du chargement des témoignages :", error);
     }
   }
-
+  async toggleValidation(testimonial: Testimonial) {
+    if (!testimonial.id || !testimonial.isActive) return;
+    
+    this.loadingValidationId = testimonial.id;
+    try {
+      await this.testimonialService.updateTestimonialValidation(
+        testimonial.id, 
+        !testimonial.isValidated
+      );
+      await this.loadTestimonials();
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de la validation :", error);
+    } finally {
+      this.loadingValidationId = null;
+    }
+  }
   
   
   async toggleActive(testimonial: Testimonial) {

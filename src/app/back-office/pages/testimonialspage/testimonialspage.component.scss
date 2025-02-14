@@ -7,7 +7,7 @@
     padding-left: 15vw;
     margin-right: 5vw;
     padding-top: 10vh;
-    h3{
+    .title{
       color: rgba(17, 110, 182, 1);
       font-size: 20px;
       margin-bottom: 2%;
@@ -62,12 +62,14 @@
   }
   
   .actions button {
-    padding: 5px 10px;
+    padding: 2px 15px;
     width: 70px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 15px;
     font-family: 'poppins-bold';
+    color: white;
+    background-color: rgba(169, 169, 169, 1);
   }
   
   .actions button.active {
@@ -83,3 +85,33 @@
     }
   }
   
+  .date{
+    font-size: 15px;
+    color: rgba(137, 133, 131, 1) !important;
+
+  }
+
+  .validate-btn {
+    padding: 8px;
+    border: none;
+    background: none !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    
+    .validate-icon {
+      width: 24px;
+      height: 24px;
+      transition: all 0.3s ease;
+      
+      &.active {
+        filter: grayscale(1) brightness(0.7); // Pour griser l'icône quand elle est active
+      }
+    }
+  }

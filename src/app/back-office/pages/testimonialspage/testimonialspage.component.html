@@ -1,5 +1,5 @@
 <section class="block2" *ngIf="!shouldShowNotAvailable">
-  <h3>Temoignages</h3>  
+  <h3 class="title">Temoignages</h3>  
   <div class="filters">
       <button (click)="setFilter('all')" [class.active]="filter === 'all'">
         Tous ({{ testimonials.length }})
@@ -21,6 +21,22 @@
           <p class="date">{{ testimonial.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
         </div>
         <div class="actions">
+          <button 
+          (click)="toggleValidation(testimonial)"
+          [class.validated]="testimonial.isValidated"
+          [disabled]="!testimonial.isActive || loadingValidationId === testimonial.id"
+          class="validate-btn">
+          <ng-container *ngIf="loadingValidationId === testimonial.id">
+            <app-loader></app-loader>
+          </ng-container>
+          <img 
+          *ngIf="loadingValidationId !== testimonial.id"
+          src="/images/AdminPageAssets/check-icon.svg"
+          alt="validate"
+          class="validate-icon"
+          [ngClass]="{'active': testimonial.isValidated}"
+        />
+        </button>
           <button 
             (click)="toggleActive(testimonial)" 
             [class.active]="testimonial.isActive"

@@ -3,6 +3,7 @@ import { authGuard } from '../../core/guards/auth.guard';
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from '../../client/pages/login-page/login-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { InspectionPageComponent } from './inspection-page/inspection-page.component';
 import { TestimonialspageComponent } from './testimonialspage/testimonialspage.component';
 
 export const routes: Routes = [
@@ -20,6 +21,11 @@ export const routes: Routes = [
     {
         path: 'testimonial',
         component: TestimonialspageComponent,
+        // canActivate: [authGuard],
+      },
+    {
+        path: 'inspection',
+        component: InspectionPageComponent,
         // canActivate: [authGuard],
       },
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },

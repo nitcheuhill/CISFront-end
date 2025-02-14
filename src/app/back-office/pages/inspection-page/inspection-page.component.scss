@@ -1,0 +1,267 @@
+// quote-management.component.scss
+
+:host {
+    display: block;
+    min-height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  .blockdetails{
+    background-color: rgba(246, 246, 246, 1);
+    padding: 3rem;
+    border-radius: 30px;
+  }
+  
+  // Left Panel
+  .details-panel {
+    padding-left: 12% !important;
+    flex: 2;
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    min-height: calc(100vh - 3rem);
+  
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: rgba(7, 46, 76, 1);
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .quote-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.75rem;
+  
+    .icon-wrapper {
+      width: 3rem;
+      height: 3rem;
+      background: #F7FAFC;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      img {
+        object-fit: cover;
+      }
+    }
+  
+    .info {
+      h3 {
+        font-size: 22px;
+        font-weight: 500;
+        color: rgba(7, 46, 76, 1);
+        margin-bottom: 0.25rem;
+      }
+  
+      p {
+        font-size: 0.875rem;
+        color: #718096;
+      }
+    }
+  }
+  
+  .services-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+  
+    .service-tag {
+      background: rgba(231, 241, 248, 1);
+      color: rgba(17, 110, 182, 1);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: "poppins-bold";
+      font-size: 0.875rem;
+    }
+  }
+  
+  .description {
+    color: #4A5568;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    font-size: 0.9375rem;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  
+    .timestamp {
+      color: #718096;
+      font-size: 0.875rem;
+    }
+  
+    .respond-button {
+      background: #3182CE;
+      color: white;
+      padding: 0.625rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: background-color 0.2s;
+      border: none;
+  
+      &:hover {
+        background: #2B6CB0;
+      }
+    }
+    .buttoncontact{
+        display: flex;
+        gap: 0.5rem;
+    }
+    .wathsappcall,.directcall {
+      background: #3182CE;
+      color: white;
+      width: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 38px;
+      padding: 0.5rem ;
+      border-radius: 50%;
+      font-weight: 500;
+      transition: background-color 0.2s;
+      border: none;
+      .fa-brands, .fa-solid{
+        font-size: 1rem;
+      }
+  
+      &:hover {
+        background: #2B6CB0;
+      }
+    }
+  }
+  .respond-button {
+    text-decoration: none; /* Supprime le soulignement */
+  }
+
+  // Right Panel
+  .quotes-list {
+    flex: 1;
+    min-width: 320px;
+    max-width: 400px;
+    padding-left: 1rem;
+    border-left: 0.5px solid rgba(169, 169, 169, 1);
+  
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #E2E8F0;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+  
+      &::placeholder {
+        color: #A0AEC0;
+      }
+  
+      &:focus {
+        outline: none;
+        border-color: #4299E1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+      }
+    }
+  }
+  
+  .quote-item {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 0.5rem;
+  
+    &:hover {
+      background-color: #F7FAFC;
+    }
+  
+    &.selected {
+      background: #EBF5FF;
+    }
+  
+    .item-header {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+  
+      .icon-small {
+        width: 38px;
+        height: 38px;
+        background: #F7FAFC;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        img {
+         object-fit:cover;
+        }
+      }
+    }
+  
+    .item-content {
+      flex: 1;
+      min-width: 0;
+  
+      h4 {
+        font-size: 0.875rem;
+        font-family: 'poppins-bold';
+        color: rgba(7, 46, 76, 1);
+        margin-bottom: 0.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+  
+      .item-services {
+        font-size: 0.75rem;
+        color: #718096;
+        margin-bottom: 0.25rem;
+      }
+  
+      .item-timestamp {
+        font-size: 0.75rem;
+        color: #A0AEC0;
+      }
+    }
+  }
+  
+  // Scrollbar styles
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #F7FAFC;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E0;
+    border-radius: 2px;
+  
+    &:hover {
+      background: #A0AEC0;
+    }
+  }
+  
+  // Responsive
+  @media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .quotes-list {
+      max-width: none;
+    }
+  }

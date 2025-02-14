@@ -1,0 +1,88 @@
+<div class="container" *ngIf="!shouldShowNotAvailable">
+    <!-- Left panel -->
+    <div class="details-panel">
+        <ng-container *ngIf="selectedQuote">
+            <h2>Détails du dévis</h2>
+
+            <div class="blockdetails">
+                <div class="quote-header">
+                    <div class="icon-wrapper">
+                        <img src="/images/AdminPageAssets/Frame 217.svg" alt="Quote">
+                    </div>
+                    <div class="info">
+                        <h3>{{ getQuoteTitle(selectedQuote.description) }}</h3>
+                        <p>{{ selectedQuote.name }} | {{ selectedQuote.email }} | {{ selectedQuote.countryCode }} {{
+                            selectedQuote.phone }}</p>
+                    </div>
+                </div>
+
+                <div class="services-tags">
+                    <span *ngFor="let service of selectedQuote.services" class="service-tag">
+                        {{ service }}
+                    </span>
+                </div>
+
+                <p class="description">{{ selectedQuote.description }}</p>
+
+                <div class="footer">
+                    <div>
+                        <span class="timestamp">
+                            {{ selectedQuote.createdAt | date:'dd/MM/yyyy HH:mm' }}
+                        </span>
+                    </div>
+                    <div class="buttoncontact">
+                        <button class="respond-button" class="wathsappcall">
+                            <a [href]="'https://wa.me/' + selectedQuote.countryCode + selectedQuote.phone" 
+                            target="_blank" 
+                            class="respond-button wathsappcall">
+                             <i class="fa-brands fa-whatsapp"></i>
+                         </a>
+                        </button>
+                        <button class="respond-button" class="directcall">
+                            <a [href]="'tel:' + selectedQuote.countryCode + selectedQuote.phone" 
+                            class="respond-button directcall">
+                             <i class="fa-solid fa-phone"></i>
+                         </a>
+                        </button>
+                        <button class="respond-button">
+                            <a [href]="'mailto:' + selectedQuote.email" 
+                            class="respond-button">
+                             Engagez la conversation par mail
+                         </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <!-- Right panel -->
+    <div class="quotes-list">
+        <input type="text" class="search-input" [(ngModel)]="searchTerm" (input)="filterQuotes()"
+            placeholder="Rechercher un dévis...">
+
+        <div class="quotes-container">
+            <div *ngFor="let quote of filteredQuotes" class="quote-item"
+                [class.selected]="selectedQuote?.id === quote.id" (click)="selectQuote(quote)">
+                <div class="item-header">
+                    <div class="icon-small">
+                        <img src="/images/AdminPageAssets/Frame 224.svg" alt="Quote">
+                    </div>
+                    <div class="item-content">
+                        <h4>{{ getQuoteTitle(quote.description) }}</h4>
+                        <p class="item-services">
+                            <span *ngFor="let service of quote.services; let isLast = last">
+                                {{ service }}{{ !isLast ? ', ' : '' }}
+                            </span>
+                        </p>
+                        <p class="item-timestamp">
+                            {{ quote.createdAt | date:'dd/MM/yyyy HH:mm' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-not-available *ngIf="shouldShowNotAvailable"></app-not-available>

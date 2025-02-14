@@ -25,7 +25,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { QuoteRequestService } from '../../../shared/sevices/quote-request.service';
+import { ToastService } from '../../../shared/sevices/toast.service';
 
 @Component({
   selector: 'app-request-inspection',
@@ -58,7 +59,7 @@ export class RequestInspectionComponent implements OnInit {
     { id: 'equipements-specifiques', label: 'Équipements spécifiques' }
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private quoteService: QuoteRequestService,private toastService: ToastService) {
     this.quoteForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -158,14 +159,27 @@ export class RequestInspectionComponent implements OnInit {
     return this.selectedServices.includes(serviceId);
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (this.quoteForm.valid && this.selectedServices.length > 0) {
-      const formData: QuoteFormData = {
-        ...this.quoteForm.value,
-        services: this.selectedServices,
-        countryCode: this.selectedCountry?.dialCode || ''
-      };
-      console.log('Form submitted:', formData);
+      try {
+        const formData = {
+          ...this.quoteForm.value,
+          services: this.selectedServices,
+          countryCode: this.selectedCountry?.dialCode || ''
+        };
+
+        await this.quoteService.addQuoteRequest(formData);
+        // Réinitialiser le formulaire après succès
+        this.quoteForm.reset();
+        this.selectedServices = [];
+        this.reorderServices();
+        
+        // Ajouter une notification de succès si nécessaire
+        this.toastService.show('Votre demande de devis a été envoyée avec succès !');
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi du devis:', error);
+        this.toastService.show('Une erreur est survenue lors de l\'envoi de votre demande.');
+      }
     }
   }
 }

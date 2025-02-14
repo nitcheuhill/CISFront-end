@@ -1,4 +1,4 @@
-<nav class="sidebar" [class.expanded]="isExpanded" (mouseenter)="toggleExpand(true)" (mouseleave)="toggleExpand(false)">
+<nav class="sidebar" [class.expanded]="isExpanded" (mouseenter)="toggleExpand(true)" (mouseleave)="toggleExpand(false)" (click)="toggleExpandTouch()">
     <div class="logo"> <img src="/images/Logo-CIS _ Cameroun (5).png" alt="Logo"> </div>
     <div class="profile">
       <img src="/images/assetsArticles/photo1.jpeg" alt="User Profile">
@@ -26,11 +26,11 @@
         <img src="/images/AdminPageAssets/note-add.svg" alt="Réalisations">
         <span *ngIf="isExpanded">Réalisations</span>
       </li>
-      <li  routerLink="/" routerLinkActive="active">
+      <li  routerLink="/back-office/inspection" routerLinkActive="active">
         <img src="/images/AdminPageAssets/document-text.svg" alt="Devis">
         <span *ngIf="isExpanded">Devis</span>
       </li>
-      <li  routerLink="/" routerLinkActive="active">
+      <li  routerLink="/back-office/testimonial" routerLinkActive="active">
         <img src="/images/AdminPageAssets/messages-3.svg" alt="Témoignages">
         <span *ngIf="isExpanded">Témoignages</span>
       </li>

@@ -13,12 +13,24 @@ import { Router } from '@angular/router';
   styleUrl: './navbarbackoffice.component.scss'
 })
 export class NavbarbackofficeComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router: Router) {}
   isExpanded = false;
+  isTouchScreen: boolean = false;
+
+  ngOnInit() {
+    this.isTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  }
 
   toggleExpand(state: boolean) {
+  if (!this.isTouchScreen) {
     this.isExpanded = state;
   }
+}
+toggleExpandTouch() {
+  if (this.isTouchScreen) {
+    this.isExpanded = !this.isExpanded;
+  }
+}
 
   getTruncatedEmail(email: string): string {
     const limit = this.isExpanded ? email.length : 10;
