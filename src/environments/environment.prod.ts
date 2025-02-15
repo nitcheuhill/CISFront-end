@@ -8,5 +8,10 @@ export const environment = {
     messagingSenderId: "183260840631",
     appId: "1:183260840631:web:c4e5f8703242f790008332",
     measurementId: "G-T00XFX6013"
+  },
+  visitorTracking: {
+    domain: 'votredomaine.com',
+    baseUrl: 'https://votredomaine.com',
+    environment: 'production'
   }
 };

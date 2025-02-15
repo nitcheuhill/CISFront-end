@@ -1,144 +1,255 @@
-import { Injectable } from '@angular/core';
+// First, update the VisitorTrackingService.ts to handle more specific filters:
+import { Injectable, inject } from '@angular/core';
+import { Firestore, collection, addDoc, getDocs, query, where, serverTimestamp } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 interface VisitorData {
   date: string;
   count: number;
 }
 
+interface Visit {
+  browserId: string;
+  timestamp: any;
+  source: string;
+  referrer: string;
+  pathname: string;
+  domain: string;
+  fullUrl: string;
+  environment: string;
+}
+
+interface EnvironmentConfig {
+  domain: string;
+  baseUrl: string;
+  environment: 'local' | 'staging' | 'production';
+}
+
+// Add a new interface for filter parameters
+interface FilterParams {
+  period: 'annual' | 'monthly' | 'weekly';
+  selectedMonth?: number;
+  selectedDay?: number;
+  selectedDayOfMonth?: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class VisitorTrackingService {
-  private readonly STORAGE_KEY = 'visitor_tracking';
-  private readonly TOTAL_VISITORS_KEY = 'total_unique_visitors';
+  private readonly firestore = inject(Firestore);
+  private readonly router = inject(Router);
   private visitorsSubject = new BehaviorSubject<VisitorData[]>([]);
   private totalVisitorsSubject = new BehaviorSubject<number>(0);
+  private readonly BROWSER_ID_KEY = 'browser_id';
+  
+  private readonly envConfig: EnvironmentConfig = {
+    domain: environment.visitorTracking?.domain || window.location.hostname,
+    baseUrl: environment.visitorTracking?.baseUrl || window.location.origin,
+    environment: (environment.visitorTracking?.environment || 'production') as 'local' | 'staging' | 'production'
+  };
   
   constructor() {
-    this.loadVisitorData();
-    this.trackVisit();
+    this.initializeTracking();
+    this.trackRouteChanges();
   }
 
-  private loadVisitorData() {
-    // Charger les données de visite quotidiennes
-    const stored = localStorage.getItem(this.STORAGE_KEY);
-    if (stored) {
-      this.visitorsSubject.next(JSON.parse(stored));
-    }
-    
-    // Charger le nombre total de visiteurs uniques
-    const totalVisitors = localStorage.getItem(this.TOTAL_VISITORS_KEY);
-    if (totalVisitors) {
-      this.totalVisitorsSubject.next(parseInt(totalVisitors, 10));
-    }
+  private trackRouteChanges() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      this.trackVisit(event.url);
+    });
   }
 
-  private trackVisit() {
-    const today = new Date().toISOString().split('T')[0];
-    const visitorId = this.getOrCreateVisitorId();
-    const data = this.visitorsSubject.value;
-    let isNewVisitor = false;
-    
-    // Vérifier si c'est un nouveau visiteur en général
-    const allVisitors = JSON.parse(localStorage.getItem('all_visitors') || '[]');
-    if (!allVisitors.includes(visitorId)) {
-      allVisitors.push(visitorId);
-      localStorage.setItem('all_visitors', JSON.stringify(allVisitors));
+  private async initializeTracking() {
+    await this.loadVisitorData();
+    await this.trackVisit(window.location.pathname);
+  }
+
+  private getBrowserId(): string {
+    const browserIdKey = `${this.BROWSER_ID_KEY}_${this.envConfig.environment}`;
+    let browserId = localStorage.getItem(browserIdKey);
+    if (!browserId) {
+      browserId = crypto.randomUUID();
+      localStorage.setItem(browserIdKey, browserId);
+    }
+    return browserId;
+  }
+
+  private getTrafficSource(): { source: string, referrer: string } {
+    const referrer = document.referrer;
+    let source = 'Direct';
+
+    if (referrer) {
+      const referrerDomain = new URL(referrer).hostname;
       
-      // Incrémenter le nombre total de visiteurs uniques
-      const currentTotal = this.totalVisitorsSubject.value;
-      this.totalVisitorsSubject.next(currentTotal + 1);
-      localStorage.setItem(this.TOTAL_VISITORS_KEY, (currentTotal + 1).toString());
-      
-      isNewVisitor = true;
+      if (referrerDomain === this.envConfig.domain) {
+        return { source: 'Internal', referrer };
+      }
+
+      if (referrer.includes('google')) source = 'Google';
+      else if (referrer.includes('yahoo')) source = 'Yahoo';
+      else if (referrer.includes('bing')) source = 'Bing';
+      else if (referrer.includes('duckduckgo')) source = 'DuckDuckGo';
+      else source = 'Other';
     }
+
+    return { source, referrer };
+  }
+
+  private async trackVisit(currentPath: string) {
+    const today = new Date().toISOString().split('T')[0];
+    const browserId = this.getBrowserId();
+    const { source, referrer } = this.getTrafficSource();
+    const fullUrl = `${this.envConfig.baseUrl}${currentPath}`;
     
-    // Mettre à jour les statistiques quotidiennes
-    const todayData = data.find(d => d.date === today);
-    if (!todayData) {
-      // Premier visiteur de la journée
-      data.push({ date: today, count: 1 });
-    } else if (!this.hasVisitedToday(visitorId)) {
-      // Nouveau visiteur pour aujourd'hui
-      todayData.count++;
-    }
-
-    this.saveVisitorData(data);
-    this.markVisitForToday(visitorId);
-  }
-
-  private getOrCreateVisitorId(): string {
-    let visitorId = localStorage.getItem('visitor_id');
-    if (!visitorId) {
-      visitorId = crypto.randomUUID();
-      localStorage.setItem('visitor_id', visitorId);
-    }
-    return visitorId;
-  }
-
-  private hasVisitedToday(visitorId: string): boolean {
-    const today = new Date().toISOString().split('T')[0];
-    const visits = JSON.parse(localStorage.getItem(`visits_${visitorId}`) || '[]');
-    return visits.includes(today);
-  }
-
-  private markVisitForToday(visitorId: string) {
-    const today = new Date().toISOString().split('T')[0];
-    const visits = JSON.parse(localStorage.getItem(`visits_${visitorId}`) || '[]');
-    if (!visits.includes(today)) {
-      visits.push(today);
-      localStorage.setItem(`visits_${visitorId}`, JSON.stringify(visits));
+    try {
+      const visitsRef = collection(this.firestore, 'visitors');
+      const todayQuery = query(
+        visitsRef,
+        where('date', '==', today),
+        where('browserId', '==', browserId),
+        where('domain', '==', this.envConfig.domain),
+        where('environment', '==', this.envConfig.environment)
+      );
+      
+      const querySnapshot = await getDocs(todayQuery);
+      
+      if (querySnapshot.empty) {
+        const visit: Visit = {
+          browserId,
+          source,
+          referrer,
+          pathname: currentPath,
+          domain: this.envConfig.domain,
+          fullUrl,
+          environment: this.envConfig.environment,
+          timestamp: serverTimestamp()
+        };
+        
+        await addDoc(visitsRef, {
+          ...visit,
+          date: today
+        });
+        
+        await this.loadVisitorData();
+      }
+    } catch (error) {
+      console.error('Erreur lors du tracking de la visite:', error);
     }
   }
 
-  private saveVisitorData(data: VisitorData[]) {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
-    this.visitorsSubject.next(data);
+  private async loadVisitorData() {
+    try {
+      const visitsRef = collection(this.firestore, 'visitors');
+      const domainQuery = query(
+        visitsRef,
+        where('domain', '==', this.envConfig.domain),
+        where('environment', '==', this.envConfig.environment)
+      );
+      
+      const querySnapshot = await getDocs(domainQuery);
+      
+      const visitorsByDate = new Map<string, number>();
+      
+      querySnapshot.forEach(doc => {
+        const data = doc.data();
+        const date = data['date'];
+        visitorsByDate.set(date, (visitorsByDate.get(date) || 0) + 1);
+      });
+      
+      const visitorData: VisitorData[] = Array.from(visitorsByDate.entries())
+        .map(([date, count]) => ({ date, count }))
+        .sort((a, b) => a.date.localeCompare(b.date));
+      
+      this.visitorsSubject.next(visitorData);
+      this.totalVisitorsSubject.next(querySnapshot.size);
+    } catch (error) {
+      console.error('Erreur lors du chargement des données:', error);
+    }
   }
 
   getVisitorData(): Observable<VisitorData[]> {
     return this.visitorsSubject.asObservable();
   }
-  
+
   getTotalVisitors(): Observable<number> {
     return this.totalVisitorsSubject.asObservable();
   }
 
-  getFilteredData(period: 'annual' | 'monthly' | 'weekly'): VisitorData[] {
+  // Update this method to accept the filter params
+  getFilteredData(filters: FilterParams): VisitorData[] {
     const now = new Date();
-    const data = [...this.visitorsSubject.value]; // Créer une copie pour éviter les mutations
+    const data = [...this.visitorsSubject.value];
     
-    switch (period) {
+    let filteredData: VisitorData[];
+    
+    // First filter by period
+    switch (filters.period) {
       case 'weekly':
         const weekStart = new Date();
         weekStart.setDate(now.getDate() - 7);
-        return this.getFilteredDataByDateRange(data, weekStart, now);
+        filteredData = this.getFilteredDataByDateRange(data, weekStart, now);
+        break;
       
       case 'monthly':
         const monthStart = new Date();
         monthStart.setMonth(now.getMonth() - 1);
-        return this.getFilteredDataByDateRange(data, monthStart, now);
+        filteredData = this.getFilteredDataByDateRange(data, monthStart, now);
+        break;
       
       case 'annual':
         const yearStart = new Date();
         yearStart.setFullYear(now.getFullYear() - 1);
-        return this.getFilteredDataByDateRange(data, yearStart, now);
+        filteredData = this.getFilteredDataByDateRange(data, yearStart, now);
+        break;
       
       default:
-        return data;
+        filteredData = data;
     }
+    
+    // Now apply more specific filters if provided
+    if (filters.period === 'annual' && filters.selectedMonth !== undefined) {
+      filteredData = filteredData.filter(item => {
+        const itemDate = new Date(item.date);
+        return itemDate.getMonth() === filters.selectedMonth;
+      });
+    }
+    
+    if (filters.period === 'monthly' && filters.selectedDayOfMonth !== undefined) {
+      filteredData = filteredData.filter(item => {
+        const itemDate = new Date(item.date);
+        return itemDate.getDate() === filters.selectedDayOfMonth;
+      });
+    }
+    
+    if (filters.period === 'weekly' && filters.selectedDay !== undefined) {
+      filteredData = filteredData.filter(item => {
+        const itemDate = new Date(item.date);
+        // getDay() returns 0 for Sunday, so we need to adjust to match your weekdays array
+        const adjustedDay = itemDate.getDay() === 0 ? 6 : itemDate.getDay() - 1;
+        return adjustedDay === filters.selectedDay;
+      });
+    }
+    
+    return filteredData;
   }
   
   private getFilteredDataByDateRange(data: VisitorData[], startDate: Date, endDate: Date): VisitorData[] {
-    // S'assurer que les dates sont à minuit pour une comparaison correcte
     startDate.setHours(0, 0, 0, 0);
     endDate.setHours(23, 59, 59, 999);
     
-    // Filtrer les données dans la plage de dates
     return data.filter(item => {
       const itemDate = new Date(item.date);
       return itemDate >= startDate && itemDate <= endDate;
     });
+  }
+
+  getEnvironmentConfig(): EnvironmentConfig {
+    return this.envConfig;
   }
 }

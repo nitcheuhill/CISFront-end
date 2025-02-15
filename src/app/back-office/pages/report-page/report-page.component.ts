@@ -20,15 +20,14 @@ export class ReportPageComponent implements OnInit, OnDestroy {
   @ViewChild('chartCanvas', { static: false }) chartCanvas!: ElementRef;
   
   private chart: Chart | null = null;
-  private subscription: Subscription | null = null;
-  // Assurez-vous de déclarer ces propriétés
-private dataSubscription: Subscription | null = null;
-private totalSubscription: Subscription | null = null;
+  private dataSubscription: Subscription | null = null;
+  private totalSubscription: Subscription | null = null;
 
   totalVisitors: number = 0;
+  filteredVisitors: number = 0;  // Add this to show filtered visitor count
   selectedPeriod: PeriodType = 'annual';
   selectedMonth: number = new Date().getMonth();
-  selectedDay: number = new Date().getDay();
+  selectedDay: number = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1; // Adjust for Monday start
   selectedDayOfMonth: number = new Date().getDate();
   
   periods: { value: PeriodType; label: string }[] = [
@@ -59,23 +58,21 @@ private totalSubscription: Subscription | null = null;
 
   ngOnInit() {
     this.checkScreenSize();
-     // Souscrire au service pour obtenir les données quotidiennes
-  this.dataSubscription = this.visitorService.getVisitorData().subscribe(data => {
-    this.updateChart();
-  });
-  
-  // Souscrire au service pour obtenir le nombre total de visiteurs
-  this.totalSubscription = this.visitorService.getTotalVisitors().subscribe(total => {
-    this.totalVisitors = total;
-  });
+    this.dataSubscription = this.visitorService.getVisitorData().subscribe(data => {
+      this.updateChart();
+    });
+    
+    this.totalSubscription = this.visitorService.getTotalVisitors().subscribe(total => {
+      this.totalVisitors = total;
+    });
   }
 
   ngOnDestroy() {
     this.dataSubscription?.unsubscribe();
-  this.totalSubscription?.unsubscribe();
-  if (this.chart) {
-    this.chart.destroy();
-  }
+    this.totalSubscription?.unsubscribe();
+    if (this.chart) {
+      this.chart.destroy();
+    }
   }
 
   changePeriod(period: PeriodType) {
@@ -115,7 +112,18 @@ private totalSubscription: Subscription | null = null;
       this.chart.destroy();
     }
 
-    const data = this.visitorService.getFilteredData(this.selectedPeriod);
+    // Pass all filter parameters to the service
+    const filterParams = {
+      period: this.selectedPeriod,
+      selectedMonth: this.selectedMonth,
+      selectedDay: this.selectedDay,
+      selectedDayOfMonth: this.selectedDayOfMonth
+    };
+    
+    const data = this.visitorService.getFilteredData(filterParams);
+    
+    // Calculate total filtered visitors
+    this.filteredVisitors = data.reduce((total, item) => total + item.count, 0);
     
     const gradientFill = ctx.createLinearGradient(0, 0, 0, 400);
     gradientFill.addColorStop(0, 'rgba(96, 158, 206, 1)');
@@ -144,7 +152,7 @@ private totalSubscription: Subscription | null = null;
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false  // Désactiver complètement l'affichage de la légende
+            display: false
           },
         },
         scales: {
