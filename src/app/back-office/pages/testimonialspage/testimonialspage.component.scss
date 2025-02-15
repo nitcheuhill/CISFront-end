@@ -119,3 +119,10 @@
       }
     }
   }
+
+  .testimonialblock{
+    height: 76vh !important;
+    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }

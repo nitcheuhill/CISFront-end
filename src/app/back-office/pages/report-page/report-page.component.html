@@ -1,0 +1,50 @@
+<div class="container" *ngIf="!shouldShowNotAvailable">
+    <!-- Left panel -->
+    <div class="details-panel">
+        <div class="stats-container">
+            <h2 class="head">Statistiques visite du site</h2>
+            <div class="filter-buttons">
+                <button *ngFor="let period of periods" [class.active]="selectedPeriod === period.value"
+                    (click)="changePeriod(period.value)">
+                    {{ period.label }}
+                </button>
+            </div>
+            <h2>{{ totalVisitors }} Nouveaux Visiteurs</h2>
+    
+            <div class="chart-container">
+                <canvas #chartCanvas></canvas>
+            </div>
+    
+            <div class="period-labels" *ngIf="selectedPeriod === 'annual'">
+                <button *ngFor="let month of months; let i = index" 
+                        [class.active]="selectedMonth === i"
+                        (click)="selectMonth(i)">
+                    {{ month }}
+                </button>
+            </div>
+            
+            <div class="period-labels" *ngIf="selectedPeriod === 'weekly'">
+                <button *ngFor="let day of weekdays; let i = index" 
+                        [class.active]="selectedDay === i"
+                        (click)="selectDay(i)">
+                    {{ day }}
+                </button>
+            </div>
+            
+            <div class="period-labels" *ngIf="selectedPeriod === 'monthly'">
+                <button *ngFor="let day of getDaysInMonth(); let i = index" 
+                        [class.active]="selectedDayOfMonth === i + 1"
+                        (click)="selectDayOfMonth(i + 1)">
+                    {{ i + 1 }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right panel -->
+    <div class="quotes-list">
+
+    </div>
+</div>
+
+<app-not-available *ngIf="shouldShowNotAvailable"></app-not-available>
