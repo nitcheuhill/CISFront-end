@@ -140,8 +140,8 @@ export class ReportPageComponent implements OnInit, OnDestroy {
           backgroundColor: gradientFill,
           fill: true,
           tension: 0.6,
-          pointBackgroundColor: 'rgba(17, 110, 182, 1)',
-          pointBorderColor: '#fff',
+          pointBackgroundColor: 'white',
+          pointBorderColor: 'rgba(17, 110, 182, 1)',
           pointBorderWidth: 2,
           pointRadius: 4,
           pointHoverRadius: 6
@@ -154,6 +154,16 @@ export class ReportPageComponent implements OnInit, OnDestroy {
           legend: {
             display: false
           },
+          tooltip: {
+            intersect: false, // Assure que la ligne s'affiche même si on ne survole pas directement le point
+            mode: 'index', // Garde la ligne verticale lors du survol
+            callbacks: {}, 
+            backgroundColor: 'rgba(255, 255, 255, 0.8)', // Personnalisation du tooltip (optionnel)
+            borderColor: 'rgba(17, 110, 182, 1)', // Bordure du tooltip
+            bodyColor:  'rgba(17, 110, 182, 1)',
+            borderWidth: 1,
+            
+          }
         },
         scales: {
           y: {
@@ -166,7 +176,7 @@ export class ReportPageComponent implements OnInit, OnDestroy {
               }
             },
             grid: {
-              color: 'rgba(200, 200, 200, 0.2)'
+              display: false
             },
             border: {
               display: false
@@ -187,6 +197,10 @@ export class ReportPageComponent implements OnInit, OnDestroy {
               color: 'rgba(200, 200, 200, 0.5)'
             }
           }
+        },
+        interaction: {
+          mode: 'index', // Active la ligne verticale au survol
+          intersect: false // Permet d'afficher la ligne même si on ne survole pas le point exact
         }
       }
     };
