@@ -25,8 +25,10 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "chart.js": "^4.4.7",
     "firebase": "^11.3.1",
+    "gsap": "^3.12.7",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
+    "split-type": "^0.3.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
