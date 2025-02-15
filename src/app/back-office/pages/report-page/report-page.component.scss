@@ -74,9 +74,28 @@
   }
   
   button.active {
-    background: rgba(17, 110, 182, 1);
+    background: rgba(231, 241, 248, 1);
+    color: rgba(17, 110, 182, 1);
+    border: none;
+  }
+  .buttonaxisy.active {
+    background: rgba(17, 110, 182, 1)!important;
     color: white;
     border: none;
+  }
+  .buttonaxisy {
+    padding: 5px 16px;
+    border: none;
+    background: white;
+    color: rgba(17, 110, 182, 1);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+    
+    &:hover {
+      background: rgba(231, 241, 248, 0.5);
+    }
   }
   
   .chart-container {
@@ -88,7 +107,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 2px;
-    margin: 20px 2rem;
+    margin: 20px 1rem;
     
     button {
       padding: 4px 12px;

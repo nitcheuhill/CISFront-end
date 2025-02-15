@@ -16,7 +16,7 @@
             </div>
     
             <div class="period-labels" *ngIf="selectedPeriod === 'annual'">
-                <button *ngFor="let month of months; let i = index" 
+                <button  class="buttonaxisy" *ngFor="let month of months; let i = index" 
                         [class.active]="selectedMonth === i"
                         (click)="selectMonth(i)">
                     {{ month }}
@@ -24,7 +24,7 @@
             </div>
             
             <div class="period-labels" *ngIf="selectedPeriod === 'weekly'">
-                <button *ngFor="let day of weekdays; let i = index" 
+                <button  class="buttonaxisy" *ngFor="let day of weekdays; let i = index" 
                         [class.active]="selectedDay === i"
                         (click)="selectDay(i)">
                     {{ day }}
@@ -32,7 +32,7 @@
             </div>
             
             <div class="period-labels" *ngIf="selectedPeriod === 'monthly'">
-                <button *ngFor="let day of getDaysInMonth(); let i = index" 
+                <button class="buttonaxisy" *ngFor="let day of getDaysInMonth(); let i = index" 
                         [class.active]="selectedDayOfMonth === i + 1"
                         (click)="selectDayOfMonth(i + 1)">
                     {{ i + 1 }}
