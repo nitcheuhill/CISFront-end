@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CrudUserService,User } from '../../sevices/crud-user.service';
@@ -14,6 +14,8 @@ import { ToastService } from '../../sevices/toast.service';
 export class EditAccessModalComponent implements OnInit {
   @Input() visible: boolean = false;
   @Input() user!: User;
+  @Output() visibleChange = new EventEmitter<boolean>();
+
   userCopy!: User;
   
   constructor(
@@ -28,9 +30,25 @@ export class EditAccessModalComponent implements OnInit {
   resetUserCopy(): void {
     this.userCopy = { ...this.user };
   }
-  
+  formatDate(date: Date | any): string {
+    if (!date) return '';
+    
+    const d = new Date(date);
+    const day = d.getDate().toString().padStart(2, '0');
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    const year = d.getFullYear();
+    
+    return `${day} ${this.getMonthName(d.getMonth())} ${year}`;
+  }
+
+  getMonthName(month: number): string {
+    const months = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+    return months[month];
+  }
+
   close(): void {
     this.visible = false;
+    this.visibleChange.emit(false);
   }
   
   closeModal(event: Event): void {
@@ -48,6 +66,7 @@ export class EditAccessModalComponent implements OnInit {
       }
       
       await this.crudUserService.updateUser(this.user.id, {
+        statut: this.userCopy.statut,
         creationArticle: this.userCopy.creationArticle,
         creationRealisation: this.userCopy.creationRealisation,
         modificationArticle: this.userCopy.modificationArticle,

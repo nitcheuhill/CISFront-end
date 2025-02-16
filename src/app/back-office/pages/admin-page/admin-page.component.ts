@@ -107,5 +107,10 @@ openEditAccessModal(user: User): void {
   closeModal() {
     this.showModal = false;
   }
+  onEditModalClosed() {
+    this.showEditAccessModal = false;
+    this.selectedUser = null;
+    this.loadUsers(); // Recharger les utilisateurs après la fermeture
+  }
 
 }

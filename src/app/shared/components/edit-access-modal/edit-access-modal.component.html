@@ -19,13 +19,28 @@
                         <div>
                             <div class="user-details">
                                 <h3>{{ user.prenom }} {{ user.nom }}</h3>
-                                <span><img src="/images/AdminPageAssets/user-tag.svg" alt="Admins"> {{ user.statut }}</span>
+                                <span><img src="/images/AdminPageAssets/user-tag.svg" alt="Admins"> {{ user.statut
+                                    }}</span>
+                                <!-- Ajouter après le span qui affiche le statut actuel -->
+                                <div class="edit-status">
+                                    <label for="statut">Modifier le statut:</label>
+                                    <div class="select-wrapper">
+                                        <select id="statut" [(ngModel)]="userCopy.statut" class="form-control">
+                                            <option value="administrateur">Administrateur</option>
+                                            <option value="editeur">Éditeur</option>
+                                            <option value="realisateur">Réalisateur</option>
+                                            <option value="inspecteur">Inspecteur</option>
+                                            <option value="sousadmin">Sous-admin</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="block3">
                     <div class="user-actions">
+                        <span>Membre depuis le {{ formatDate(user.createdAt) }}</span>
                         <button class="btn-action suspend" [ngClass]="{'inactive': !userCopy.isActivated}"
                             (click)="toggleActivation()">
                             <img src="/images/AdminPageAssets/profile-delete.svg" alt="Admins">
@@ -72,7 +87,8 @@
 
         <div class="modal-footer">
             <div class="action-buttons">
-                <button class="btn-cancel" (click)="close()"> <img src="/images/AdminPageAssets/close-circle.png" alt="Admins"> Annuler</button>
+                <button class="btn-cancel" (click)="close()"> <img src="/images/AdminPageAssets/close-circle.png"
+                        alt="Admins"> Annuler</button>
                 <button class="btn-save" (click)="saveChanges()">Enregistrer les modifications</button>
             </div>
         </div>

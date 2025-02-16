@@ -24,7 +24,7 @@
           <div *ngFor="let user of users" class="user-row">
             <div class="col-profil">
               <div class="user-avatar">
-                <img [src]="user.photo || '/assets/images/default-avatar.jpg'" alt="{{ user.email }}">
+                <img [src]="user.photo || '/icons/iconsMissionGrid/UnknowUser.jpg'" alt="{{ user.email }}">
               </div>
               <div class="user-info">
                 <div class="user-name">{{ user.nom}} {{ user.prenom}}</div>
@@ -61,5 +61,6 @@
 <app-edit-access-modal 
   *ngIf="selectedUser"
   [visible]="showEditAccessModal"
-  [user]="selectedUser">
+  [user]="selectedUser"
+  (visibleChange)="onEditModalClosed()">
 </app-edit-access-modal>
