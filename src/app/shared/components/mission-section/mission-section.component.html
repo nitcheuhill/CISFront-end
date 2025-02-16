@@ -1,6 +1,6 @@
 <section class="mission-section">
     <h2>Lorem Ipsum</h2>
-    <p>
+    <p #textAnimation>
       Nous disposons d’une équipe technique expérimentée qui exécute avec rigueur leurs
       tâches suivant une méthodologie éprouvée et une éthique de travail sans faille dans
       le but d’offrir des services de qualité supérieur à tous nos clients. Nous vous
@@ -8,7 +8,7 @@
     </p>
   
     <div class="missions">
-      <div class="mission" *ngFor="let mission of missions">
+      <div class="mission" *ngFor="let mission of missions" #services>
         <div class="icon">
           <img [src]="mission.icon" [alt]="mission">
         </div>
