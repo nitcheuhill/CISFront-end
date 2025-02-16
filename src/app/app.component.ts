@@ -7,23 +7,32 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import Lenis from '@studio-freight/lenis';
 
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { AuthService } from './shared/sevices/auth.service';
+import { NavbarbackofficeComponent } from "./shared/components/navbarbackoffice/navbarbackoffice.component";
+import { ToastComponent } from "./shared/components/toast/toast.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule,NavbarComponent,CommonModule,LoaderComponent,FooterComponent],
+  imports: [RouterModule, NavbarComponent, CommonModule, LoaderComponent, FooterComponent, NavbarbackofficeComponent, ToastComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
   isLoading$;
+  isBackOffice = false;
 
-  constructor(private router: Router, private loaderService: LoaderService) {
+  constructor(private router: Router, private loaderService: LoaderService,private authService: AuthService) {
     this.isLoading$ = this.loaderService.isLoading;
+    this.router.events.subscribe(() => {
+      this.isBackOffice = this.router.url.startsWith('/back-office'); // Vérifie si on est sur le Backoffice
+    });
   }
 
   ngOnInit() 
   {
-
+    if (!this.authService.isLoggedIn() && this.router.url.includes('/dashboard')) {
+      this.router.navigate(['/login']);
+    }
     const lenis = new Lenis();
     lenis.on('scroll', ($e: any) => {
       // console.log($e);

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { MissionSectionComponent } from '../../../shared/components/mission-section/mission-section.component';
 import { TeamCarouselComponent } from '../../../shared/components/team-carousel/team-carousel.component';
 import { ClientsCarouselComponent } from '../../../shared/components/clients-carousel/clients-carousel.component';
@@ -55,7 +55,6 @@ export class AboutPageComponent implements AfterViewInit {
       opacity: 0
     }, { 
       y: '*',
-      delay: .1,
       opacity: 1,
       ease: 'power1.inOut'
     })
