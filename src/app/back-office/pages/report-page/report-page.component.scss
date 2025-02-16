@@ -100,17 +100,18 @@
   
   .chart-container {
     height: 320px;
+    padding: 0rem 1.2rem;
   }
   
-  .period-labels {
+  .scroll-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2px;
+    justify-content: space-around;
+    gap: 0.2rem;
     margin: 20px 1rem;
     
     button {
-      padding: 4px 12px;
+      padding: 4px 15px;
       border-radius: 20px;
       font-size: 15px;
     }

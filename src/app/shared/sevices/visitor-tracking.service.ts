@@ -1,4 +1,3 @@
-// First, update the VisitorTrackingService.ts to handle more specific filters:
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, addDoc, getDocs, query, where, serverTimestamp } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -28,7 +27,6 @@ interface EnvironmentConfig {
   environment: 'local' | 'staging' | 'production';
 }
 
-// Add a new interface for filter parameters
 interface FilterParams {
   period: 'annual' | 'monthly' | 'weekly';
   selectedMonth?: number;
@@ -104,7 +102,7 @@ export class VisitorTrackingService {
   private async trackVisit(currentPath: string) {
     const today = new Date().toISOString().split('T')[0];
     const browserId = this.getBrowserId();
-    const { source, referrer } = this.getTrafficSource();
+    const { source, referrer } = this.getTrafficSource(); 
     const fullUrl = `${this.envConfig.baseUrl}${currentPath}`;
     
     try {
@@ -181,72 +179,52 @@ export class VisitorTrackingService {
     return this.totalVisitorsSubject.asObservable();
   }
 
-  // Update this method to accept the filter params
   getFilteredData(filters: FilterParams): VisitorData[] {
+    return [...this.visitorsSubject.value].sort((a, b) => 
+      new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+  }
+
+  getPointValue(date: string): number {
+    const data = this.visitorsSubject.value;
+    const point = data.find(item => item.date === date);
+    return point ? point.count : 0;
+  }
+
+  getSelectedDateValue(filters: FilterParams): string | null {
     const now = new Date();
-    const data = [...this.visitorsSubject.value];
-    
-    let filteredData: VisitorData[];
-    
-    // First filter by period
+    let selectedDate: Date | null = null;
+
     switch (filters.period) {
       case 'weekly':
-        const weekStart = new Date();
-        weekStart.setDate(now.getDate() - 7);
-        filteredData = this.getFilteredDataByDateRange(data, weekStart, now);
+        if (filters.selectedDay !== undefined) {
+          selectedDate = this.getDateForWeekday(filters.selectedDay);
+        }
         break;
       
       case 'monthly':
-        const monthStart = new Date();
-        monthStart.setMonth(now.getMonth() - 1);
-        filteredData = this.getFilteredDataByDateRange(data, monthStart, now);
+        if (filters.selectedDayOfMonth !== undefined) {
+          selectedDate = new Date(now.getFullYear(), now.getMonth(), filters.selectedDayOfMonth);
+        }
         break;
       
       case 'annual':
-        const yearStart = new Date();
-        yearStart.setFullYear(now.getFullYear() - 1);
-        filteredData = this.getFilteredDataByDateRange(data, yearStart, now);
+        if (filters.selectedMonth !== undefined) {
+          selectedDate = new Date(now.getFullYear(), filters.selectedMonth, 1);
+        }
         break;
-      
-      default:
-        filteredData = data;
     }
-    
-    // Now apply more specific filters if provided
-    if (filters.period === 'annual' && filters.selectedMonth !== undefined) {
-      filteredData = filteredData.filter(item => {
-        const itemDate = new Date(item.date);
-        return itemDate.getMonth() === filters.selectedMonth;
-      });
-    }
-    
-    if (filters.period === 'monthly' && filters.selectedDayOfMonth !== undefined) {
-      filteredData = filteredData.filter(item => {
-        const itemDate = new Date(item.date);
-        return itemDate.getDate() === filters.selectedDayOfMonth;
-      });
-    }
-    
-    if (filters.period === 'weekly' && filters.selectedDay !== undefined) {
-      filteredData = filteredData.filter(item => {
-        const itemDate = new Date(item.date);
-        // getDay() returns 0 for Sunday, so we need to adjust to match your weekdays array
-        const adjustedDay = itemDate.getDay() === 0 ? 6 : itemDate.getDay() - 1;
-        return adjustedDay === filters.selectedDay;
-      });
-    }
-    
-    return filteredData;
+
+    return selectedDate ? selectedDate.toISOString().split('T')[0] : null;
   }
-  
-  private getFilteredDataByDateRange(data: VisitorData[], startDate: Date, endDate: Date): VisitorData[] {
-    startDate.setHours(0, 0, 0, 0);
-    endDate.setHours(23, 59, 59, 999);
-    
-    return data.filter(item => {
-      const itemDate = new Date(item.date);
-      return itemDate >= startDate && itemDate <= endDate;
-    });
+
+  private getDateForWeekday(weekday: number): Date {
+    const now = new Date();
+    const currentDay = now.getDay();
+    const distance = weekday - (currentDay === 0 ? 6 : currentDay - 1);
+    const date = new Date(now);
+    date.setDate(date.getDate() + distance);
+    return date;
   }
 
   getEnvironmentConfig(): EnvironmentConfig {

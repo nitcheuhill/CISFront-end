@@ -1,1 +1,65 @@
-<p>admin-page works!</p>
+<div class="container" *ngIf="!shouldShowNotAvailable">
+<div class="block1">
+    <div class="block11">
+    </div>
+    <div class="block12">
+        <button class="add-button" (click)="openModal()" >
+            <img src="/images/AdminPageAssets/add-circle.svg" alt="ajouter"> Ajouter un utilisateur
+        </button>
+    </div>
+</div>
+<section class="block2">
+    <span class="btn-access1">Utilisateurs</span>
+    <div class="users-container">
+        <div class="users-header">
+          <div class="col-profil">Profils</div>
+          <div class="col-publication">Publication</div>
+          <div class="col-acces">Accès</div>
+          <div class="col-statut">Statut</div>
+          <div class="col-actions">Actions</div>
+          <div class="col-options"></div>
+        </div>
+  
+        <div class="users-list">
+          <div *ngFor="let user of users" class="user-row">
+            <div class="col-profil">
+              <div class="user-avatar">
+                <img [src]="user.photo || '/assets/images/default-avatar.jpg'" alt="{{ user.email }}">
+              </div>
+              <div class="user-info">
+                <div class="user-name">{{ user.nom}} {{ user.prenom}}</div>
+                <div class="user-role">{{ user.statut }}</div>
+              </div>
+            </div>
+            <div class="col-publication">{{ formatDate(user.createdAt) }}</div>
+            <div class="col-acces">{{ countAccess(user) }}/6</div>
+            <div class="col-statut">
+              <span class="status-badge" [ngClass]="{'active': user.isActivated, 'inactive': !user.isActivated}">
+                {{ user.isActivated ? 'Actif' : 'Inactif' }}
+              </span>
+            </div>
+            <div class="col-actions">
+              <button class="btn-access" (click)="openEditAccessModal(user)">Modifier les accès</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</section>
+</div>
+
+<app-not-available *ngIf="shouldShowNotAvailable"></app-not-available>
+
+  <!-- Modal d'ajout d'utilisateur -->
+  <app-create-user 
+  *ngIf="showModal"
+  (close)="closeModal()"
+>
+</app-create-user>
+
+<!-- À la fin du template, ajoutez ceci -->
+<app-edit-access-modal 
+  *ngIf="selectedUser"
+  [visible]="showEditAccessModal"
+  [user]="selectedUser">
+</app-edit-access-modal>

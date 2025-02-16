@@ -1,0 +1,80 @@
+<div class="modal-backdrop" *ngIf="visible" (click)="closeModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <img src="/images/AdminPageAssets/security-safe.svg" alt="Admins">
+            <h2>Modifier les accès</h2>
+
+        </div>
+
+        <div class="modal-body">
+            <div class="user-info">
+                <div class="block2">
+                    <div class="block1">
+                        <div>
+                            <div class="user-avatar">
+                                <img [src]="user.photo || '/assets/images/default-avatar.jpg'"
+                                    alt="{{ user.prenom }} {{ user.nom }}">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="user-details">
+                                <h3>{{ user.prenom }} {{ user.nom }}</h3>
+                                <span><img src="/images/AdminPageAssets/user-tag.svg" alt="Admins"> {{ user.statut }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block3">
+                    <div class="user-actions">
+                        <button class="btn-action suspend" [ngClass]="{'inactive': !userCopy.isActivated}"
+                            (click)="toggleActivation()">
+                            <img src="/images/AdminPageAssets/profile-delete.svg" alt="Admins">
+                            {{ userCopy.isActivated ? 'Suspendre l\'utilisateur' : 'Activer l\'utilisateur' }}
+                        </button>
+                        <button class="btn-action delete" (click)="deleteUser()">
+                            <img src="/images/AdminPageAssets/profile-remove.svg" alt="Admins">
+                            Supprimer l'utilisateur</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="access-tabs">
+                <div class="tab active">Actions</div>
+            </div>
+
+            <div class="access-items">
+                <div class="access-item">
+                    <input type="checkbox" id="creationArticle" [(ngModel)]="userCopy.creationArticle">
+                    <label for="creationArticle">Création d'article</label>
+                </div>
+                <div class="access-item">
+                    <input type="checkbox" id="creationRealisation" [(ngModel)]="userCopy.creationRealisation">
+                    <label for="creationRealisation">Création de réalisation</label>
+                </div>
+                <div class="access-item">
+                    <input type="checkbox" id="modificationArticle" [(ngModel)]="userCopy.modificationArticle">
+                    <label for="modificationArticle">Modification d'article</label>
+                </div>
+                <div class="access-item">
+                    <input type="checkbox" id="modificationRealisation" [(ngModel)]="userCopy.modificationRealisation">
+                    <label for="modificationRealisation">Modification de réalisation</label>
+                </div>
+                <div class="access-item">
+                    <input type="checkbox" id="gestionDevis" [(ngModel)]="userCopy.gestionDevis">
+                    <label for="gestionDevis">Gestion de dévis</label>
+                </div>
+                <div class="access-item">
+                    <input type="checkbox" id="gestionTemoignage" [(ngModel)]="userCopy.gestionTemoignage">
+                    <label for="gestionTemoignage">Gestion de témoignage</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="action-buttons">
+                <button class="btn-cancel" (click)="close()"> <img src="/images/AdminPageAssets/close-circle.png" alt="Admins"> Annuler</button>
+                <button class="btn-save" (click)="saveChanges()">Enregistrer les modifications</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,46 +1,72 @@
 <div class="container" *ngIf="!shouldShowNotAvailable">
     <!-- Left panel -->
-    <div class="details-panel">
+    <div class="details-panel" >
         <div class="stats-container">
+            <!-- En-tête -->
             <h2 class="head">Statistiques visite du site</h2>
+            
+            <!-- Boutons de filtrage par période -->
             <div class="filter-buttons">
-                <button *ngFor="let period of periods" [class.active]="selectedPeriod === period.value"
-                    (click)="changePeriod(period.value)">
+                <button 
+                    *ngFor="let period of periods" 
+                    [class.active]="selectedPeriod === period.value"
+                    (click)="changePeriod(period.value)"
+                    class="period-button"
+                >
                     {{ period.label }}
                 </button>
             </div>
-            <h2>{{ filteredVisitors }} Nouveaux Visiteurs</h2>
+
+            <!-- Affichage du nombre total de visiteurs -->
+            <div class="visitors-count">
+                <h2>{{ totalVisitors }} Visiteurs</h2>
+            </div>
     
+            <!-- Conteneur du graphique -->
             <div class="chart-container">
                 <canvas #chartCanvas></canvas>
             </div>
     
-            <div class="period-labels" *ngIf="selectedPeriod === 'annual'">
-                <button  class="buttonaxisy" *ngFor="let month of months; let i = index" 
+            <!-- Labels de période (basés sur la période sélectionnée) -->
+            <div class="period-labels">
+                <!-- Labels annuels (mois) -->
+                <div class="scroll-container" *ngIf="selectedPeriod === 'annual'">
+                    <button 
+                        *ngFor="let month of months; let i = index" 
+                        class="buttonaxisy"
                         [class.active]="selectedMonth === i"
-                        (click)="selectMonth(i)">
-                    {{ month }}
-                </button>
-            </div>
-            
-            <div class="period-labels" *ngIf="selectedPeriod === 'weekly'">
-                <button  class="buttonaxisy" *ngFor="let day of weekdays; let i = index" 
+                        (click)="selectMonth(i)"
+                    >
+                        {{ month }}
+                    </button>
+                </div>
+                
+                <!-- Labels hebdomadaires (jours) -->
+                <div class="scroll-container" *ngIf="selectedPeriod === 'weekly'">
+                    <button 
+                        *ngFor="let day of weekdays; let i = index" 
+                        class="buttonaxisy"
                         [class.active]="selectedDay === i"
-                        (click)="selectDay(i)">
-                    {{ day }}
-                </button>
-            </div>
-            
-            <div class="period-labels" *ngIf="selectedPeriod === 'monthly'">
-                <button class="buttonaxisy" *ngFor="let day of getDaysInMonth(); let i = index" 
+                        (click)="selectDay(i)"
+                    >
+                        {{ day }}
+                    </button>
+                </div>
+                
+                <!-- Labels mensuels (dates) -->
+                <div class="scroll-container" *ngIf="selectedPeriod === 'monthly'">
+                    <button 
+                        *ngFor="let day of getDaysInMonth(); let i = index" 
+                        class="buttonaxisy"
                         [class.active]="selectedDayOfMonth === i + 1"
-                        (click)="selectDayOfMonth(i + 1)">
-                    {{ i + 1 }}
-                </button>
+                        (click)="selectDayOfMonth(i + 1)"
+                    >
+                        {{ i + 1 }}
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-
     <!-- Right panel -->
     <div class="quotes-list">
 

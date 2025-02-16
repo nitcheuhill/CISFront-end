@@ -5,8 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { VisitorTrackingService } from '../../../shared/sevices/visitor-tracking.service';
 import { Subscription } from 'rxjs';
 import { Chart, registerables, ChartConfiguration } from 'chart.js';
+import annotationPlugin from 'chartjs-plugin-annotation';
 
-Chart.register(...registerables);
+Chart.register(...registerables, annotationPlugin);
+
 type PeriodType = 'annual' | 'monthly' | 'weekly';
 
 @Component({
@@ -24,10 +26,9 @@ export class ReportPageComponent implements OnInit, OnDestroy {
   private totalSubscription: Subscription | null = null;
 
   totalVisitors: number = 0;
-  filteredVisitors: number = 0;  // Add this to show filtered visitor count
   selectedPeriod: PeriodType = 'annual';
   selectedMonth: number = new Date().getMonth();
-  selectedDay: number = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1; // Adjust for Monday start
+  selectedDay: number = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1;
   selectedDayOfMonth: number = new Date().getDate();
   
   periods: { value: PeriodType; label: string }[] = [
@@ -44,21 +45,27 @@ export class ReportPageComponent implements OnInit, OnDestroy {
     'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'
   ];
   
-  years: number[] = Array.from({ length: 5 }, (_, i) => 2025 + i);
-  
   shouldShowNotAvailable = false;
   
   constructor(private visitorService: VisitorTrackingService) {}
   
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize() {
     this.checkScreenSize();
     this.updateChart();
   }
 
   ngOnInit() {
     this.checkScreenSize();
-    this.dataSubscription = this.visitorService.getVisitorData().subscribe(data => {
+    this.initSubscriptions();
+  }
+
+  ngOnDestroy() {
+    this.cleanupSubscriptions();
+  }
+
+  private initSubscriptions() {
+    this.dataSubscription = this.visitorService.getVisitorData().subscribe(() => {
       this.updateChart();
     });
     
@@ -67,7 +74,7 @@ export class ReportPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  private cleanupSubscriptions() {
     this.dataSubscription?.unsubscribe();
     this.totalSubscription?.unsubscribe();
     if (this.chart) {
@@ -82,17 +89,30 @@ export class ReportPageComponent implements OnInit, OnDestroy {
   
   selectMonth(index: number) {
     this.selectedMonth = index;
+    this.updateSelectedPoint();
     this.updateChart();
   }
   
   selectDay(index: number) {
     this.selectedDay = index;
+    this.updateSelectedPoint();
     this.updateChart();
   }
   
   selectDayOfMonth(day: number) {
     this.selectedDayOfMonth = day;
+    this.updateSelectedPoint();
     this.updateChart();
+  }
+
+  private updateSelectedPoint() {
+    const filterParams = {
+      period: this.selectedPeriod,
+      selectedMonth: this.selectedMonth,
+      selectedDay: this.selectedDay,
+      selectedDayOfMonth: this.selectedDayOfMonth
+    };
+    return this.visitorService.getSelectedDateValue(filterParams);
   }
   
   getDaysInMonth(): number[] {
@@ -102,34 +122,15 @@ export class ReportPageComponent implements OnInit, OnDestroy {
     return Array.from({ length: daysInMonth }, (_, i) => i + 1);
   }
 
-  private updateChart() {
-    if (!this.chartCanvas) return;
-    
-    const ctx = this.chartCanvas.nativeElement.getContext('2d');
-    if (!ctx) return;
-
-    if (this.chart) {
-      this.chart.destroy();
-    }
-
-    // Pass all filter parameters to the service
-    const filterParams = {
-      period: this.selectedPeriod,
-      selectedMonth: this.selectedMonth,
-      selectedDay: this.selectedDay,
-      selectedDayOfMonth: this.selectedDayOfMonth
-    };
-    
-    const data = this.visitorService.getFilteredData(filterParams);
-    
-    // Calculate total filtered visitors
-    this.filteredVisitors = data.reduce((total, item) => total + item.count, 0);
-    
+  private createChartGradient(ctx: CanvasRenderingContext2D) {
     const gradientFill = ctx.createLinearGradient(0, 0, 0, 400);
     gradientFill.addColorStop(0, 'rgba(96, 158, 206, 1)');
     gradientFill.addColorStop(1, 'rgba(255, 255, 255, 1)');
+    return gradientFill;
+  }
 
-    const chartConfig: ChartConfiguration = {
+  private createChartConfig(data: any[], selectedPoint: string | null, ctx: CanvasRenderingContext2D): ChartConfiguration {
+    return {
       type: 'line',
       data: {
         labels: data.map(d => d.date),
@@ -137,7 +138,7 @@ export class ReportPageComponent implements OnInit, OnDestroy {
           label: 'Visiteurs Uniques',
           data: data.map(d => d.count),
           borderColor: 'rgba(17, 110, 182, 1)',
-          backgroundColor: gradientFill,
+          backgroundColor: this.createChartGradient(ctx),
           fill: true,
           tension: 0.6,
           pointBackgroundColor: 'white',
@@ -155,14 +156,35 @@ export class ReportPageComponent implements OnInit, OnDestroy {
             display: false
           },
           tooltip: {
-            intersect: false, // Assure que la ligne s'affiche même si on ne survole pas directement le point
-            mode: 'index', // Garde la ligne verticale lors du survol
-            callbacks: {}, 
-            backgroundColor: 'rgba(255, 255, 255, 0.8)', // Personnalisation du tooltip (optionnel)
-            borderColor: 'rgba(17, 110, 182, 1)', // Bordure du tooltip
-            bodyColor:  'rgba(17, 110, 182, 1)',
+            intersect: false,
+            mode: 'index',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderColor: 'rgba(17, 110, 182, 1)',
+            bodyColor: 'rgba(17, 110, 182, 1)',
             borderWidth: 1,
-            
+          },
+          annotation: {
+            annotations: selectedPoint ? {
+              line1: {
+                type: 'line',
+                xMin: selectedPoint,
+                xMax: selectedPoint,
+                yMin: 0,
+                yMax: 'max',
+                borderColor: 'rgba(17, 110, 182, 1)',
+                borderWidth: 2,
+                borderDash: [5, 5],
+                label: {
+                  content: `${this.visitorService.getPointValue(selectedPoint)} visiteurs`,
+                  display: true,
+                  position: 'center',
+                  backgroundColor: 'rgba(17, 110, 182, 1)',
+                  color: 'white',
+                  padding: 8,
+                  borderRadius: 4
+                }
+              }
+            } : {}
           }
         },
         scales: {
@@ -199,16 +221,38 @@ export class ReportPageComponent implements OnInit, OnDestroy {
           }
         },
         interaction: {
-          mode: 'index', // Active la ligne verticale au survol
-          intersect: false // Permet d'afficher la ligne même si on ne survole pas le point exact
+          mode: 'index',
+          intersect: false
         }
       }
     };
+  }
+
+  private updateChart() {
+    if (!this.chartCanvas) return;
     
+    const ctx = this.chartCanvas.nativeElement.getContext('2d');
+    if (!ctx) return;
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    const filterParams = {
+      period: this.selectedPeriod,
+      selectedMonth: this.selectedMonth,
+      selectedDay: this.selectedDay,
+      selectedDayOfMonth: this.selectedDayOfMonth
+    };
+
+    const data = this.visitorService.getFilteredData(filterParams);
+    const selectedPoint = this.updateSelectedPoint();
+    
+    const chartConfig = this.createChartConfig(data, selectedPoint, ctx);
     this.chart = new Chart(ctx, chartConfig);
   }
 
-  checkScreenSize() {
+  private checkScreenSize() {
     this.shouldShowNotAvailable = window.innerWidth <= 900;
   }
 }

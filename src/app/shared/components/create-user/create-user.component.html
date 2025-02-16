@@ -1,0 +1,139 @@
+<div class="modal-container">
+    <div class="modal-content">
+        <div class="form-field">
+            <div class="image-preview">
+              <img class="imgselect" [src]="selectedPhoto || '/icons/iconsMissionGrid/UnknowUser.jpg'" alt="Aperçu de l'image">
+              <button class="select" (click)="triggerFileInput()"><i class="fa-solid fa-plus"></i></button>
+              <input type="file" id="image" (change)="onPhotoChange($event)" style="display: none;">
+            </div>
+          </div>
+
+        <div class="title">
+            <h2 class="modal-title">
+
+                <img src="/images/AdminPageAssets/user-octagon.svg" alt="Admins">
+                <span class="icon-user">
+                    Ajouter un utilisateur
+                </span>
+            </h2>
+        </div>
+
+
+        <form [formGroup]="userForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nom">Noms <span class="required">*</span></label>
+                    <input type="text" id="nom" formControlName="nom" placeholder="Saisissez votre nom"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="nom">Prénoms <span class="required">*</span></label>
+                    <input type="text" id="prenom" formControlName="prenom" placeholder="Saisissez votre prénom"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">e-mail <span class="required">*</span></label>
+                    <input type="email" id="email" formControlName="email" placeholder="Saisissez votre e-mail"
+                        class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="statut">Statut <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select id="statut" formControlName="statut" class="form-control">
+                            <option value="" disabled selected>Choisir le statut</option>
+                            <option value="administrateur">Administrateur</option>
+                            <option value="editeur">Éditeur</option>
+                            <option value="realisateur">Réalisateur</option>
+                            <option value="inspecteur">Inspecteur</option>
+                            <option value="sousadmin">Sous-admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe <span class="required">*</span></label>
+                    <input type="text" id="password" formControlName="password" placeholder="Saisissez le mot de passe"
+                        class="form-control">
+                </div>
+            </div>
+
+            <div class="access-section">
+                <h3>Accès</h3>
+
+                <div class="access-tabs">
+                    <button type="button" [class.active]="activeTab === 'creation'"
+                        (click)="setActiveTab('creation')">Création</button>
+                    <button type="button" [class.active]="activeTab === 'modification'"
+                        (click)="setActiveTab('modification')">Modification</button>
+                    <button type="button" [class.active]="activeTab === 'gestion'"
+                        (click)="setActiveTab('gestion')">Gestion</button>
+                </div>
+
+                <div *ngIf="activeTab === 'creation'" class="access-options">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="creationArticle">
+                            <span class="checkbox-custom"></span>
+                            Création d'article
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="creationRealisation">
+                            <span class="checkbox-custom"></span>
+                            Création de réalisation
+                        </label>
+                    </div>
+                </div>
+
+                <div *ngIf="activeTab === 'modification'" class="access-options">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="modificationArticle">
+                            <span class="checkbox-custom"></span>
+                            Modification d'article
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="modificationRealisation">
+                            <span class="checkbox-custom"></span>
+                            Modification de réalisation
+                        </label>
+                    </div>
+                </div>
+
+                <div *ngIf="activeTab === 'gestion'" class="access-options">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="gestionDevis">
+                            <span class="checkbox-custom"></span>
+                            Gestion de dévis
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="gestionTemoignage">
+                            <span class="checkbox-custom"></span>
+                            Gestion de témoignage
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" (click)="closeModal()">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.25 4.8075L13.1925 3.75L9 7.9425L4.8075 3.75L3.75 4.8075L7.9425 9L3.75 13.1925L4.8075 14.25L9 10.0575L13.1925 14.25L14.25 13.1925L10.0575 9L14.25 4.8075Z"
+                            fill="#FF3B30" />
+                    </svg>
+                    Annuler
+                </button>
+                <button type="submit" class="btn-submit" [disabled]="!userForm.valid" (click)="onSubmit()">
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
