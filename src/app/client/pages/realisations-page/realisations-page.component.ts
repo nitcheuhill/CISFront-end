@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { RealisationsDataService } from '../../../shared/sevices/realisations-data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +7,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 import { RouterModule, Router } from '@angular/router';
+import SplitType from 'split-type';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { zip } from 'rxjs';
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-realisations-page',
@@ -15,7 +20,7 @@ import { RouterModule, Router } from '@angular/router';
   templateUrl: './realisations-page.component.html',
   styleUrl: './realisations-page.component.scss'
 })
-export class RealisationsPageComponent implements OnInit {
+export class RealisationsPageComponent implements OnInit, AfterViewInit {
   realisations: any[] = [];
   filteredRealisations: any[] = [];
   paginatedRealisations: any[] = [];
@@ -33,6 +38,11 @@ export class RealisationsPageComponent implements OnInit {
   totalPages: number = 0;
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
+
+  @ViewChild('title') titleAbout!: ElementRef;
+  @ViewChild('paragraph') description!: ElementRef;
+  @ViewChildren('sectionText') sectionText!: QueryList<ElementRef>;
+  @ViewChildren('sectionImages') sectionImages!: QueryList<ElementRef>;
   
 
   constructor(private dataRealisationService: RealisationsDataService,private router: Router ) { }
@@ -169,5 +179,91 @@ export class RealisationsPageComponent implements OnInit {
       this.updatePagination();
       this.isLoading = false;
     }, 500);
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+
+      const texts = this.sectionText.toArray();
+      const images = this.sectionImages.toArray();
+
+      const title = new SplitType(this.titleAbout.nativeElement, { types: 'chars' });
+      const paragraph = new SplitType(this.description.nativeElement, { types: 'words' });
+
+      const TL = gsap.timeline();
+      TL
+      .fromTo(title.chars, {
+        y: 30,
+        opacity: 0
+      }, { 
+        y: '*',
+        delay: .5,
+        stagger: { amount: .1 },
+        opacity: 1,
+        ease: 'power1.inOut'
+      })
+      .fromTo(paragraph.words, {
+        y: 30,
+        opacity: 0
+      }, { 
+        y: '*',
+        delay: 1,
+        stagger: { amount: .3 },
+        opacity: 1,
+        ease: 'power1.inOut'
+      }, "<-.3")
+      .fromTo(this.sectionImages.toArray()[0].nativeElement, {
+        y: 30,
+        opacity: 0
+      }, { 
+        y: '*',
+        delay: 1,
+        stagger: { amount: .3 },
+        opacity: 1,
+        ease: 'power1.inOut'
+      }, "<-.3")
+
+      if (texts.length === images.length) {
+        texts.forEach((text, i) => {
+          
+          if(i !== 0) {
+            const image = images[i]; 
+
+            gsap.fromTo(
+              text.nativeElement,
+              { opacity: 0, y: 50 },
+              {
+                opacity: 1,
+                y: 0,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: text.nativeElement,
+                  start: "top 80%",
+                  end: "top 30%",
+                  scrub: true,
+                }
+              }
+            );
+
+            gsap.fromTo(
+              image.nativeElement,
+              { opacity: 0, y: 100 },
+              {
+                opacity: 1,
+                y: 0,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: image.nativeElement,
+                  start: "top 80%",
+                  end: "top 30%",
+                  scrub: true,
+                }
+              }
+            );
+          }
+        });
+      }
+    }, 1000); 
+
   }
 }

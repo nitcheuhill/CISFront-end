@@ -195,7 +195,7 @@ export class ArticlePageComponent implements AfterViewInit  {
       ease: 'power1.inOut'
     }, "<-.3")
     .fromTo(this.search.nativeElement, {
-      y: 30,
+      y: 20,
       opacity: 0
     }, { 
       y: '*',
@@ -209,7 +209,7 @@ export class ArticlePageComponent implements AfterViewInit  {
       y: '*',
       opacity: 1,
       ease: 'power1.inOut'
-    }, "<.3")
+    }, "<.5")
     .fromTo(this.filterSection.nativeElement, {
       y: 30,
       opacity: 0
