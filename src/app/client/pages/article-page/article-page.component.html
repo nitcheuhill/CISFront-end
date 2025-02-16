@@ -1,12 +1,12 @@
 <section class="header">
     <div class="containerIntro">
-        <h1>Articles</h1>
-        <p>Lorem ipsum dolor sit amet consectetur.
+        <h1 #title>Articles</h1>
+        <p #paragraph>Lorem ipsum dolor sit amet consectetur.
             Egestas nulla est urna ullamcorper duis
             nibh vitae elementumr.</p>
     </div>
     <div class="search-bar">
-        <div class="search-container">
+        <div class="search-container" #search>
             <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un article..." />
             <button (click)="searchArticles()">
                 <img src="/icons/Frame 7.png" alt="Recherche">
@@ -68,7 +68,7 @@
             </div>
 
             <!-- Article principal -->
-            <div *ngIf="mainArticle" class="article-card" (click)="onArticleClick(mainArticle)">
+            <div *ngIf="mainArticle" class="article-card" (click)="onArticleClick(mainArticle)" #sectionArticle>
                 <img [src]="mainArticle.bannerImage" alt="Image de bannière" class="banner-image" />
                 <div class="content">
                     <span class="article-type">{{ mainArticle.type }}</span>
@@ -80,7 +80,6 @@
                             <p class="author-name">Rédigé par <span class="author-span">{{ mainArticle.author.authorName
                                     }}</span></p>
                             <p class="date">{{ mainArticle.date | date: 'dd MMMM yyyy' }}</p>
-                            <!-- Affichage de la date au format souhaité -->
                         </div>
                     </div>
                 </div>
@@ -93,7 +92,7 @@
             <div *ngIf="displayedArticles.length > 0">
                 <div *ngFor="let article of displayedArticles" class="custom-article-container"
                     (click)="onArticleClick(article)">
-                    <div class="custom-article-wrapper">
+                    <div class="custom-article-wrapper" #othersArticles>
                         <img [src]="article.bannerImage" alt="Image de bannière" class="custom-banner-img" />
                         <div class="custom-article-details">
                             <span class="custom-article-type">{{ article.type }}</span>
@@ -134,7 +133,7 @@
 
 
     <div class="blockRight">
-        <section class="filter-section">
+        <section class="filter-section" #filterSection>
             <div class="filter-header">
                 <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
                 <h2>Filtre</h2>
