@@ -12,6 +12,7 @@ export interface User {
   prenom: string;
   nom: string;
   password: string;
+  poste: string;
   statut: string;
   photo?: string;
   creationArticle: boolean;
