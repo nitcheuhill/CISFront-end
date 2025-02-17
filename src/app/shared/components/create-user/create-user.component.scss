@@ -40,10 +40,11 @@
     display: flex;
     gap: 16px;
     margin-bottom: 24px;
+    flex-wrap: wrap;
   }
 
   .form-group {
-    flex: 1;
+    flex: 1 1 150px ;
     input[type="email"]{
         border-radius: 10px;
     }
@@ -130,7 +131,7 @@
     display: grid;
     gap: 12px;
     margin-top: 16px;
-    margin-bottom: 10%;
+    margin-bottom: 1%;
   }
 
   .checkbox-group {

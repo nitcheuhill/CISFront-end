@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { VisitorTrackingService } from './shared/sevices/visitor-tracking.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideFirestore(() => getFirestore()),
     provideAnimations(),
     provideStorage(() => getStorage()),
+    VisitorTrackingService,
   ],
 };

@@ -118,7 +118,7 @@
   }
 
   .btn-access {
-    padding: 8px 12px;
+    padding: 8px 18px;
     background-color: #e0f2fe;
     color: rgba(65, 139, 197, 1);
     border-radius: 8px;
@@ -127,6 +127,14 @@
     font-size: 14px;
     transition: all 0.2s;
   }
+ 
+  @media (max-width : 1290px){
+    .btn-access,.status-badge{
+      padding: 8px 6px;
+      font-size: 13px;
+    }
+  }
+
   .btn-access1 {
     padding: 8px 20px;
     background-color: rgba(231, 241, 248, 1);

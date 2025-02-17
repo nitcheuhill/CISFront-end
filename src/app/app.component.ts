@@ -8,6 +8,8 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 import { AuthService } from './shared/sevices/auth.service';
 import { NavbarbackofficeComponent } from './shared/components/navbarbackoffice/navbarbackoffice.component';
 import { ToastComponent } from './shared/components/toast/toast.component';
+import { VisitorTrackingService } from './shared/sevices/visitor-tracking.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,39 +17,41 @@ import { ToastComponent } from './shared/components/toast/toast.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   isLoading$;
   isBackOffice = false;
 
-  constructor(private router: Router, private loaderService: LoaderService,private authService: AuthService) {
+  constructor(
+    private router: Router, 
+    private loaderService: LoaderService,
+    private authService: AuthService,
+    private visitorTrackingService: VisitorTrackingService
+  ) {
     this.isLoading$ = this.loaderService.isLoading;
-    this.router.events.subscribe(() => {
-      this.isBackOffice = this.router.url.startsWith('/back-office'); // Vérifie si on est sur le Backoffice
+    
+    // Utilisez NavigationEnd pour la détection du backoffice
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      this.isBackOffice = event.url.startsWith('/back-office');
+      
+      // Gestion du loader
+      setTimeout(() => this.loaderService.hideLoader(), 1000);
+      window.scrollTo(0, 0);
+    });
+
+    // Gestion séparée pour NavigationStart
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe(() => {
+      this.loaderService.showLoader();
     });
   }
 
-  ngOnInit() 
-  {
+  ngOnInit() {
     if (!this.authService.isLoggedIn() && this.router.url.includes('/dashboard')) {
       this.router.navigate(['/login']);
     }
-
-    // Afficher le loader pendant le chargement initial
     this.loaderService.showLoader();
-
-    // Gérer l'affichage du loader lors du changement de route
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.loaderService.showLoader();
-      } else if (event instanceof NavigationEnd) {
-        // Délai pour garantir le chargement complet de la page
-        setTimeout(() => this.loaderService.hideLoader(), 1000);
-        //scrolle sur le haut de page
-        window.scrollTo(0, 0); 
-
-      }
-    });
-  };
-
-  
+  }
 }

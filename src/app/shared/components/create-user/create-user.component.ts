@@ -29,6 +29,7 @@ export class CreateUserComponent {
       password: ['', [Validators.required]],
       prenom: ['', [Validators.required]],
       nom: ['', [Validators.required]],
+      poste: ['', [Validators.required]],
       statut: ['', Validators.required],
       creationArticle: [false],
       creationRealisation: [false],
