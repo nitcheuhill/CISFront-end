@@ -2,6 +2,7 @@
 import { Injectable, inject, NgZone } from '@angular/core';
 import { Firestore, collection, doc, getDoc, query, where, getDocs } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { CryptoUtilsService } from './crypto-utils.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,26 +11,34 @@ export class AuthService {
   private firestore = inject(Firestore);
   private router = inject(Router);
   private ngZone = inject(NgZone);
+  private cryptoUtils = inject(CryptoUtilsService);
 
   async login(email: string, password: string): Promise<boolean> {
-
     try {
       const usersCollection = collection(this.firestore, 'users');
-      const q = query(
-        usersCollection,
-        where('email', '==', email),
-        where('password', '==', password)
-      );
-
-      const querySnapshot = await getDocs(q);
+      const userQuery = query(usersCollection, where('email', '==', email));
+      const querySnapshot = await getDocs(userQuery);
 
       if (!querySnapshot.empty) {
-        const userData = querySnapshot.docs[0].data();
-        localStorage.setItem('user', JSON.stringify(userData));
-        return true;
-      } else {
-        return false;
+        const userDoc = querySnapshot.docs[0];
+        const userData = userDoc.data();
+        
+        // Vérifier le mot de passe hashé
+        const isPasswordValid = await this.cryptoUtils.comparePasswords(
+          password,
+          userData['password']
+        );
+
+        if (isPasswordValid) {
+          const user = {
+            ...userData,
+            id: userDoc.id
+          };
+          localStorage.setItem('user', JSON.stringify(user));
+          return true;
+        }
       }
+      return false;
     } catch (error) {
       console.error("Erreur d'authentification:", error);
       return false;

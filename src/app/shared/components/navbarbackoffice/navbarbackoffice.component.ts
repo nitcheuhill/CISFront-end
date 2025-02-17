@@ -13,7 +13,10 @@ import { Router } from '@angular/router';
   styleUrl: './navbarbackoffice.component.scss'
 })
 export class NavbarbackofficeComponent {
-  constructor(private authService: AuthService,private router: Router) {}
+  currentUser: any;
+  constructor(private authService: AuthService,private router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+  }
   isExpanded = false;
   isTouchScreen: boolean = false;
 
@@ -38,5 +41,26 @@ toggleExpandTouch() {
   }
   logout(): void {
     this.authService.logout();
+  }
+
+
+  get showAdminMenu(): boolean {
+    return this.currentUser?.statut === 'administrateur';
+  }
+
+  get showRealisationsMenu(): boolean {
+    return !['editeur'].includes(this.currentUser?.statut);
+  }
+
+  get showArticlesMenu(): boolean {
+    return !['realisateur', 'inspecteur'].includes(this.currentUser?.statut);
+  }
+
+  get showDevisMenu(): boolean {
+    return !['editeur', 'realisateur'].includes(this.currentUser?.statut);
+  }
+
+  get showTemoignagesMenu(): boolean {
+    return !['editeur', 'realisateur', 'inspecteur'].includes(this.currentUser?.statut);
   }
 }

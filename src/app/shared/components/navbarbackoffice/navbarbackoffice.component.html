@@ -1,16 +1,17 @@
 <nav class="sidebar" [class.expanded]="isExpanded" (mouseenter)="toggleExpand(true)" (mouseleave)="toggleExpand(false)" (click)="toggleExpandTouch()">
     <div class="logo"> <img src="/images/Logo-CIS _ Cameroun (5).png" alt="Logo"> </div>
     <div class="profile">
-      <img src="/images/assetsArticles/photo1.jpeg" alt="User Profile">
-      <p class="name">{{ getTruncatedEmail('Henry DIBANOHA')}}</p>
-      <p>{{ getTruncatedEmail('loremIpsumgmail.com') }}</p>
+      <img [src]="currentUser.photo || '/images/default-avatar.png'" alt="User Profile">
+      <p class="name">{{getTruncatedEmail(currentUser.prenom + ' ' + currentUser.nom) }}</p>
+      <p>{{ getTruncatedEmail(currentUser.email) }}</p>
     </div>
     <ul class="menu">
-      <li  routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+      <li routerLink="/back-office/dashboard" routerLinkActive="active">
         <img src="/images/AdminPageAssets/home.svg" alt="Accueil">
         <span *ngIf="isExpanded">Accueil</span>
       </li>
-      <li  routerLink="/back-office/admin" routerLinkActive="active">
+      
+      <li *ngIf="showAdminMenu" routerLink="/back-office/admin" routerLinkActive="active">
         <img src="/images/AdminPageAssets/user-octagon.svg" alt="Admins">
         <span *ngIf="isExpanded">Admins</span>
       </li>
@@ -18,19 +19,23 @@
         <img src="/images/AdminPageAssets/presention-chart.svg" alt="Reporting">
         <span *ngIf="isExpanded">Reporting</span>
       </li>
-      <li  routerLink="/" routerLinkActive="active" >
+      
+      <li *ngIf="showArticlesMenu" routerLink="/" routerLinkActive="active">
         <img src="/images/AdminPageAssets/edit-2.svg" alt="Articles">
         <span *ngIf="isExpanded">Articles</span>
       </li>
-      <li  routerLink="/" routerLinkActive="active">
+      
+      <li *ngIf="showRealisationsMenu" routerLink="/" routerLinkActive="active">
         <img src="/images/AdminPageAssets/note-add.svg" alt="Réalisations">
         <span *ngIf="isExpanded">Réalisations</span>
       </li>
-      <li  routerLink="/back-office/inspection" routerLinkActive="active">
+      
+      <li *ngIf="showDevisMenu" routerLink="/back-office/inspection" routerLinkActive="active">
         <img src="/images/AdminPageAssets/document-text.svg" alt="Devis">
         <span *ngIf="isExpanded">Devis</span>
       </li>
-      <li  routerLink="/back-office/testimonial" routerLinkActive="active">
+      
+      <li *ngIf="showTemoignagesMenu" routerLink="/back-office/testimonial" routerLinkActive="active">
         <img src="/images/AdminPageAssets/messages-3.svg" alt="Témoignages">
         <span *ngIf="isExpanded">Témoignages</span>
       </li>

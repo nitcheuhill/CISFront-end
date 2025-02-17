@@ -4,6 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CryptoUtilsService {
+  async comparePasswords(plainPassword: string, hashedPassword: string): Promise<boolean> {
+    // Hash le mot de passe en clair avec la même méthode
+    const hashedInput = await this.hashPassword(plainPassword);
+    // Compare les deux hash
+    return hashedInput === hashedPassword;
+  }
   // Note: Dans une application réelle, le chiffrement des mots de passe
   // devrait être fait côté serveur avec bcrypt ou scrypt.
   // Cette implémentation est simplifiée et à des fins de démonstration uniquement.

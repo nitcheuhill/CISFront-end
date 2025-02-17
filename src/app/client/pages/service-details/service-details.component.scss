@@ -402,6 +402,18 @@
       hyphens: auto;
     }
    }
+   .service-section .content{
+    flex-direction: column;
+    .text-content{
+      width: 100% !important;
+      text-align: justify;
+      hyphens: auto;
+    }
+    .video-content{
+      max-width: 100% !important;
+      height: 30vh;
+     }
+   }
    .services-section{
     min-height: 400px;
    }

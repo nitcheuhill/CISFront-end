@@ -15,7 +15,7 @@ export class ServiceDataService {
         nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in 
         nullam lacus.
       `,
-      imageUrl: 'images/HeaderDetailService1.png',
+      imageUrl: '/images/worker-testing-condenser-blower-fan.webp',
       subServices: [
         {
           title: 'Conditionnement d’air résidentiel et commercial',
