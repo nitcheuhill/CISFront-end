@@ -3,10 +3,11 @@ import { QuoteRequest, QuoteRequestService } from '../../../shared/sevices/quote
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NotAvailableComponent } from '../../../shared/components/not-available/not-available.component';
+import { HelloBannerComponent } from '../../../shared/components/hello-banner/hello-banner.component';
 
 @Component({
   selector: 'app-inspection-page',
-  imports: [CommonModule, FormsModule, NotAvailableComponent],
+  imports: [CommonModule, FormsModule, NotAvailableComponent,HelloBannerComponent],
   templateUrl: './inspection-page.component.html',
   styleUrl: './inspection-page.component.scss'
 })

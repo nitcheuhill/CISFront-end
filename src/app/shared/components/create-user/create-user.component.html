@@ -75,14 +75,14 @@
                 </div>
 
                 <div *ngIf="activeTab === 'creation'" class="access-options">
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" *ngIf="isAccessOptionVisible('creationArticle')">
                         <label>
                             <input type="checkbox" formControlName="creationArticle">
                             <span class="checkbox-custom"></span>
                             Création d'article
                         </label>
                     </div>
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" *ngIf="isAccessOptionVisible('creationRealisation')">
                         <label>
                             <input type="checkbox" formControlName="creationRealisation">
                             <span class="checkbox-custom"></span>
@@ -92,14 +92,14 @@
                 </div>
 
                 <div *ngIf="activeTab === 'modification'" class="access-options">
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" *ngIf="isAccessOptionVisible('modificationArticle')">
                         <label>
                             <input type="checkbox" formControlName="modificationArticle">
                             <span class="checkbox-custom"></span>
                             Modification d'article
                         </label>
                     </div>
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" *ngIf="isAccessOptionVisible('modificationRealisation')">
                         <label>
                             <input type="checkbox" formControlName="modificationRealisation">
                             <span class="checkbox-custom"></span>
@@ -109,14 +109,14 @@
                 </div>
 
                 <div *ngIf="activeTab === 'gestion'" class="access-options">
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" *ngIf="isAccessOptionVisible('gestionDevis')">
                         <label>
                             <input type="checkbox" formControlName="gestionDevis">
                             <span class="checkbox-custom"></span>
                             Gestion de dévis
                         </label>
                     </div>
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" *ngIf="isAccessOptionVisible('gestionTemoignage')">
                         <label>
                             <input type="checkbox" formControlName="gestionTemoignage">
                             <span class="checkbox-custom"></span>

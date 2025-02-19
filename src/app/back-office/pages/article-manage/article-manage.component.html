@@ -1,0 +1,157 @@
+<section class="container" *ngIf="!shouldShowNotAvailable">
+    <!-- Header section -->
+    <section class="services-section" [style.background-image]="headerBackgroundImage">
+        <div class="overlay">
+          <div class="form-group">
+            <select class="form-control" formControlName="type" style="width: auto; display: inline-block;">
+              <option value="">Sélectionner un type</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Climatisation">Climatisation</option>
+              <option value="Réparation">Réparation</option>
+              <option value="Désenfumage">Désenfumage</option>
+              <option value="Installation">Installation</option>
+              <option value="Equipements">Equipements spécifiques</option>
+              <option value="Ventilation">Ventilation</option>
+              <option value="Domotique">Domotique</option> 
+              <option value="Electricité">Electricité</option> 
+              <option value="Energie">Energie</option> 
+              <option value="Plomberie">Plomberie</option> 
+              <option value="Etude">Etude</option> 
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="title" placeholder="Titre de l'article" 
+                  style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); font-size: 2.5rem; padding: 5px 10px;">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" formControlName="description" placeholder="Description de l'article" 
+                     style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5);"></textarea>
+          </div>
+          <div class="form-group">
+            <div class="file-upload">
+              <button class="file-upload-btn" type="button">Choisir une image de bannière</button>
+              <input type="file" (change)="onBannerImageSelected($event)" accept="image/*">
+            </div>
+          </div>
+          <div class="custom-article-footer">
+            <img [src]="currentUser.photo || '/images/default-avatar.png'" alt="Photo de l'auteur" class="custom-author-img" />
+            <p class="custom-author-name">Rédigé par <span class="author-span">{{currentUser.prenom + ' ' + currentUser.nom }}</span></p>
+            <span class="custom-article-date">{{ currentDate | date: 'dd MMMM yyyy' }}</span>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Bloc 1 -->
+      <section class="service-section">
+        <button type="button" class="edit-button" [class.active]="editingBloc1" (click)="toggleEditBloc(1)">
+          {{ editingBloc1 ? 'Désactiver édition Bloc 1' : 'Éditer Bloc 1' }}
+        </button>
+        <div class="form-block" [class.active]="editingBloc1">
+          <div class="form-group">
+            <label for="bloc1Title">Titre du Bloc 1:</label>
+            <input type="text" class="form-control" formControlName="bloc1Title" placeholder="1. Titre du premier bloc" [disabled]="!editingBloc1">
+          </div>
+          <div class="form-group">
+            <label for="bloc1Description">Contenu du Bloc 1:</label>
+            <textarea class="form-control" formControlName="bloc1Description" placeholder="Description du premier bloc"></textarea>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Bloc 2 -->
+      <section class="service-section">
+        <button type="button" class="edit-button" [class.active]="editingBloc2" (click)="toggleEditBloc(2)">
+          {{ editingBloc2 ? 'Désactiver édition Bloc 2' : 'Éditer Bloc 2' }}
+        </button>
+        <div class="form-block" [class.active]="editingBloc2">
+          <div class="form-group">
+            <label for="bloc2Title">Titre du Bloc 2:</label>
+            <input type="text" class="form-control" formControlName="bloc2Title" placeholder="2. Titre du deuxième bloc">
+          </div>
+          <div class="form-group">
+            <label for="bloc2Description1">Introduction:</label>
+            <textarea class="form-control" formControlName="bloc2Description1" placeholder="Introduction du deuxième bloc"></textarea>
+          </div>
+  
+          <div class="content">
+            <!-- Bloc image -->
+            <div class="video-content">
+              <label>Image du Bloc 2:</label>
+              <div class="image-preview">
+                <ng-container *ngIf="bloc2ImagePreview; else bloc2NoImageTemplate">
+                  <img [src]="bloc2ImagePreview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </ng-container>
+                <ng-template #bloc2NoImageTemplate>
+                  <i class="fa-solid fa-image" style="font-size: 48px; color: #ccc;"></i>
+                </ng-template>
+              </div>
+              <div class="file-upload">
+                <button class="file-upload-btn" type="button">Choisir une image</button>
+                <input type="file" (change)="onBloc2ImageSelected($event)" accept="image/*">
+              </div>
+            </div>
+            <div class="text-content">
+              <div class="form-group">
+                <label for="bloc2Description">Contenu principal:</label>
+                <textarea class="form-control" formControlName="bloc2Description" placeholder="Contenu principal du deuxième bloc"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Bloc 3 -->
+      <section class="service-section">
+        <button type="button" class="edit-button" [class.active]="editingBloc3" (click)="toggleEditBloc(3)">
+          {{ editingBloc3 ? 'Désactiver édition Bloc 3' : 'Éditer Bloc 3' }}
+        </button>
+        <div class="form-block" [class.active]="editingBloc3">
+          <div class="form-group">
+            <label for="bloc3Title">Titre du Bloc 3:</label>
+            <input type="text" class="form-control" formControlName="bloc3Title" placeholder="3. Titre du troisième bloc">
+          </div>
+          <div class="form-group">
+            <label for="bloc3Description1">Introduction:</label>
+            <textarea class="form-control" formControlName="bloc3Description1" placeholder="Introduction du troisième bloc"></textarea>
+          </div>
+  
+          <div class="content1">
+            <div class="video-content">
+              <label>Vidéo du Bloc 3:</label>
+              <div class="video-thumbnail-container">
+                <ng-container *ngIf="bloc3ThumbnailPreview; else bloc3NoThumbnailTemplate">
+                  <img [src]="bloc3ThumbnailPreview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </ng-container>
+                <ng-template #bloc3NoThumbnailTemplate>
+                  <i class="fa-solid fa-video" style="font-size: 48px; color: #ccc;"></i>
+                </ng-template>
+                <button type="button" class="play-button" style="position: absolute;">
+                  <i class="fa-solid fa-play"></i>
+                </button>
+              </div>
+              <div class="file-upload" style="margin-top: 10px;">
+                <button class="file-upload-btn" type="button">Choisir une miniature</button>
+                <input type="file" (change)="onBloc3ThumbnailSelected($event)" accept="image/*">
+              </div>
+              <div class="file-upload" style="margin-top: 10px;">
+                <button class="file-upload-btn" type="button">Choisir une vidéo</button>
+                <input type="file" (change)="onBloc3VideoSelected($event)" accept="video/*">
+              </div>
+            </div>
+            <div class="text-content" style="margin-top: 20px;">
+              <div class="form-group">
+                <label for="bloc3Description">Contenu principal:</label>
+                <textarea class="form-control" formControlName="bloc3Description" placeholder="Contenu principal du troisième bloc"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <div style="width: 85%; margin: auto; padding: 20px 0;">
+        <button type="submit" class="save-button" (click)="saveArticle()">Enregistrer l'article</button>
+      </div>
+</section>
+    
+<app-not-available *ngIf="shouldShowNotAvailable"></app-not-available>
+    

@@ -45,6 +45,7 @@ export class EditAccessModalComponent implements OnInit {
     const months = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
     return months[month];
   }
+  
 
   close(): void {
     this.visible = false;
@@ -83,6 +84,31 @@ export class EditAccessModalComponent implements OnInit {
     } catch (error) {
       this.toastService.show("Erreur lors de la mise à jour des accès", 'error');
       console.error(error);
+    }
+  }
+
+
+  isAccessOptionVisible(option: string): boolean {
+    const statut = this.userCopy.statut;
+    
+    if (!statut) return false;
+    
+    if (statut === 'administrateur' || statut === 'sousadmin') {
+      return true;
+    }
+    
+    switch (option) {
+      case 'creationArticle':
+      case 'modificationArticle':
+        return statut === 'editeur';
+      case 'creationRealisation':
+      case 'modificationRealisation':
+        return statut === 'realisateur';
+      case 'gestionDevis':
+      case 'gestionTemoignage':
+        return statut === 'inspecteur';
+      default:
+        return false;
     }
   }
   

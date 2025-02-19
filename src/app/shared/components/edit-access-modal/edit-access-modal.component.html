@@ -59,27 +59,27 @@
             </div>
 
             <div class="access-items">
-                <div class="access-item">
+                <div class="access-item" *ngIf="isAccessOptionVisible('creationArticle')">
                     <input type="checkbox" id="creationArticle" [(ngModel)]="userCopy.creationArticle">
                     <label for="creationArticle">Création d'article</label>
                 </div>
-                <div class="access-item">
+                <div class="access-item" *ngIf="isAccessOptionVisible('creationRealisation')">
                     <input type="checkbox" id="creationRealisation" [(ngModel)]="userCopy.creationRealisation">
                     <label for="creationRealisation">Création de réalisation</label>
                 </div>
-                <div class="access-item">
+                <div class="access-item" *ngIf="isAccessOptionVisible('modificationArticle')">
                     <input type="checkbox" id="modificationArticle" [(ngModel)]="userCopy.modificationArticle">
                     <label for="modificationArticle">Modification d'article</label>
                 </div>
-                <div class="access-item">
+                <div class="access-item" *ngIf="isAccessOptionVisible('modificationRealisation')">
                     <input type="checkbox" id="modificationRealisation" [(ngModel)]="userCopy.modificationRealisation">
                     <label for="modificationRealisation">Modification de réalisation</label>
                 </div>
-                <div class="access-item">
+                <div class="access-item" *ngIf="isAccessOptionVisible('gestionDevis')">
                     <input type="checkbox" id="gestionDevis" [(ngModel)]="userCopy.gestionDevis">
                     <label for="gestionDevis">Gestion de dévis</label>
                 </div>
-                <div class="access-item">
+                <div class="access-item" *ngIf="isAccessOptionVisible('gestionTemoignage')">
                     <input type="checkbox" id="gestionTemoignage" [(ngModel)]="userCopy.gestionTemoignage">
                     <label for="gestionTemoignage">Gestion de témoignage</label>
                 </div>

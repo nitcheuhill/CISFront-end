@@ -15,7 +15,7 @@
     position: fixed; // Ajout de position fixed
     top: 0; // Alignement en haut
     left: 0; // Alignement à gauche
-    z-index: 100; // S'assurer que la sidebar est au-dessus du contenu
+    z-index: 1000; // S'assurer que la sidebar est au-dessus du contenu
   
   }
   
@@ -23,6 +23,8 @@
     width: 300px;
     background: url("/images/AdminPageAssets/Frame 216 (1).png") no-repeat center center/cover;
     align-items: center;
+    z-index: 1000;
+    background: white;
   }
   .profile{
     display: flex;

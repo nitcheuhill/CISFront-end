@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { NotAvailableComponent } from '../../../shared/components/not-available/not-available.component';
 import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
+import { HelloBannerComponent } from '../../../shared/components/hello-banner/hello-banner.component';
 
 @Component({
   selector: 'app-testimonialspage',
-  imports: [CommonModule, NotAvailableComponent, ConfirmModalComponent,LoaderComponent],
+  imports: [CommonModule, NotAvailableComponent, ConfirmModalComponent,LoaderComponent,HelloBannerComponent],
   templateUrl: './testimonialspage.component.html',
   styleUrl: './testimonialspage.component.scss'
 })

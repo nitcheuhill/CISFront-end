@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CreateUserComponent } from '../../../shared/components/create-user/create-user.component';
 import { CrudUserService } from '../../../shared/sevices/crud-user.service';
 import { EditAccessModalComponent } from '../../../shared/components/edit-access-modal/edit-access-modal.component';
+import { HelloBannerComponent } from '../../../shared/components/hello-banner/hello-banner.component';
 
 export interface User {
   id?: string;
@@ -29,7 +30,7 @@ export interface User {
 
 @Component({
   selector: 'app-admin-page',
-  imports: [FormsModule,CommonModule,NotAvailableComponent, CreateUserComponent,EditAccessModalComponent],
+  imports: [FormsModule,CommonModule,NotAvailableComponent, CreateUserComponent,EditAccessModalComponent,HelloBannerComponent],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.scss'
 })

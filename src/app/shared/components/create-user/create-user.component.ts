@@ -98,6 +98,31 @@ export class CreateUserComponent {
     this.activeTab = tab;
   }
 
+
+  isAccessOptionVisible(option: string): boolean {
+    const statut = this.userForm.get('statut')?.value;
+    
+    if (!statut) return false;
+    
+    if (statut === 'administrateur' || statut === 'sousadmin') {
+      return true;
+    }
+    
+    switch (option) {
+      case 'creationArticle':
+      case 'modificationArticle':
+        return statut === 'editeur';
+      case 'creationRealisation':
+      case 'modificationRealisation':
+        return statut === 'realisateur';
+      case 'gestionDevis':
+      case 'gestionTemoignage':
+        return statut === 'inspecteur';
+      default:
+        return false;
+    }
+  }
+
   async onSubmit() {
     if (this.userForm.valid && !this.isSubmitting) {
       this.isSubmitting = true;

@@ -105,7 +105,7 @@
   padding: 1.5%;
   box-sizing: border-box;
   h1 {
-    font-size: 28px;
+    font-size: 32px;
     color: #0056b3;
     margin-bottom: 20px;
     font-weight: bold;
@@ -116,78 +116,88 @@
 
     p {
       width: 100%;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       line-height: 1.6;
       font-size: 1.2rem;
     }
   }
 
-  .content {
+  @media(max-width:1400px){
+    .content, .content2{
+      align-items: stretch !important ;
+    }
+  }
+  .content , .content2 {
     display: flex;
     gap: 20px;
-    align-items: stretch;
-    
+    align-items: flex-start;  /* Changed from stretch to flex-start */
 
     .text-content {
-      width: 60%;
-      line-height: 2;
-      font-size: 1.2rem;
-      p{
-        width: 100%;
+        width: 60%;
+        line-height: 1.5;
         font-size: 1.2rem;
-        line-height: 2;
-        margin-bottom: 1rem;
-      }
+        
+        p {
+            width: 100%;
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
     }
-.video-content {
+
+    .video-content {
         max-width: 40%;
         position: relative;
+        aspect-ratio: 16/9;  /* Added aspect ratio */
+        height: auto;        /* Height will be determined by width and aspect ratio */
   
         .video-thumbnail-container {
-          position: relative;
-          border-radius: 30px;
-          overflow: hidden;
-          width: 100%;
-          height: 100%;
-          justify-content: center;
-          align-items: center;
-  
-          img {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 30px;
-          }
-  
-          .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.25);
-            border: none;
-            color: #fff;
-            border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
             display: flex;
-            align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-size: 1.5rem;
+            align-items: center;
   
-            i {
-              animation: pulse 1.5s infinite;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 30px;
             }
   
-            &:hover {
-              background-color: rgba(0, 0, 0, 0.8);
+            .play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(255, 255, 255, 0.25);
+                border: none;
+                color: #fff;
+                border-radius: 50%;
+                width: 3rem;
+                height: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                font-size: 1.5rem;
+  
+                i {
+                    animation: pulse 1.5s infinite;
+                }
+  
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.8);
+                }
             }
-          }
         }
-      }
     }
-  
+}
+
     @keyframes pulse {
       0%, 100% {
         transform: scale(1);
@@ -233,7 +243,7 @@
         width: 100%;
         font-size: 1.2rem;
         line-height: 2;
-        margin-bottom: 1rem;
+        margin-bottom: 0,5rem;
       }
     }
 .video-content {
@@ -307,7 +317,7 @@
           width: 100%;
           font-size: 1.2rem;
           line-height: 2;
-          margin-bottom: 1rem;
+          margin-bottom: 0,5rem;
         }
       }
   .video-content {
@@ -402,7 +412,7 @@
       hyphens: auto;
     }
    }
-   .service-section .content{
+   .service-section .content, .content2{
     flex-direction: column;
     .text-content{
       width: 100% !important;
@@ -425,6 +435,14 @@
     font-size: 26px;
    }
 
+   .service-section{
+    .description {
+      p{
+        text-align: justify;
+        margin-bottom: 0.5rem;
+      }
+    }
+   }
    .title-underline {
     left: 640px;
 
@@ -450,7 +468,15 @@
     font-size: 15px;
   }
  }
- 
+ .service-section{
+  .description {
+    p{
+      text-align: justify;
+      hyphens: auto;
+      margin-bottom: 0.5rem;
+    }
+  }
+ }
  .badge{
   font-size: 14px;
  }
@@ -500,7 +526,7 @@
  text-align: justify;
  hyphens: auto;
  }
- .service-section .content{
+ .service-section .content, .content2{
   flex-direction: column;
   .text-content{
     width: 100% !important;
@@ -519,6 +545,11 @@
  .comment-section,.comment-container{
   width: 95%;
   padding: 0.5rem;
+ }
+ .service-section .content2 .text-content p{
+  font-size: 16px;
+  text-align: justify;
+  hyphens: auto;
  }
  .comment-title{
   font-size: 20px;

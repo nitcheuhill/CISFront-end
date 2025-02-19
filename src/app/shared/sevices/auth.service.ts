@@ -18,17 +18,23 @@ export class AuthService {
       const usersCollection = collection(this.firestore, 'users');
       const userQuery = query(usersCollection, where('email', '==', email));
       const querySnapshot = await getDocs(userQuery);
-
+  
       if (!querySnapshot.empty) {
         const userDoc = querySnapshot.docs[0];
         const userData = userDoc.data();
         
-        // Vérifier le mot de passe hashé
+        // First check if the user is activated
+        if (!userData['isActivated']) {
+          console.log('User account is not activated');
+          return false;
+        }
+        
+        // Then verify the password
         const isPasswordValid = await this.cryptoUtils.comparePasswords(
           password,
           userData['password']
         );
-
+  
         if (isPasswordValid) {
           const user = {
             ...userData,

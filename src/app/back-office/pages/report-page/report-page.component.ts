@@ -6,6 +6,7 @@ import { VisitorTrackingService } from '../../../shared/sevices/visitor-tracking
 import { Subscription } from 'rxjs';
 import { Chart, registerables, ChartConfiguration } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
+import { HelloBannerComponent } from '../../../shared/components/hello-banner/hello-banner.component';
 
 Chart.register(...registerables, annotationPlugin);
 
@@ -14,7 +15,7 @@ type PeriodType = 'annual' | 'monthly' | 'weekly';
 @Component({
   selector: 'app-report-page',
   standalone: true,
-  imports: [NotAvailableComponent, CommonModule, FormsModule],
+  imports: [NotAvailableComponent, CommonModule, FormsModule,HelloBannerComponent],
   templateUrl: './report-page.component.html',
   styleUrls: ['./report-page.component.scss']
 })

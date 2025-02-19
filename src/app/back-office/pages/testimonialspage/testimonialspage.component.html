@@ -1,4 +1,5 @@
 <section class="block2" *ngIf="!shouldShowNotAvailable">
+  <app-hello-banner></app-hello-banner>
   <h3 class="title">Temoignages</h3>  
   <div class="filters">
       <button (click)="setFilter('all')" [class.active]="filter === 'all'">
