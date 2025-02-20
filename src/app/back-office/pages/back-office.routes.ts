@@ -26,11 +26,6 @@ export const routes: Routes = [
         // canActivate: [authGuard],
       },
     {
-        path: 'articlemanager',
-        component: ArticleManageComponent,
-        // canActivate: [authGuard],
-      },
-    {
         path: 'inspection',
         component: InspectionPageComponent,
         // canActivate: [authGuard],

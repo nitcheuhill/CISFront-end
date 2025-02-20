@@ -141,7 +141,7 @@ export class ReportPageComponent implements OnInit, OnDestroy {
           borderColor: 'rgba(17, 110, 182, 1)',
           backgroundColor: this.createChartGradient(ctx),
           fill: true,
-          tension: 0.6,
+          tension: 0.5,
           pointBackgroundColor: 'white',
           pointBorderColor: 'rgba(17, 110, 182, 1)',
           pointBorderWidth: 2,
