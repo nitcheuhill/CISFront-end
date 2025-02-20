@@ -44,6 +44,6 @@ export class LoginPageComponent {
     } else {
       this.errorMessage = 'Email ou mot de passe incorrect';
     }
-  }
+  };
 
 }
