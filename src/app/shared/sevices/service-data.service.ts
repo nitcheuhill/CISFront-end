@@ -479,25 +479,28 @@ Nos experts réalisent des études et audits techniques approfondis pour analyse
       title: "Infrastructure de lutte contre l'incendie",
       icon: '/icons/IconsServicesGrid/Calque_1 (16).png',
       introText: `
-        Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis 
-        nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in 
-        nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
-        Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
+       Nous sommes spécialisés dans l’installation, la maintenance et la gestion d’infrastructures de lutte contre l’incendie,
+        garantissant ainsi une protection maximale pour vos bâtiments, 
+        vos employés et vos équipements.
       `,
-      imageUrl: 'images/HeaderDetailService1.png',
+      imageUrl: '/images/servicedetailsAsset/33.jpg',
       subServices: [
         {
           title: 'Désenfumage',
           description1: [
-            `Details on courant fort`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            ``,
+            `•	Conception et étude de faisabilité : Élaboration de systèmes de désenfumage 
+            personnalisés en fonction de l'architecture de vos bâtiments, pour une sécurité maximale.`,
           ],
           description: [
-            `Egestas nulla est urna ullamcorper duis nibh vitae elementum.`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            `•	Installation de systèmes de désenfumage : Mise en place de dispositifs performants d'extraction de fumées et de 
+            ventilation, conformes aux normes de sécurité incendie en vigueur.`,
+            `•	Maintenance et contrôle : Entretien régulier des équipements de désenfumage pour garantir leur 
+            bon fonctionnement et leur conformité aux normes légales.`,
+            `•	Audits et diagnostics : Évaluation des installations existantes pour identifier les améliorations possibles et optimiser l’efficacité des systèmes de désenfumage. Plaques polycarbonates)`,
           ],
           video: {
-            thumbnail: 'images/assetsDétailsServices/Block3/thumbnail.jpeg',
+            thumbnail: '/images/servicedetailsAsset/desenfumage.webp',
             url: 'images/vidéos/Video2.mp4',
           },
           images: [
@@ -514,15 +517,17 @@ Nos experts réalisent des études et audits techniques approfondis pour analyse
         {
           title: 'Auto-extinction de feu',
           description1: [
-            `Details on courant fort`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            ``,
+            `•	Installation de dispositifs d'auto-extinction : Mise en place de systèmes innovants comme les extincteurs 
+            automatiques à eau, les systèmes à mousse, ou les dispositifs à gaz, pour contrôler les risques d’incendie sans intervention humaine.`,
           ],
           description: [
-            `Egestas nulla est urna ullamcorper duis nibh vitae elementum.`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            `•	Maintenance et contrôle : Entretien régulier des systèmes d’auto-extinction pour assurer leur efficacité et leur conformité avec les normes de sécurité en vigueur.`,
+            `•	Audit et évaluation des risques : Analyse des installations pour recommander des solutions d’auto-extinction adaptées, afin de minimiser les risques d'incendie dans les zones sensibles.`,
+            `•	Formation et sensibilisation : Formation du personnel à l'utilisation et à l'entretien des systèmes d'auto-extinction, ainsi qu'à la gestion des risques incendie.`,
           ],
           video: {
-            thumbnail: 'images/assetsDétailsServices/Block3/thumbnail.jpeg',
+            thumbnail: '/images/servicedetailsAsset/auto.webp',
             url: 'images/vidéos/Video2.mp4',
           },
           images: [
@@ -539,15 +544,17 @@ Nos experts réalisent des études et audits techniques approfondis pour analyse
         {
           title: 'Extinction manuelle de feu',
           description1: [
-            `Details on courant fort`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            ``,
+            `•	Fourniture et installation de matériels d'extinction manuelle : Nous installons une gamme complète d’équipements d'extinction, tels que des extincteurs, des boyaux et des systèmes 
+            d'alarme, pour permettre une réponse rapide en cas d'incendie.`,
           ],
           description: [
-            `Egestas nulla est urna ullamcorper duis nibh vitae elementum.`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            `•	Maintenance et vérification : Entretien et contrôle réguliers de vos équipements d'extinction pour garantir leur
+             bon fonctionnement et leur conformité avec les normes de sécurité incendie.`,
+            ``,
           ],
           video: {
-            thumbnail: 'images/assetsDétailsServices/Block3/thumbnail.jpeg',
+            thumbnail: '/images/servicedetailsAsset/extin.webp',
             url: 'images/vidéos/Video2.mp4',
           },
           images: [
@@ -567,25 +574,26 @@ Nos experts réalisent des études et audits techniques approfondis pour analyse
       title: 'Équipement mécanique de transport et de levage',
       icon: '/icons/IconsServicesGrid/Calque_1 (19).png',
       introText: `
-        Lorem ipsum dolor sit amet consectetur. Egestas nulla est urna ullamcorper duis 
-        nibh vitae elementum. Eros suspendisse natoque tortor urna tristique amet in 
-        nullam lacus. Neque dolor maecenas adipiscing sed natoque aliquam. 
-        Laoreet nisl sit pellentesque commodo aenean vitae hendrerit hendrerit.
+       Spécialistes en équipements mécaniques et de transport, nous offrons des solutions sur mesure : 
+       fourniture, installation et maintenance. Fiabilité, performance et service réactif sont au cœur 
+       de notre engagement.
       `,
       imageUrl: 'images/portrait-firefighter-standing-front-fire-engine.jpg',
       subServices: [
         {
           title: 'Ascenseur',
           description1: [
-            `Details on courant fort`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            ``,
+            `•	Fourniture d’équipements : Sélection et livraison d'ascenseurs adaptés à vos besoins.`,
+            `•	Installation professionnelle : Mise en place d'ascenseurs dans le respect des normes de sécurité et de qualité.`,
           ],
           description: [
-            `Egestas nulla est urna ullamcorper duis nibh vitae elementum.`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            `•	Maintenance et réparation : Entretien régulier, interventions rapides et solutions pour maximiser la durabilité et la performance de vos équipements.`,
+            `•	Conformité réglementaire : Expertise en normes de sécurité pour garantir des installations fiables et certifiées.`,
+            `•	Service client réactif : Accompagnement personnalisé et disponibilité pour répondre à vos attentes.`,
           ],
           video: {
-            thumbnail: 'images/assetsDétailsServices/Block3/thumbnail.jpeg',
+            thumbnail: '/images/servicedetailsAsset/ascenseur-maison-privatif.webp',
             url: 'images/vidéos/Video2.mp4',
           },
           images: [
@@ -602,12 +610,17 @@ Nos experts réalisent des études et audits techniques approfondis pour analyse
         {
           title: 'Monte-charge',
           description1: [
-            `Details on courant fort`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            ``,
+            `•	Fourniture de monte-charges : Sélection et proposition de solutions
+             robustes et adaptées aux besoins spécifiques de chaque client.`,
           ],
           description: [
-            `Egestas nulla est urna ullamcorper duis nibh vitae elementum.`,
-            `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+            `•	Installation sur mesure : Mise en place de monte-charges, 
+            optimisés pour une utilisation sûre et efficace, dans le respect des normes en vigueur.`,
+            `•	Maintenance préventive et corrective : Entretien régulier et interventions rapides pour
+             garantir la fiabilité et la longévité de vos équipements.`,
+            `•	Service après-vente performant : Assistance réactive et suivi 
+            rigoureux pour minimiser les interruptions et maximiser la performance des équipements.`,
           ],
           video: {
             thumbnail: 'images/assetsDétailsServices/Block3/thumbnail.jpeg',
