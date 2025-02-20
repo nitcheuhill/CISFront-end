@@ -2617,6 +2617,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/chartjs-plugin-annotation@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/chartjs-plugin-annotation/-/chartjs-plugin-annotation-1.0.0.tgz#67ed339b0a06137e1a7b3d75daa9aa9ddec97f3c"
+  integrity sha512-cNr/1yNOiTpJKlHtk1ds9I+KGgTKlvxt2mauhpBvsJ1ukkXpTX0uAp7igjmHab2JsOBN83RqbQe8t5+YJBHu8A==
+  dependencies:
+    chartjs-plugin-annotation "*"
+
 "@types/connect-history-api-fallback@^1.5.4":
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/@types/connect-history-api-fallback/-/connect-history-api-fallback-1.5.4.tgz#7de71645a103056b48ac3ce07b3520b819c1d5b3"
@@ -3330,7 +3337,7 @@ chart.js@^4.4.7:
   dependencies:
     "@kurkle/color" "^0.3.0"
 
-chartjs-plugin-annotation@^3.1.0:
+chartjs-plugin-annotation@*, chartjs-plugin-annotation@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/chartjs-plugin-annotation/-/chartjs-plugin-annotation-3.1.0.tgz#0b3910862bde232344bbb6cf998633f71db7b093"
   integrity sha512-EkAed6/ycXD/7n0ShrlT1T2Hm3acnbFhgkIEJLa0X+M6S16x0zwj1Fv4suv/2bwayCT3jGPdAtI9uLcAMToaQQ==
