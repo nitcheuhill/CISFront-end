@@ -36,7 +36,7 @@
     width: 100%;
     height: 100%;
   }
-  
+
   .firstsection {
     background-color: rgba(7, 46, 76, 0.9); /* Assombrissez légèrement pour une meilleure lisibilité */
   }
@@ -245,7 +245,7 @@
   }
 
   .services-grid{
-    grid-template-columns: repeat(auto-fit, minmax(160px, 2fr)) !important; 
+    grid-template-columns: repeat(auto-fit, minmax(160px, 2fr)) !important;
   }
   .content {
       max-width: 100% !important;
@@ -358,7 +358,7 @@
     align-items: center;
     // background-color: inherit;
   }
- 
+
   .services-description{
     font-size: 15px !important;
    }
@@ -427,7 +427,7 @@
       font-size: 15px !important;
       margin-bottom: 5px !important;
     }
-  } 
+  }
   .team p, .clients p {
       font-size: 16px;
   }
@@ -450,7 +450,7 @@
   .contact-section{
     border-radius: 20px !important;
   }
- 
+
   .contact-info{
     margin-left: initial !important;
     div{
@@ -482,7 +482,7 @@
     margin-bottom: 5px !important;
     color: #116EB6;
   }
-  
+
   .services-grid{
     gap: 25px 10px !important;
     margin-bottom: 0% !important;}
@@ -499,7 +499,7 @@
   justify-content: center;
   margin-bottom: 5px !important;
  }
- .realisationscontent 
+ .realisationscontent
  .text-content h3{
   font-size: 16px !important ;
  }
@@ -514,12 +514,12 @@
  }
  .service-item p {
   font-size: 13px !important;
- }  
+ }
  .services-content{
   width: 100% !important;
-  padding: 0 4%; 
+  padding: 0 4%;
  }
- 
+
 }
 
 

@@ -6,8 +6,8 @@
   </div>
   <div class="firstblock">
       <div class="content">
-          <p class="niet"><span style="color: rgba(240, 97, 50, 1);">Think Smart</span>, Build Well</p>
-          <p class="desc">Optimisez vos opérations industrielles avec nos produits, installations et services de qualités</p>
+          <p class="niet" #title><span style="color: rgba(240, 97, 50, 1);">Think Smart</span>, Build Well</p>
+          <p class="desc" #textPara>Optimisez vos opérations industrielles avec nos produits, installations et services de qualités</p>
           <div class="search-bar">
               <div class="search-container">
                   <input type="text" placeholder="Recherche" />
@@ -62,11 +62,11 @@
     <p class="services-description">
       Que ce soit pour l’installation ou la maintenance dans les secteurs résidentiel, commercial ou industriel, nous offrons des services fiables et durables,
        conformes aux normes, alliant confort et performance.
-    
+
     </p>
-    
+
     <div class="services-grid" >
-      <div class="service-item" *ngFor="let service of infoservices" (click)="onServiceClick(service)">
+      <div class="service-item" *ngFor="let service of infoservices" (click)="onServiceClick(service)" #services>
         <div class="icon-container">
           <img [src]="service.icon" [alt]="service.title">
         </div>
@@ -86,20 +86,20 @@
 
     <div class="realisationscontent">
       <div class="images-grid">
-        <div class="grid-item worker1">
+        <div class="grid-item worker1" #gridItem>
           <img src="/images/Frame 7 (1).png" alt="Travailleur avec casque jaune">
         </div>
-        <div class="grid-item card1"></div>
-        <div class="grid-item card2"></div>
-        <div class="grid-item worker2">
+        <div class="grid-item card1" #gridItem></div>
+        <div class="grid-item card2" #gridItem></div>
+        <div class="grid-item worker2" #gridItem>
           <img src="/images/Frame 8 (1).png" alt="Travailleur souriant">
         </div>
       </div>
 
       <div class="text-content">
         <h3>Chez CIS Cameroun, nous croyons que chaque projet industriel mérite une attention particulière</h3>
-        
-        <p>C'est pourquoi nous ne nous limitons pas à vous fournir des équipements de qualité : nous vous accompagnons à chaque étape, depuis le choix des produits adaptés jusqu'à leur installation et leur maintenance. Notre objectif ? Vous offrir des solutions sur mesure pour maximiser vos performances.</p>
+
+        <p #textAnimation>C'est pourquoi nous ne nous limitons pas à vous fournir des équipements de qualité : nous vous accompagnons à chaque étape, depuis le choix des produits adaptés jusqu'à leur installation et leur maintenance. Notre objectif ? Vous offrir des solutions sur mesure pour maximiser vos performances.</p>
 
         <div class="button-container">
           <div class="line"></div>

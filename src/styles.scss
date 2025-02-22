@@ -12,7 +12,7 @@
     src: url('/fonts/poppins/Poppins-SemiBold.ttf')format('truetype');
     font-style: normal;
     font-weight: 900;
-  
+
 }
 
 
@@ -25,4 +25,26 @@
 
 h3, h2,h1{
     font-family: "poppins-bold", sans-serif;
+}
+
+/* Largeur de la scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Ajuste la largeur de la scrollbar */
+}
+
+/* Fond de la scrollbar */
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Couleur de fond */
+  border-radius: 10px; /* Coins arrondis */
+}
+
+/* Curseur (la partie que l'on fait glisser) */
+::-webkit-scrollbar-thumb {
+  background: #4a90e2; /* Couleur du curseur */
+  border-radius: 10px; /* Coins arrondis */
+}
+
+/* Effet au survol */
+::-webkit-scrollbar-thumb:hover {
+  background: #357ABD; /* Changement de couleur au survol */
 }

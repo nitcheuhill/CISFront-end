@@ -10,6 +10,7 @@ import { NavbarbackofficeComponent } from './shared/components/navbarbackoffice/
 import { ToastComponent } from './shared/components/toast/toast.component';
 import { VisitorTrackingService } from './shared/sevices/visitor-tracking.service';
 import { filter } from 'rxjs';
+import Lenis from '@studio-freight/lenis';
 
 @Component({
   selector: 'app-root',
@@ -22,19 +23,19 @@ export class AppComponent implements OnInit {
   isBackOffice = false;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private loaderService: LoaderService,
     private authService: AuthService,
     private visitorTrackingService: VisitorTrackingService
   ) {
     this.isLoading$ = this.loaderService.isLoading;
-    
+
     // Utilisez NavigationEnd pour la détection du backoffice
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
       this.isBackOffice = event.url.startsWith('/back-office');
-      
+
       // Gestion du loader
       setTimeout(() => this.loaderService.hideLoader(), 1000);
       window.scrollTo(0, 0);
@@ -53,5 +54,15 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     this.loaderService.showLoader();
+
+    const lenis = new Lenis();
+    lenis.on('scroll', ($e: any) => {
+      // console.log($e);
+    });
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
   }
 }
