@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArticlesService } from '../../../shared/sevices/articles.service';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 import { FormsModule } from '@angular/forms';
 import { NewsLetterComponent } from '../../../shared/components/news-letter/news-letter.component';
 import { Router, RouterModule } from '@angular/router';
+import SplitType from 'split-type';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-article-page',
@@ -12,7 +16,7 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './article-page.component.html',
   styleUrl: './article-page.component.scss'
 })
-export class ArticlePageComponent {
+export class ArticlePageComponent implements AfterViewInit  {
   mainArticle: any;
   otherArticles: any[] = [];
   displayedArticles: any[] = [];
@@ -21,7 +25,7 @@ export class ArticlePageComponent {
   noDataFound: boolean = false;  // Variable pour savoir s'il n'y a pas de données
   noDataImage: string = '/images/assetsArticles/9264885.jpg';
   isFilterSliderOpen: boolean = false; // État du slider
-  isMobileView: boolean = false; 
+  isMobileView: boolean = false;
   // Filtres
   searchTerm: string = '';
   category: string = '';
@@ -31,13 +35,20 @@ export class ArticlePageComponent {
   categories: string[] = ['Maintenance', 'Equipements', 'Energie', 'Climatisation', 'Production', 'Infrastructure'];
   isFiltered: boolean = false;  // Indicateur pour savoir si un filtre est appliqué
 
+  @ViewChild('title') titleAbout!: ElementRef;
+  @ViewChild('paragraph') description!: ElementRef;
+  @ViewChild('search') search!: ElementRef;
+  @ViewChild('sectionArticle') sectionArticle!: ElementRef;
+  @ViewChild('filterSection') filterSection!: ElementRef;
+  @ViewChildren('othersArticles') othersArticles!: QueryList<ElementRef>;
+
   constructor(private articleService: ArticlesService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadArticles();
     this.checkView();
     window.addEventListener('resize', () => this.checkView());
-  
+
   }
 
    // Méthode pour vérifier la taille de l'écran
@@ -155,5 +166,77 @@ export class ArticlePageComponent {
     this.isFiltered = false;
     this.currentLimit = 4;
     this.loadArticles();
+  }
+
+  ngAfterViewInit(): void {
+    const title = new SplitType(this.titleAbout.nativeElement, { types: 'chars' });
+    const paragraph = new SplitType(this.description.nativeElement, { types: 'words' });
+
+    const TL = gsap.timeline();
+    TL
+    .fromTo(title.chars, {
+      y: 30,
+      opacity: 0
+    }, {
+      y: '*',
+      delay: 1,
+      stagger: { amount: .1 },
+      opacity: 1,
+      ease: 'power1.inOut'
+    })
+    .fromTo(paragraph.words, {
+      y: 30,
+      opacity: 0
+    }, {
+      y: '*',
+      delay: 1,
+      stagger: { amount: .3 },
+      opacity: 1,
+      ease: 'power1.inOut'
+    }, "<-.3")
+    .fromTo(this.search.nativeElement, {
+      y: 20,
+      opacity: 0
+    }, {
+      y: '*',
+      opacity: 1,
+      ease: 'power1.inOut'
+    }, "<.3")
+    .fromTo(this.sectionArticle.nativeElement, {
+      y: 30,
+      opacity: 0
+    }, {
+      y: '*',
+      opacity: 1,
+      ease: 'power1.inOut'
+    }, "<.5")
+    .fromTo(this.filterSection.nativeElement, {
+      y: 30,
+      opacity: 0
+    }, {
+      y: '*',
+      opacity: 1,
+      ease: 'power1.inOut'
+    }, "<.3")
+    setTimeout(() => {
+      this.othersArticles.forEach(el => {
+        gsap.fromTo(
+          el.nativeElement,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: el.nativeElement,
+              start: "top 80%",
+              end: "top 30%",
+              scrub: 1,
+            },
+          }
+        );
+      });
+    }, 500);
+
   }
 }

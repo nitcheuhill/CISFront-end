@@ -1,181 +1,180 @@
 <section class="header">
-    <div class="containerIntro">
-        <h1>Articles</h1>
-        <p>Lorem ipsum dolor sit amet consectetur.
-            Egestas nulla est urna ullamcorper duis
-            nibh vitae elementumr.</p>
-    </div>
-    <div class="search-bar">
-        <div class="search-container">
-            <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un article..." />
-            <button (click)="searchArticles()">
-                <img src="/icons/Frame 7.png" alt="Recherche">
-            </button>
-        </div>
-    </div>
+  <div class="containerIntro">
+      <h1 #title>Articles</h1>
+      <p #paragraph>Lorem ipsum dolor sit amet consectetur.
+          Egestas nulla est urna ullamcorper duis
+          nibh vitae elementumr.</p>
+  </div>
+  <div class="search-bar">
+      <div class="search-container" #search>
+          <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un article..." />
+          <button (click)="searchArticles()">
+              <img src="/icons/Frame 7.png" alt="Recherche">
+          </button>
+      </div>
+  </div>
 </section>
 <section class="Listarticles">
-    <div class="blockLeft">
-        <div>
-            <button class="filter-button-slide" (click)="toggleFilterSlider()">
-                <div class="filter-header">
-                    <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
-                    <h2>Filtre</h2>
-                </div>
-            </button>
-            <!-- Overlay pour l'effet d'ombre et de flou -->
-            <div class="overlay" [class.open]="isFilterSliderOpen" (click)="toggleFilterSlider()"></div>
+  <div class="blockLeft">
+      <div>
+          <button class="filter-button-slide" (click)="toggleFilterSlider()">
+              <div class="filter-header">
+                  <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
+                  <h2>Filtre</h2>
+              </div>
+          </button>
+          <!-- Overlay pour l'effet d'ombre et de flou -->
+          <div class="overlay" [class.open]="isFilterSliderOpen" (click)="toggleFilterSlider()"></div>
 
-            <!-- /Slider filter -->
-            <div class="filter-slider" [class.open]="isFilterSliderOpen">
-                <div class="filter-header" (click)="toggleFilterSlider()">
-                    <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
-                    <h2>Filtre</h2>
-                </div>
-                <div class="filter-content">
-                    <!-- Filtre par ordre -->
-                    <div class="filter-group">
-                        <h3>Par ordre</h3>
-                        <button class="filter-button" (click)="onOrderChange('relevant')">Plus pertinents</button>
-                        <button class="filter-button" (click)="onOrderChange('newest')">Les plus récents</button>
-                    </div>
-                    <!-- Filtre par catégorie -->
-                    <div class="filter-group">
-                        <h3>Par catégorie</h3>
-                        <div class="category-buttons">
-                            <button class="filter-button" (click)="onCategoryChange('Maintenance')">Maintenance</button>
-                            <button class="filter-button" (click)="onCategoryChange('Equipements')">Equipements</button>
-                            <button class="filter-button" (click)="onCategoryChange('Energie')">Energie</button>
-                            <button class="filter-button"
-                                (click)="onCategoryChange('Climatisation')">Climatisation</button>
-                            <button class="filter-button" (click)="onCategoryChange('Production')">Production</button>
-                            <button class="filter-button"
-                                (click)="onCategoryChange('Infrastructure')">Infrastructure</button>
-                            <button class="filter-button" (click)="resetAllFilters()">Reset filtre</button>
-                        </div>
-                    </div>
-                    <!-- Filtre par date -->
-                    <div class="filter-group">
-                        <h3>Par date</h3>
-                        <div class="date-filter">
-                            <input type="date" class="date-input" [(ngModel)]="startDate"
-                                (change)="updateDisplayedArticles()" />
-                            <input type="date" class="date-input" [(ngModel)]="endDate"
-                                (change)="updateDisplayedArticles()" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <!-- /Slider filter -->
+          <div class="filter-slider" [class.open]="isFilterSliderOpen">
+              <div class="filter-header" (click)="toggleFilterSlider()">
+                  <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
+                  <h2>Filtre</h2>
+              </div>
+              <div class="filter-content">
+                  <!-- Filtre par ordre -->
+                  <div class="filter-group">
+                      <h3>Par ordre</h3>
+                      <button class="filter-button" (click)="onOrderChange('relevant')">Plus pertinents</button>
+                      <button class="filter-button" (click)="onOrderChange('newest')">Les plus récents</button>
+                  </div>
+                  <!-- Filtre par catégorie -->
+                  <div class="filter-group">
+                      <h3>Par catégorie</h3>
+                      <div class="category-buttons">
+                          <button class="filter-button" (click)="onCategoryChange('Maintenance')">Maintenance</button>
+                          <button class="filter-button" (click)="onCategoryChange('Equipements')">Equipements</button>
+                          <button class="filter-button" (click)="onCategoryChange('Energie')">Energie</button>
+                          <button class="filter-button"
+                              (click)="onCategoryChange('Climatisation')">Climatisation</button>
+                          <button class="filter-button" (click)="onCategoryChange('Production')">Production</button>
+                          <button class="filter-button"
+                              (click)="onCategoryChange('Infrastructure')">Infrastructure</button>
+                          <button class="filter-button" (click)="resetAllFilters()">Reset filtre</button>
+                      </div>
+                  </div>
+                  <!-- Filtre par date -->
+                  <div class="filter-group">
+                      <h3>Par date</h3>
+                      <div class="date-filter">
+                          <input type="date" class="date-input" [(ngModel)]="startDate"
+                              (change)="updateDisplayedArticles()" />
+                          <input type="date" class="date-input" [(ngModel)]="endDate"
+                              (change)="updateDisplayedArticles()" />
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-            <!-- Article principal -->
-            <div *ngIf="mainArticle" class="article-card" (click)="onArticleClick(mainArticle)">
-                <img [src]="mainArticle.bannerImage" alt="Image de bannière" class="banner-image" />
-                <div class="content">
-                    <span class="article-type">{{ mainArticle.type }}</span>
-                    <h2 class="title">{{ mainArticle.title }}</h2>
-                    <p class="description">{{ mainArticle.description }}</p>
-                    <div class="author">
-                        <img [src]="mainArticle.author.authorImage" alt="Photo de l'auteur" class="author-image" />
-                        <div class="details">
-                            <p class="author-name">Rédigé par <span class="author-span">{{ mainArticle.author.authorName
-                                    }}</span></p>
-                            <p class="date">{{ mainArticle.date | date: 'dd MMMM yyyy' }}</p>
-                            <!-- Affichage de la date au format souhaité -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <!-- Article principal -->
+          <div *ngIf="mainArticle" class="article-card" (click)="onArticleClick(mainArticle)" #sectionArticle>
+              <img [src]="mainArticle.bannerImage" alt="Image de bannière" class="banner-image" />
+              <div class="content">
+                  <span class="article-type">{{ mainArticle.type }}</span>
+                  <h2 class="title">{{ mainArticle.title }}</h2>
+                  <p class="description">{{ mainArticle.description }}</p>
+                  <div class="author">
+                      <img [src]="mainArticle.author.authorImage" alt="Photo de l'auteur" class="author-image" />
+                      <div class="details">
+                          <p class="author-name">Rédigé par <span class="author-span">{{ mainArticle.author.authorName
+                                  }}</span></p>
+                          <p class="date">{{ mainArticle.date | date: 'dd MMMM yyyy' }}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-            <!-- Loader Component -->
-            <app-loader *ngIf="isLoading"></app-loader> <!-- Affichage du loader pendant le filtrage -->
+          <!-- Loader Component -->
+          <app-loader *ngIf="isLoading"></app-loader> <!-- Affichage du loader pendant le filtrage -->
 
-            <!-- Affichage des autres articles -->
-            <div *ngIf="displayedArticles.length > 0">
-                <div *ngFor="let article of displayedArticles" class="custom-article-container"
-                    (click)="onArticleClick(article)">
-                    <div class="custom-article-wrapper">
-                        <img [src]="article.bannerImage" alt="Image de bannière" class="custom-banner-img" />
-                        <div class="custom-article-details">
-                            <span class="custom-article-type">{{ article.type }}</span>
-                            <h2 class="custom-article-title">{{ article.title }}</h2>
-                            <p class="custom-article-description">{{ article.description }}</p>
-                            <div class="custom-article-footer">
-                                <img [src]="article.author.authorImage" alt="Photo de l'auteur" class="custom-author-img" />
-                                <p class="custom-author-name">Rédigé par <span class="author-span">{{
-                                        article.author.authorName}}</span></p>
-                                <span class="custom-article-date">{{ article.date | date: 'dd MMMM yyyy' }}</span>
-                                <!-- Affichage de la date au format souhaité -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Message "Aucune donnée" -->
-            <div *ngIf="noDataFound" class="no-data">
-                <div>
-                    <img [src]="noDataImage" alt="Aucune donnée" class="no-data-image" />
-                    <p>Aucune donnée ne correspond à votre filtre</p>
-                </div>
-            </div>
+          <!-- Affichage des autres articles -->
+          <div *ngIf="displayedArticles.length > 0">
+              <div *ngFor="let article of displayedArticles" class="custom-article-container"
+                  (click)="onArticleClick(article)">
+                  <div class="custom-article-wrapper" #othersArticles>
+                      <img [src]="article.bannerImage" alt="Image de bannière" class="custom-banner-img" />
+                      <div class="custom-article-details">
+                          <span class="custom-article-type">{{ article.type }}</span>
+                          <h2 class="custom-article-title">{{ article.title }}</h2>
+                          <p class="custom-article-description">{{ article.description }}</p>
+                          <div class="custom-article-footer">
+                              <img [src]="article.author.authorImage" alt="Photo de l'auteur" class="custom-author-img" />
+                              <p class="custom-author-name">Rédigé par <span class="author-span">{{
+                                      article.author.authorName}}</span></p>
+                              <span class="custom-article-date">{{ article.date | date: 'dd MMMM yyyy' }}</span>
+                              <!-- Affichage de la date au format souhaité -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Message "Aucune donnée" -->
+          <div *ngIf="noDataFound" class="no-data">
+              <div>
+                  <img [src]="noDataImage" alt="Aucune donnée" class="no-data-image" />
+                  <p>Aucune donnée ne correspond à votre filtre</p>
+              </div>
+          </div>
 
-            <div class="voir" *ngIf="!noDataFound && displayedArticles.length >= 3">
-                <button (click)="toggleArticles()" class="seeMore">
-                    {{ currentLimit >= otherArticles.length ? 'Voir Moins' : 'Voir Plus' }}
-                </button>
-            </div>
-        </div>
-        <div *ngIf="isMobileView">
-            <app-news-letter></app-news-letter>
-        </div>
+          <div class="voir" *ngIf="!noDataFound && displayedArticles.length >= 3">
+              <button (click)="toggleArticles()" class="seeMore">
+                  {{ currentLimit >= otherArticles.length ? 'Voir Moins' : 'Voir Plus' }}
+              </button>
+          </div>
+      </div>
+      <div *ngIf="isMobileView">
+          <app-news-letter></app-news-letter>
+      </div>
 
-    </div>
-
+  </div>
 
 
 
-    <div class="blockRight">
-        <section class="filter-section">
-            <div class="filter-header">
-                <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
-                <h2>Filtre</h2>
-            </div>
 
-            <div class="filter-content">
-                <!-- Filtre par ordre -->
-                <div class="filter-group">
-                    <h3>Par ordre</h3>
-                    <button class="filter-button" (click)="onOrderChange('relevant')">Plus pertinents</button>
-                    <button class="filter-button" (click)="onOrderChange('newest')">Les plus récents</button>
-                </div>
-                <!-- Filtre par catégorie -->
-                <div class="filter-group">
-                    <h3>Par catégorie</h3>
-                    <div class="category-buttons">
-                        <button class="filter-button" (click)="onCategoryChange('Maintenance')">Maintenance</button>
-                        <button class="filter-button" (click)="onCategoryChange('Equipements')">Equipements</button>
-                        <button class="filter-button" (click)="onCategoryChange('Energie')">Energie</button>
-                        <button class="filter-button" (click)="onCategoryChange('Climatisation')">Climatisation</button>
-                        <button class="filter-button" (click)="onCategoryChange('Production')">Production</button>
-                        <button class="filter-button"
-                            (click)="onCategoryChange('Infrastructure')">Infrastructure</button>
-                        <button class="filter-button" (click)="resetAllFilters()"> Reset filtre</button>
-                    </div>
-                </div>
+  <div class="blockRight">
+      <section class="filter-section" #filterSection>
+          <div class="filter-header">
+              <img src="/images/realisationsassets/filter-search.png" alt="Icône filtre" class="filter-icon" />
+              <h2>Filtre</h2>
+          </div>
 
-                <!-- Filtre par date -->
-                <div class="filter-group">
-                    <h3>Par date</h3>
-                    <div class="date-filter">
-                        <input type="date" class="date-input" [(ngModel)]="startDate"
-                            (change)="updateDisplayedArticles()" />
-                        <input type="date" class="date-input" [(ngModel)]="endDate"
-                            (change)="updateDisplayedArticles()" />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="blockRight" *ngIf="!isMobileView">
-            <app-news-letter></app-news-letter>
-        </div>
-    </div>
+          <div class="filter-content">
+              <!-- Filtre par ordre -->
+              <div class="filter-group">
+                  <h3>Par ordre</h3>
+                  <button class="filter-button" (click)="onOrderChange('relevant')">Plus pertinents</button>
+                  <button class="filter-button" (click)="onOrderChange('newest')">Les plus récents</button>
+              </div>
+              <!-- Filtre par catégorie -->
+              <div class="filter-group">
+                  <h3>Par catégorie</h3>
+                  <div class="category-buttons">
+                      <button class="filter-button" (click)="onCategoryChange('Maintenance')">Maintenance</button>
+                      <button class="filter-button" (click)="onCategoryChange('Equipements')">Equipements</button>
+                      <button class="filter-button" (click)="onCategoryChange('Energie')">Energie</button>
+                      <button class="filter-button" (click)="onCategoryChange('Climatisation')">Climatisation</button>
+                      <button class="filter-button" (click)="onCategoryChange('Production')">Production</button>
+                      <button class="filter-button"
+                          (click)="onCategoryChange('Infrastructure')">Infrastructure</button>
+                      <button class="filter-button" (click)="resetAllFilters()"> Reset filtre</button>
+                  </div>
+              </div>
+
+              <!-- Filtre par date -->
+              <div class="filter-group">
+                  <h3>Par date</h3>
+                  <div class="date-filter">
+                      <input type="date" class="date-input" [(ngModel)]="startDate"
+                          (change)="updateDisplayedArticles()" />
+                      <input type="date" class="date-input" [(ngModel)]="endDate"
+                          (change)="updateDisplayedArticles()" />
+                  </div>
+              </div>
+          </div>
+      </section>
+      <div class="blockRight" *ngIf="!isMobileView">
+          <app-news-letter></app-news-letter>
+      </div>
+  </div>
 </section>
